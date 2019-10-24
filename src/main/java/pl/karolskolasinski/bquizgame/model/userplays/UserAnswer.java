@@ -5,7 +5,6 @@ import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 
 import javax.persistence.*;
-import java.util.Set;
 
 
 @Data
@@ -18,13 +17,12 @@ public class UserAnswer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "userAnswer", fetch = FetchType.EAGER)   // <-------- ??
-    private Set<Question> questionList;
+    @ManyToOne
+    private Question question;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "userAnswer", fetch = FetchType.EAGER)   // <-------- ??
-    private Set<Answer> answerList;
+    @ManyToOne
+    private Answer answer;
+
+    @ManyToOne
+    private UserQuiz userQuiz;
 }

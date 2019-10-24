@@ -26,5 +26,5 @@ public class UserQuiz {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "userQuiz", fetch = FetchType.EAGER)   // <-------- ??
-    private Set<UserAnswer> userAnswerList;
+    private Set<UserAnswer> userAnswers;
 }

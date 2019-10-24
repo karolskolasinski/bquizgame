@@ -5,6 +5,7 @@ import pl.karolskolasinski.bquizgame.model.userplays.UserAnswer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Set;
 
 @Data
 @Entity
@@ -27,6 +28,8 @@ public class Answer {
     @ManyToOne
     private Question question;
 
-    @ManyToOne
-    private UserAnswer userAnswer;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "answer", fetch = FetchType.EAGER)   // <-------- ??
+    private Set<UserAnswer> userAnswers;
 }

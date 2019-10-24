@@ -34,8 +34,10 @@ public class Question {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)   // <-------- ??
-    private Set<Answer> answerList;
+    private Set<Answer> answers;
 
-    @ManyToOne
-    private UserAnswer userAnswer;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)   // <-------- ??
+    private Set<UserAnswer> userAnswers;
 }
