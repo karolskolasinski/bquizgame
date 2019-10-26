@@ -18,10 +18,6 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @CreationTimestamp
-    @Column(updatable = false)
-    private LocalDateTime quizStartDateTime;
-
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "quiz", fetch = FetchType.EAGER)   // <-------- ??

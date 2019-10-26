@@ -42,7 +42,7 @@ public class Account {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)   // <-------- ??
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private Set<UserQuiz> userQuizzes;
 
     public boolean isAdmin() {
