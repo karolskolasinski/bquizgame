@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index page</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+
+
+<div class="container">
+
+    <div class="row col-md-12">
+        <h1>Registration form</h1>
+    </div>
+
+
+    <div class="row col-md-12">
+        <form th:action="@{/user/register}" method="post" th:object="${newAccount}">
+            <div class="row col-12">
+
+                <div th:if="${errorMessage != null}" class="row col-md-12 list-row">
+                    <div class="col-md-12 alert alert-danger" th:text="${errorMessage}"></div>
+                </div>
+
+
+                <div class="row col-md-12 list-row">
+                    <div class="col-md-6">
+                        <label for="username">Username:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" id="username" th:field="*{username}">
+                    </div>
+                </div>
+
+
+                <div class="row col-md-12 list-row">
+                    <div class="col-md-6">
+                        <label for="password">Password:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="password" id="password" th:field="*{password}">
+                    </div>
+                </div>
+
+
+                <div class="row col-md-12 list-row">
+                    <div class="col-md-6">
+                        <label for="password">Password confirm:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="password" id="password-confirm" th:name="passwordConfirm">
+                    </div>
+                </div>
+
+
+                <div class="row col-md-12 button-margin">
+                    <div class="col-md-6"></div>
+
+                    <div class="col-md-3">
+                        <button type="reset" class="btn btn-outline-warning offset-3 col-md-6">Reset</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-outline-primary offset-3 col-md-6">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+
+    <th:block th:replace="fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</div>
+
+</body>
+</html>

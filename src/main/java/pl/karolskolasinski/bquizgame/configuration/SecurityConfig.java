@@ -30,11 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/js/**",
                         "/webjars/**",
-//                         "/user/register",
+                        "/user/register",
                         "/login").permitAll()
 //                reguły związane z rolami (np. /admin/**)
                 .anyRequest().authenticated()
-                .antMatchers("/user/register").hasAnyRole("ADMIN")
+//                .antMatchers("/user/register").hasAnyRole("ADMIN")
                 .and()
                     .formLogin()
                         .loginPage("/login")

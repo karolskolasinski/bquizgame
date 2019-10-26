@@ -8,10 +8,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.karolskolasinski.bquizgame.model.account.Account;
+import pl.karolskolasinski.bquizgame.model.account.AccountPasswordResetRequest;
 import pl.karolskolasinski.bquizgame.service.AccountService;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/user/")
@@ -25,7 +28,6 @@ public class AccountController {
     }
 
     @GetMapping("/register")
-    @PreAuthorize(value = "hasRole('ADMIN')")
     public String registrationForm(Model model, Account account) {
         model.addAttribute("newAccount", account);
 
@@ -33,7 +35,6 @@ public class AccountController {
     }
 
     @PostMapping("/register")
-    @PreAuthorize(value = "hasRole('ADMIN')")
     public String register(@Valid Account account,
                            BindingResult result,
                            Model model,
@@ -58,5 +59,25 @@ public class AccountController {
         model.addAttribute("errorMessage", message);
 
         return "registration-form";
+    }
+
+    @GetMapping("/resetPassword")
+    @PreAuthorize(value = "hasAnyRole('ADMIN')")
+    public String resetPassword(Model model, @RequestParam(name = "accountId") Long accountId) {
+        Optional<Account> accountOptional = accountService.findById(accountId);
+
+        if (accountOptional.isPresent()) {
+            model.addAttribute("account", accountOptional.get());
+            return "account-passwordreset";
+        }
+        return "redirect:/admin/account/list";
+    }
+
+    @PostMapping("/resetPassword")
+    @PreAuthorize(value = "hasAnyRole('ADMIN')")
+    public String resetPassword(AccountPasswordResetRequest request) {
+        accountService.resetPassword(request);
+
+        return "redirect:/admin/account/list";
     }
 }

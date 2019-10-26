@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="link-styles">
+        <link rel="stylesheet"
+              th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}"/>
+        <link rel="stylesheet"
+              th:href="@{/css/style.css}"/>
+    </th:block>
+</head>
+<body>
+
+<th:block th:fragment="navigator">
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" th:href="@{/}">Home</a>
+            <a class="p-2 text-dark" sec:authorize="hasRole('ADMIN')" th:href="@{/tylkodlakozakow}">Kozaki</a>
+            <a class="p-2 text-dark" sec:authorize="hasAnyRole('ADMIN', 'ACCOUNT_REMOVER', 'ACCOUNT_MANAGER') && isAuthenticated()" th:href="@{/admin/account/list}">Account List</a>
+            <!--TodoTasks-->
+            <a class="p-2 text-dark" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/add}">Add Task</a>
+            <a class="p-2 text-dark" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/list}">Current Tasks</a>
+            <a class="p-2 text-dark" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/list/archived}">Archived Tasks</a>
+            <a class="p-2 text-dark" sec:authorize="hasRole('ADMIN') && isAuthenticated()" th:href="@{/admin/task/list}">Task List</a>
+        </nav>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-outline-primary" sec:authorize="!isAuthenticated()"
+               th:href="@{/login}">Login</a>
+            <!--<a class="btn btn-outline-primary" sec:authorize="!isAuthenticated()" th:href="@{/user/register}">Register</a>-->
+            <a class="btn btn-outline-primary" sec:authorize="hasRole('ADMIN') && isAuthenticated()"
+               th:href="@{/user/register}">Register</a>
+            <a class="btn btn-outline-primary" sec:authorize="isAuthenticated()"
+               th:href="@{/logout}">Logout</a>
+        </nav>
+    </div>
+
+</th:block>
+
+<th:block th:fragment="footer">
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+            <div class="col-12 col-md">
+                <img class="mb-2"
+                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFSfvr4lpjIRIOPXnrVVOxM2ncPohUKFH8aihKOB_WqSlFXFOK"
+                     alt="" width="24" height="24">
+                <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Features</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Cool stuff</a></li>
+                    <li><a class="text-muted" href="#">Random feature</a></li>
+                    <li><a class="text-muted" href="#">Team feature</a></li>
+                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                    <li><a class="text-muted" href="#">Another one</a></li>
+                    <li><a class="text-muted" href="#">Last time</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Resource</a></li>
+                    <li><a class="text-muted" href="#">Resource name</a></li>
+                    <li><a class="text-muted" href="#">Another resource</a></li>
+                    <li><a class="text-muted" href="#">Final resource</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Team</a></li>
+                    <li><a class="text-muted" href="#">Locations</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</th:block>
+
+<th:block th:fragment="scripts">
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/1.14.3/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+</th:block>
+
+</body>
+</html>

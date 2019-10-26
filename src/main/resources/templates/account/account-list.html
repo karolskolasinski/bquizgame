@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account list</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+
+<div class="container">
+
+    <div class="row col-md-12">
+        <h1>Account list</h1>
+    </div>
+
+
+    <div class="row col-md-12">
+
+        <div class="row col-md-12 list-header-row">
+            <div class="col-md-1">Id</div>
+            <div class="col-md-2">Username</div>
+            <div class="col-md-3">Roles</div>
+            <div class="col-md-6"><!--Buttons--></div>
+        </div>
+
+        <div th:each="account : ${accounts}" class="row col-md-12">
+            <div class="col-md-1" th:text="${account.getId()}"></div>
+            <div class="col-md-2" th:text="${account.getUsername()}"></div>
+            <div class="col-md-3" th:text="${account.getAccountRoles()}"></div>
+
+            <div class="row col-md-6 justify-content-center">
+
+                <a th:href="@{/admin/account/toggleLock(accountId=${account.getId()})}">
+                    <button type="button" class="btn btn-outline-primary mr-1"
+                            th:text="${account.isLocked()? 'Unlock': 'Lock'}">
+                    </button>
+                </a>
+
+
+                <a th:href="@{/admin/account/resetPassword(accountId=${account.getId()})}">
+                    <button type="button" class="btn btn-outline-primary mr-1">
+                        Reset Pass
+                    </button>
+                </a>
+
+
+                <a th:href="@{/admin/account/editRoles(accountId=${account.getId()})}">
+                    <button type="button" class="btn btn-outline-primary mr-1">
+                        Edit roles
+                    </button>
+                </a>
+
+
+                <a th:href="@{/admin/account/remove(accountId=${account.getId()})}">
+                    <button th:disabled="${account.isAdmin()}" type="button" class="btn btn-outline-danger mr-1">Remove
+                    </button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</div>
+</body>
+</html>

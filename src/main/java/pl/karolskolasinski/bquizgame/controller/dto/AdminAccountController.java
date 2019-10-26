@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.karolskolasinski.bquizgame.model.account.Account;
-import pl.karolskolasinski.bquizgame.model.account.AccountPasswordResetRequest;
 import pl.karolskolasinski.bquizgame.service.AccountRoleService;
 import pl.karolskolasinski.bquizgame.service.AccountService;
 
@@ -30,36 +29,16 @@ public class AdminAccountController {
     }
 
     @GetMapping("/list")
-    @PreAuthorize(value = "hasAnyRole('ACCOUNT_MANAGER', 'ADMIN') ")
+    @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String getUserList(Model model) {
         model.addAttribute("accounts", accountService.getAll());
         return "account-list";
     }
 
     @GetMapping("/remove")
-    @PreAuthorize(value = "hasAnyRole('ACCOUNT_REMOVER', 'ADMIN')")
+    @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String remove(@RequestParam(name = "accountId") Long accountId) {
         accountService.remove(accountId);
-
-        return "redirect:/admin/account/list";
-    }
-
-    @GetMapping("/resetPassword")
-    @PreAuthorize(value = "hasAnyRole('ADMIN')")
-    public String resetPassword(Model model, @RequestParam(name = "accountId") Long accountId) {
-        Optional<Account> accountOptional = accountService.findById(accountId);
-
-        if (accountOptional.isPresent()) {
-            model.addAttribute("account", accountOptional.get());
-            return "account-passwordreset";
-        }
-        return "redirect:/admin/account/list";
-    }
-
-    @PostMapping("/resetPassword")
-    @PreAuthorize(value = "hasAnyRole('ADMIN')")
-    public String resetPassword(AccountPasswordResetRequest request) {
-        accountService.resetPassword(request);
 
         return "redirect:/admin/account/list";
     }
