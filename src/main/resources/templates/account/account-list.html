@@ -1,70 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
     <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
-
-    <title>Index page</title>
-
+    <title>Lista użytkowników</title>
     <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
-<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
 
 <div class="container">
-
     <div class="row col-md-12">
-        <h1>Account list</h1>
+        <h1 class="display-4 mt-4 mb-3 border-top pt-4">Lista użytkowników</h1>
     </div>
 
+    <div class="card-deck mb-3">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <div th:each="account : ${accounts}" class="row">
+                    <div class="col-md-1 mt-2" th:text="${account.getId()}"></div>
+                    <div class="col-md-2 mt-2" th:text="${account.getUsername()}"></div>
+                    <div class="col-md-3 mt-2" th:text="${account.getEmail()}"></div>
+                    <!--<div class="col-md-3" th:text="${account.getAccountRoles()}"></div> &lt;!&ndash;todo  -&#45;&#45;&#45;&#45;&#45;&#45;~> bez nawiasów ]&ndash;&gt;-->
 
-    <div class="row col-md-12">
-
-        <div class="row col-md-12 list-header-row">
-            <div class="col-md-1">Id</div>
-            <div class="col-md-2">Username</div>
-            <div class="col-md-3">Roles</div>
-            <div class="col-md-6"><!--Buttons--></div>
-        </div>
-
-        <div th:each="account : ${accounts}" class="row col-md-12">
-            <div class="col-md-1" th:text="${account.getId()}"></div>
-            <div class="col-md-2" th:text="${account.getUsername()}"></div>
-            <div class="col-md-3" th:text="${account.getAccountRoles()}"></div>
-
-            <div class="row col-md-6 justify-content-center">
-
-                <a th:href="@{/admin/account/toggleLock(accountId=${account.getId()})}">
-                    <button type="button" class="btn btn-outline-primary mr-1"
-                            th:text="${account.isLocked()? 'Unlock': 'Lock'}">
-                    </button>
-                </a>
+                    <div class="col-md-6 text-center">
+                        <div class="btn-group" role="group">
+                        <a th:href="@{/admin/account/resetPassword(accountId=${account.getId()})}">
+                            <button type="button" class="btn btn-outline-secondary mr-1 mb-2 fit">
+                                Resetuj hasło
+                            </button>
+                        </a>
 
 
-                <a th:href="@{/admin/account/resetPassword(accountId=${account.getId()})}">
-                    <button type="button" class="btn btn-outline-primary mr-1">
-                        Reset Pass
-                    </button>
-                </a>
+                        <a th:href="@{/admin/account/editRoles(accountId=${account.getId()})}">
+                            <button type="button" class="btn btn-outline-secondary mr-1 mb-2">
+                                Edytuj role
+                            </button>
+                        </a>
 
 
-                <a th:href="@{/admin/account/editRoles(accountId=${account.getId()})}">
-                    <button type="button" class="btn btn-outline-primary mr-1">
-                        Edit roles
-                    </button>
-                </a>
+                        <a th:href="@{/admin/account/remove(accountId=${account.getId()})}">
+                            <button th:disabled="${account.isAdmin()}" type="button" class="btn btn-outline-danger mr-1 mb-2">
+                                Usuń
+                            </button>
+                        </a>
+                        </div>
+                    </div>
+                </div>
 
 
-                <a th:href="@{/admin/account/remove(accountId=${account.getId()})}">
-                    <button th:disabled="${account.isAdmin()}" type="button" class="btn btn-outline-danger mr-1">Remove
-                    </button>
-                </a>
 
             </div>
         </div>
     </div>
 
-    <th:block th:replace="fragments :: footer" th:remove="tag"/>
-    <th:block th:replace="fragments :: scripts" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
 </div>
+
 </body>
 </html>

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(path = "/admin/account/")
+@RequestMapping(path = "/admin/")
 public class AdminAccountController {
 
     private AccountService accountService;
@@ -28,11 +28,11 @@ public class AdminAccountController {
         this.accountRoleService = accountRoleService;
     }
 
-    @GetMapping("/list")
-    @PreAuthorize(value = "hasAnyRole('ADMIN')")
+    @GetMapping("/listUsers")
+    @PreAuthorize(value = "hasAnyRole('ADMIN')")  //todo  --------~> SecurityConfig ???
     public String getUserList(Model model) {
         model.addAttribute("accounts", accountService.getAll());
-        return "account-list";
+        return "account/account-list";
     }
 
     @GetMapping("/remove")

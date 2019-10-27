@@ -60,3 +60,8 @@ label {
 .main-color {
     color: #ffc107;
 }
+
+a {
+    height: fit-content;
+    width: fit-content;
+}

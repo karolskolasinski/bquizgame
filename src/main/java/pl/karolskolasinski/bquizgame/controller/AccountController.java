@@ -45,10 +45,10 @@ public class AccountController {
         }
         //todo tworzenie konta
         if (!account.getPassword().equals(passwordConfirm)) {
-            return registrationError(model, account, "Password do not match");
+            return registrationError(model, account, "Password do not match.");
         }
         if (!accountService.register(account)) {
-            return registrationError(model, account, "User with given username already exist");
+            return registrationError(model, account, "User with given username already exist.");
         }
 
         return "redirect:/login";
