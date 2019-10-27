@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title></title>
     <th:block th:fragment="link-styles">
-        <link rel="stylesheet"
-              th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}"/>
-        <link rel="stylesheet"
-              th:href="@{/css/style.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}"/>
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
     </th:block>
 </head>
 <body>
@@ -15,25 +14,18 @@
 <th:block th:fragment="navigator">
 
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+        <h5 class="my-0 mr-md-auto font-weight-normal"><a class="p-2 text-dark" th:href="@{/}"><img class="nav-logo" src="/img/quiz-logo.png" alt=""></a></h5>
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark" th:href="@{/}">Home</a>
-            <a class="p-2 text-dark" sec:authorize="hasRole('ADMIN')" th:href="@{/tylkodlakozakow}">Kozaki</a>
-            <a class="p-2 text-dark" sec:authorize="hasAnyRole('ADMIN', 'ACCOUNT_REMOVER', 'ACCOUNT_MANAGER') && isAuthenticated()" th:href="@{/admin/account/list}">Account List</a>
-            <!--TodoTasks-->
-            <a class="p-2 text-dark" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/add}">Add Task</a>
-            <a class="p-2 text-dark" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/list}">Current Tasks</a>
+            <a class="p-2 text-dark" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/add}">Statystyki</a>
+            <a class="p-2 text-dark" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/list}">Profil</a>
             <a class="p-2 text-dark" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/list/archived}">Archived Tasks</a>
             <a class="p-2 text-dark" sec:authorize="hasRole('ADMIN') && isAuthenticated()" th:href="@{/admin/task/list}">Task List</a>
+            <a class="p-2 text-dark" sec:authorize="hasAnyRole('ADMIN') && isAuthenticated()" th:href="@{/admin/account/list}">Account List</a>
         </nav>
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="btn btn-outline-primary" sec:authorize="!isAuthenticated()"
-               th:href="@{/login}">Login</a>
-            <!--<a class="btn btn-outline-primary" sec:authorize="!isAuthenticated()" th:href="@{/user/register}">Register</a>-->
-            <a class="btn btn-outline-primary" sec:authorize="hasRole('ADMIN') && isAuthenticated()"
-               th:href="@{/user/register}">Register</a>
-            <a class="btn btn-outline-primary" sec:authorize="isAuthenticated()"
-               th:href="@{/logout}">Logout</a>
+            <a class="btn btn-outline-dark" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+            <a class="btn btn-outline-dark" sec:authorize="!isAuthenticated()" th:href="@{/user/register}">Register</a>
+            <a class="btn btn-outline-dark" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
         </nav>
     </div>
 
