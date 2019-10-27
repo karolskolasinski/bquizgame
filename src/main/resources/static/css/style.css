@@ -1,3 +1,62 @@
+/*link underline*/
+.underlined {
+    color: black;
+    flex: 1;
+    text-decoration: none !important;
+    background-image: linear-gradient(to right, #ffc107 0, #ffc107 100%);
+    background-position: 0 1.2em;
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: background 0.5s;
+}
+
+.underlined:hover {
+    background-size: 100% 100%;
+}
+
+.underlined--thin {
+    background-image: linear-gradient(to right, black 0, black 100%);
+}
+
+.underlined--thick {
+    background-position: 0 -0.1em;
+}
+
+.underlined--offset {
+    background-position: 0 0.2em;
+    box-shadow: inset 0 -0.5em 0 0 white;
+    color: black !important;
+}
+
+.underlined--gradient {
+    background-position: 0 -0.1em;
+    background-image: linear-gradient(to right, #ffc107 0, white 100%);
+}
+
+.underlined--reverse {
+    background-position: 100% -0.1em;
+    transition: background 1s;
+    background-image: linear-gradient(to right, #ffc107 0, #ffc107 100%);
+}
+
+/*custom styles*/
+::selection {
+    background: transparent;
+    text-shadow: #000 0 0 2px;
+}
+
 .nav-logo {
     height: 2rem;
+}
+
+h3 {
+    font-weight: 300;
+}
+
+label {
+    margin-bottom: 0;
+}
+
+.main-color {
+    color: #ffc107;
 }

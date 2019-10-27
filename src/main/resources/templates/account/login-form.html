@@ -3,63 +3,44 @@
 <head>
     <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
 
-    <title>Index page</title>
+    <title>Login</title>
 
     <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
 <th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
 
-
 <div class="container">
-
     <div class="row col-md-12">
-        <h1>Login form</h1>
+        <h1 class="display-4 mt-4 mb-3 border-top pt-4">Zaloguj się tutaj:</h1>
     </div>
 
+    <div class="card-deck mb-3">
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body text-left">
+                    <form th:action="@{/login}" method="post">
+                        <div class="col-md-12">
+                            <label for="username" class="small">Login:</label>
+                            <input class="form-control" type="text" id="username" th:name="username">
+                        </div>
 
-    <form th:action="@{/login}" method="post">
-        <div class="row col-md-12">
+                        <div class="col-md-12">
+                            <label for="password" class="small">Hasło:</label>
+                            <input class="form-control" type="password" id="password" th:name="password">
+                        </div>
 
-            <div class="row col-md-12 list-row">
-                <div class="col-md-6">
-                    <label for="username">Username:</label>
-                </div>
-
-                <div class="col-md-6">
-                    <input class="form-control" type="text" id="username" th:name="username">
-                </div>
-            </div>
-
-
-            <div class="row col-md-12 list-row">
-                <div class="col-md-6">
-                    <label for="password">Password:</label>
-                </div>
-
-                <div class="col-md-6">
-                    <input class="form-control" type="password" id="password" th:name="password">
+                        <div class="col-md-12 pt-4 text-right">
+                            <button type="submit" class="btn btn-outline-warning">Zaloguj</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <div class="row col-md-12 button-margin">
-                <div class="col-md-6"></div>
-
-                <div class="col-md-3">
-                    <button type="reset" class="btn btn-outline-warning offset-3 col-md-6">Reset</button>
-                </div>
-                <div class="col-md-3">
-                    <button type="submit" class="btn btn-outline-primary offset-3 col-md-6">Submit</button>
-                </div>
-            </div>
-
         </div>
-    </form>
+    </div>
 
-
-
-<th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
-<th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
 </div>
 </body>
 </html>
