@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
+
     <title>Index page</title>
+
     <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>

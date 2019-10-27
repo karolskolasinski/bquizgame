@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/",
                         "/css/**",
                         "/js/**",
+                        "/img/**",
                         "/webjars/**",
                         "/user/register",
                         "/login").permitAll()

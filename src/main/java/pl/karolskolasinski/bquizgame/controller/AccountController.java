@@ -31,7 +31,7 @@ public class AccountController {
     public String registrationForm(Model model, Account account) {
         model.addAttribute("newAccount", account);
 
-        return "registration-form";
+        return "account/registration-form";
     }
 
     @PostMapping("/register")

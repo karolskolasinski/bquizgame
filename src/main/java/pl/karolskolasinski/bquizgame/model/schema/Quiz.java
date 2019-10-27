@@ -1,11 +1,9 @@
 package pl.karolskolasinski.bquizgame.model.schema;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
