@@ -62,6 +62,10 @@ public class AccountService {
         return accountRepository.findById(accountId);
     }
 
+    public Optional<Account> findByUsername(String username) {
+        return accountRepository.findByUsername(username);
+    }
+
     public void resetPassword(AccountPasswordResetRequest request) {
         if (accountRepository.existsById(request.getAccountId())) {
             Account account = accountRepository.getOne(request.getAccountId());

@@ -11,6 +11,7 @@ import pl.karolskolasinski.bquizgame.model.account.AccountPasswordResetRequest;
 import pl.karolskolasinski.bquizgame.service.AccountService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -54,6 +55,16 @@ public class AccountController {
         model.addAttribute("newAccount", account);
         model.addAttribute("errorMessage", message);
         return "account/registration-form";
+    }
+
+    @GetMapping("/myProfile")
+    public String myProfile(Model model, Principal principal) {
+        Optional<Account> accountOptional = accountService.findByUsername(principal.getName());
+        if (accountOptional.isPresent()) {
+            model.addAttribute("account", accountOptional.get());
+            return "account/account-details";
+        }
+        return "redirect:/";
     }
 
     /*Reset password GET*/

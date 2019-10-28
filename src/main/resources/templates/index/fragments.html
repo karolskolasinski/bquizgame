@@ -25,7 +25,7 @@
             <a class="btn btn-outline-dark m-1" sec:authorize="hasAnyRole('MODERATOR', 'ADMIN') && isAuthenticated()" th:href="@{/todotask/list/archived}"> <i class="fas fa-edit"></i> Edytor pytań</a>
             <a class="btn btn-outline-dark m-1" sec:authorize="hasAnyRole('MODERATOR', 'ADMIN') && isAuthenticated()" th:href="@{/admin/task/list}"><i class="fas fa-chart-area"></i> Statystyki kategorii</a>
             <a class="btn btn-outline-dark m-1" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/list}"><i class="fas fa-chart-bar"></i> Moje Statystyki</a>
-            <a class="btn btn-outline-dark m-1" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/todotask/add}"><i class="fas fa-user-cog"></i> Mój profil</a>
+            <a class="btn btn-outline-dark m-1" sec:authorize="hasRole('USER') && isAuthenticated()" th:href="@{/user/myProfile}"><i class="fas fa-user-cog"></i> Mój profil</a>
         </nav>
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="btn btn-outline-warning" sec:authorize="!isAuthenticated()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Login</a>

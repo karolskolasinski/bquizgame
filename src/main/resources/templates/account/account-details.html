@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
+    <title>Mój profil</title>
+    <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
+
+<div class="container">
+    <div class="row col-md-12">
+        <h1 class="display-4 mt-4 mb-3 border-top pt-4">Moje konto</h1>
+    </div>
+
+    <div class="card-deck mb-3">
+        <div class="col-md-9">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4 mt-2">ID:</div>
+                        <div class="col-md-4 mt-2" th:text="${account.getId()}"></div>
+                        <div class="col-md-4 mt-2 main-color" th:text="${account.getRolesString()}"></div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 mt-2">Rejestracja:</div>
+                        <div class="col-md-4 mt-2" th:text="${#temporals.format(account.registrationDateTime, 'dd-MM-yyyy HH:mm')}"></div>
+                        <div class="col-md-4"></div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 mt-2">Login:</div>
+                        <div class="col-md-4 mt-2" th:text="${account.getUsername()}"></div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-outline-secondary">Edytuj</button>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 mt-2">email:</div>
+                        <div class="col-md-4 mt-2" th:text="${account.getEmail()}"></div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-outline-secondary">Edytuj</button>
+                        </div>
+                        <!--<span class="mr-1 mb-2">-->
+                        <!--<a th:href="@{'/admin/resetPassword/' + ${account.getId()}}">-->
+                        <!--<button type="button" class="btn btn-outline-secondary">Resetuj hasło</button>-->
+                        <!--</a>-->
+                        <!--</span>--> <!--todo: do przeniesienia-->
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4 mt-2">Hasło:</div>
+                        <div class="col-md-4 mt-2">••••••••</div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-outline-secondary">Zmień</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
+</div>
+
+
+</body>
+</html>
