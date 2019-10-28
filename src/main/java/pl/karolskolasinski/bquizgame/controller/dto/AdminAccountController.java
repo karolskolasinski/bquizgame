@@ -27,7 +27,7 @@ public class AdminAccountController {
 
     /*List users*/ //todo: paginacja
     @GetMapping("/listUsers")
-    @PreAuthorize(value = "hasAnyRole('ADMIN')")  //todo  --------~> SecurityConfig ???
+    @PreAuthorize(value = "hasAnyRole('ADMIN')")  //todo  --------~> SecurityConfig TAK
     public String getUserList(Model model) {
         model.addAttribute("accounts", accountService.getAll());
         return "account/account-list";
@@ -41,7 +41,7 @@ public class AdminAccountController {
         return "redirect:/admin/listUsers";
     }
 
-    /*Edit roles*/
+    /*Edit roles GET*/
     @GetMapping("/editRoles/{accountId}")
     @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String editRoles(Model model, @PathVariable(name = "accountId") Long accountId) {
@@ -55,6 +55,7 @@ public class AdminAccountController {
         return "redirect:/admin/listUsers";
     }
 
+    /*Edit roles POST*/
     @PostMapping("/editRoles")
     @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String editRoles(Long accountId, HttpServletRequest request) {

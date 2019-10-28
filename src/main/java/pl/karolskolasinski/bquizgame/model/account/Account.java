@@ -10,7 +10,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -49,6 +48,12 @@ public class Account {
     public boolean isAdmin() {
         return accountRoles.stream()
                 .anyMatch(accountRole -> accountRole.getName().equals("ADMIN"));
+    }
+
+    public String getRolesString() {
+        StringBuilder builder = new StringBuilder();
+        accountRoles.forEach(role -> builder.append(role.getName()).append(", "));
+        return builder.toString().substring(0, builder.length() - 2);
     }
 }
 

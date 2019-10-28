@@ -21,9 +21,4 @@ public class AccountRole {
     private Long id;
 
     private String name;
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }

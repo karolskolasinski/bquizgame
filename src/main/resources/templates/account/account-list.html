@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--<link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>-->
     <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
     <title>Lista użytkowników</title>
     <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
@@ -21,15 +20,15 @@
                     <div class="col-md-1 mt-2" th:text="${account.getId()}"></div>
                     <div class="col-md-2 mt-2" th:text="${account.getUsername()}"></div>
                     <div class="col-md-3 mt-2" th:text="${account.getEmail()}"></div>
-                    <!--<div class="col-md-2 mt-2" th:text="${account.getAccountRoles()}"></div> &lt;!&ndash;todo  -&#45;&#45;&#45;&#45;&#45;&#45;~> bez nawiasów ]&ndash;&gt;-->
+                    <div class="col-md-3 mt-2" th:text="${account.getRolesString()}"></div>
 
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-3">
                         <div class="btn-group" role="group">
-                            <span class="mr-1 mb-2">
-                                <a th:href="@{'/admin/resetPassword/' + ${account.getId()}}">
-                                    <button type="button" class="btn btn-outline-secondary">Resetuj hasło</button>
-                                </a>
-                            </span>
+                            <!--<span class="mr-1 mb-2">-->
+                                <!--<a th:href="@{'/admin/resetPassword/' + ${account.getId()}}">-->
+                                    <!--<button type="button" class="btn btn-outline-secondary">Resetuj hasło</button>-->
+                                <!--</a>-->
+                            <!--</span>--> <!--todo: do przeniesienia-->
 
                             <span class="mr-1 mb-2">
                                 <a th:href="@{'/admin/editRoles/' + ${account.getId()}}">

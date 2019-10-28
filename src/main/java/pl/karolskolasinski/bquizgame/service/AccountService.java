@@ -99,4 +99,8 @@ public class AccountService {
     public Page<Account> getPage(PageRequest of) {
         return accountRepository.findAll(of);
     }
+
+    public boolean existByEmail(String emial) {
+        return accountRepository.existsByEmail(emial);
+    }
 }
