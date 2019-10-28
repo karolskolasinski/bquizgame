@@ -2,47 +2,50 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
-
     <title>Index page</title>
-
     <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
-<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
+
 <div class="container">
-    <h1>Roles list of user <span th:text="${account.getUsername()}"></span></h1>
     <div class="row col-md-12">
-        <form th:action="@{/admin/account/editRoles}" method="post" class="row col-12">
-            <div class="row col-md-12 list-header-row">
-                <div class="col-3">Name</div>
-                <div class="col-3">Previously</div>
-                <div class="col-3"></div>
-                <div class="col-3">Current</div>
-            </div>
-            <div th:each="role : ${roles}" class="row col-md-12 list-data-row">
-                <input type="hidden" th:name="accountId" th:value="${account.getId()}">
-                <div class="col-3" th:text="${role.getName()}"></div>
-                <div class="row col-3">
-                </div>
-                <div class="col-3">
-                    <input type="checkbox"
-                           th:checked="${account.getAccountRoles().contains(role)}" disabled></div>
-                <div class="col-3">
-                    <input type="checkbox" th:name="${role.getName()}"
-                           th:checked="${account.getAccountRoles().contains(role)}"></div>
-
-                <!--<div th:each="i : ${#numbers.sequence(1, 10)}">-->
-                <!--</div>-->
-            </div>
-
-            <div class="row offset-md-9 col-md-3">
-                <button class="btn btn-primary col-12" type="submit">Wyślij</button>
-            </div>
-        </form>
+        <h1 class="display-4 mt-4 mb-3 border-top pt-4">Edycja użytkownika
+            <span th:text="${account.getUsername()}"></span>
+        </h1>
     </div>
 
-    <th:block th:replace="fragments :: footer" th:remove="tag"/>
-    <th:block th:replace="fragments :: scripts" th:remove="tag"/>
+    <div class="card-deck mb-3">
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <form th:action="@{/admin/editRoles}" method="post">
+                        <div th:each="role : ${roles}">
+                            <input type="hidden" th:name="accountId" th:value="${account.getId()}">
+
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" th:checked="${account.getAccountRoles().contains(role)}"
+                                       class="custom-control-input" th:name="${role.getName()}"
+                                       th:id="${role.getName()}">
+
+                                <label class="custom-control-label" th:for="${role.getName()}">
+                                    <span th:text="${role.getName()}"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 pt-4 text-right">
+                            <button type="submit" class="btn btn-outline-warning">Zapisz</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
 </div>
 </body>
 </html>

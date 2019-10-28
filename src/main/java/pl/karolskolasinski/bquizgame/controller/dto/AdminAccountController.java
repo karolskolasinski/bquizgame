@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.karolskolasinski.bquizgame.model.account.Account;
 import pl.karolskolasinski.bquizgame.service.AccountRoleService;
 import pl.karolskolasinski.bquizgame.service.AccountService;
@@ -28,6 +25,7 @@ public class AdminAccountController {
         this.accountRoleService = accountRoleService;
     }
 
+    /*List users*/ //todo: paginacja
     @GetMapping("/listUsers")
     @PreAuthorize(value = "hasAnyRole('ADMIN')")  //todo  --------~> SecurityConfig ???
     public String getUserList(Model model) {
@@ -35,32 +33,32 @@ public class AdminAccountController {
         return "account/account-list";
     }
 
-    @GetMapping("/remove")
+    /*Remove user*/
+    @GetMapping("/remove/{accountId}")
     @PreAuthorize(value = "hasAnyRole('ADMIN')")
-    public String remove(@RequestParam(name = "accountId") Long accountId) {
+    public String remove(@PathVariable(name = "accountId") Long accountId) {
         accountService.remove(accountId);
-
-        return "redirect:/admin/account/list";
+        return "redirect:/admin/listUsers";
     }
 
-    @GetMapping("/editRoles")
+    /*Edit roles*/
+    @GetMapping("/editRoles/{accountId}")
     @PreAuthorize(value = "hasAnyRole('ADMIN')")
-    public String editRoles(Model model, @RequestParam(name = "accountId") Long accountId) {
+    public String editRoles(Model model, @PathVariable(name = "accountId") Long accountId) {
+
         Optional<Account> accountOptional = accountService.findById(accountId);
         if (accountOptional.isPresent()) {
             model.addAttribute("roles", accountRoleService.getAll());
             model.addAttribute("account", accountOptional.get());
-
-            return "account-roles";
+            return "account/account-roles";
         }
-        return "redirect:/admin/account/list";
+        return "redirect:/admin/listUsers";
     }
 
     @PostMapping("/editRoles")
     @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String editRoles(Long accountId, HttpServletRequest request) {
         accountService.editRoles(accountId, request);
-
-        return "redirect:/admin/account/list";
+        return "redirect:/admin/listUsers";
     }
 }

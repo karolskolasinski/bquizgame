@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>-->
     <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
     <title>Lista użytkowników</title>
     <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
@@ -21,35 +21,31 @@
                     <div class="col-md-1 mt-2" th:text="${account.getId()}"></div>
                     <div class="col-md-2 mt-2" th:text="${account.getUsername()}"></div>
                     <div class="col-md-3 mt-2" th:text="${account.getEmail()}"></div>
-                    <!--<div class="col-md-3" th:text="${account.getAccountRoles()}"></div> &lt;!&ndash;todo  -&#45;&#45;&#45;&#45;&#45;&#45;~> bez nawiasów ]&ndash;&gt;-->
+                    <!--<div class="col-md-2 mt-2" th:text="${account.getAccountRoles()}"></div> &lt;!&ndash;todo  -&#45;&#45;&#45;&#45;&#45;&#45;~> bez nawiasów ]&ndash;&gt;-->
 
-                    <div class="col-md-6 text-center">
+                    <div class="col-md-4 text-center">
                         <div class="btn-group" role="group">
-                        <a th:href="@{/admin/account/resetPassword(accountId=${account.getId()})}">
-                            <button type="button" class="btn btn-outline-secondary mr-1 mb-2 fit">
-                                Resetuj hasło
-                            </button>
-                        </a>
+                            <span class="mr-1 mb-2">
+                                <a th:href="@{'/admin/resetPassword/' + ${account.getId()}}">
+                                    <button type="button" class="btn btn-outline-secondary">Resetuj hasło</button>
+                                </a>
+                            </span>
 
+                            <span class="mr-1 mb-2">
+                                <a th:href="@{'/admin/editRoles/' + ${account.getId()}}">
+                                    <button type="button" class="btn btn-outline-secondary">Edytuj role</button>
+                                </a>
+                            </span>
 
-                        <a th:href="@{/admin/account/editRoles(accountId=${account.getId()})}">
-                            <button type="button" class="btn btn-outline-secondary mr-1 mb-2">
-                                Edytuj role
-                            </button>
-                        </a>
-
-
-                        <a th:href="@{/admin/account/remove(accountId=${account.getId()})}">
-                            <button th:disabled="${account.isAdmin()}" type="button" class="btn btn-outline-danger mr-1 mb-2">
-                                Usuń
-                            </button>
-                        </a>
+                            <span class="mr-1 mb-2">
+                                <a th:href="@{'/admin/remove/' + ${account.getId()}}">
+                                    <button th:disabled="${account.isAdmin()}" type="button"
+                                            class="btn btn-outline-danger">Usuń</button>
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>

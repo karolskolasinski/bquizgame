@@ -65,3 +65,8 @@ a {
     height: fit-content;
     width: fit-content;
 }
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    border-color: #ffc107;
+    background-color: #ffc107;
+}
