@@ -25,7 +25,9 @@
 
                     <div class="row mb-3">
                         <div class="col-md-4 mt-2">Rejestracja:</div>
-                        <div class="col-md-4 mt-2" th:text="${#temporals.format(account.registrationDateTime, 'dd-MM-yyyy HH:mm')}"></div>
+                        <div class="col-md-4 mt-2"
+                             th:text="${#temporals.format(account.registrationDateTime, 'dd-MM-yyyy HH:mm')}">
+                        </div>
                         <div class="col-md-4"></div>
                     </div>
 
@@ -43,18 +45,15 @@
                         <div class="col-md-4">
                             <button type="button" class="btn btn-outline-secondary">Edytuj</button>
                         </div>
-                        <!--<span class="mr-1 mb-2">-->
-                        <!--<a th:href="@{'/admin/resetPassword/' + ${account.getId()}}">-->
-                        <!--<button type="button" class="btn btn-outline-secondary">Resetuj hasło</button>-->
-                        <!--</a>-->
-                        <!--</span>--> <!--todo: do przeniesienia-->
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-4 mt-2">Hasło:</div>
                         <div class="col-md-4 mt-2">••••••••</div>
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-outline-secondary">Zmień</button>
+                            <a th:href="@{'/account/resetPassword/' + ${account.getId()}}">
+                                <button type="button" class="btn btn-outline-secondary">Zmień</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -65,7 +64,6 @@
     <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
     <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
 </div>
-
 
 </body>
 </html>

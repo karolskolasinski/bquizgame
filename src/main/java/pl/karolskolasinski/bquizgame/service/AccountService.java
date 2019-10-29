@@ -30,32 +30,60 @@ public class AccountService {
         this.accountRoleRepository = accountRoleRepository;
     }
 
+    /*Register*/
     public boolean register(Account account) {
         if (accountRepository.existsByUsername(account.getUsername())) {
             return false;
         }
-
-        // szyfrowanie hasła
+        //szyfrowanie hasła
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAccountRoles(accountRoleService.getDefaultRoles());
-
-        // zapis do bazy
         accountRepository.save(account);
         return true;
     }
 
-    public List<Account> getAll() {
-        return accountRepository.findAll();
-    }
-
+    /*Remove*/
     public void remove(Long accountId) {
         if (accountRepository.existsById(accountId)) {
             Account account = accountRepository.getOne(accountId);
-
             if (!account.isAdmin()) {
                 accountRepository.delete(account);
             }
         }
+    }
+
+    /*Reset password*/
+    public void resetPassword(AccountPasswordResetRequest request) {
+        if (accountRepository.existsById(request.getAccountId())) {
+            Account account = accountRepository.getOne(request.getAccountId());
+
+            account.setPassword(passwordEncoder.encode(request.getResetPassword()));
+            accountRepository.save(account);
+        }
+    }
+
+    /*Edit roles*/
+    public void editRoles(Long accountId, HttpServletRequest request) {
+        if (accountRepository.existsById(accountId)) {
+            Account account = accountRepository.getOne(accountId);
+            // kluczem w form parameters jest nazwa parametru th:name
+            Map<String, String[]> formParameters = request.getParameterMap();
+            Set<AccountRole> newCollectionOfRoles = new HashSet<>();
+            for (String roleName : formParameters.keySet()) {
+                String[] values = formParameters.get(roleName);
+                if (values[0].equals("on")) {
+                    Optional<AccountRole> accountRoleOptional = accountRoleRepository.findByName(roleName);
+                    accountRoleOptional.ifPresent(newCollectionOfRoles::add);
+                }
+            }
+            account.setAccountRoles(newCollectionOfRoles);
+            accountRepository.save(account);
+        }
+    }
+
+    /*Find*/
+    public List<Account> findAll() {
+        return accountRepository.findAll();
     }
 
     public Optional<Account> findById(Long accountId) {
@@ -66,45 +94,11 @@ public class AccountService {
         return accountRepository.findByUsername(username);
     }
 
-    public void resetPassword(AccountPasswordResetRequest request) {
-        if (accountRepository.existsById(request.getAccountId())) {
-            Account account = accountRepository.getOne(request.getAccountId());
-
-            account.setPassword(passwordEncoder.encode(request.getResetPassword()));
-            accountRepository.save(account);
-        }
-    }
-
-    public void editRoles(Long accountId, HttpServletRequest request) {
-        if (accountRepository.existsById(accountId)) {
-            Account account = accountRepository.getOne(accountId);
-
-            // kluczem w form parameters jest nazwa parametru th:name
-            Map<String, String[]> formParameters = request.getParameterMap();
-            Set<AccountRole> newCollectionOfRoles = new HashSet<>();
-
-            for (String roleName : formParameters.keySet()) {
-                String[] values = formParameters.get(roleName);
-
-                if (values[0].equals("on")) {
-                    Optional<AccountRole> accountRoleOptional = accountRoleRepository.findByName(roleName);
-
-                    if (accountRoleOptional.isPresent()) {
-                        newCollectionOfRoles.add(accountRoleOptional.get());
-                    }
-                }
-            }
-
-            account.setAccountRoles(newCollectionOfRoles);
-            accountRepository.save(account);
-        }
+    public boolean existByEmail(String emial) {
+        return accountRepository.existsByEmail(emial);
     }
 
     public Page<Account> getPage(PageRequest of) {
         return accountRepository.findAll(of);
-    }
-
-    public boolean existByEmail(String emial) {
-        return accountRepository.existsByEmail(emial);
     }
 }

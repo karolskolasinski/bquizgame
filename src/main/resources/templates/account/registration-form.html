@@ -17,7 +17,7 @@
         <div class="col-md-6">
             <div class="card mb-4 shadow-sm">
                 <div class="card-body text-left">
-                    <form th:action="@{/user/register}" method="post" th:object="${newAccount}">
+                    <form th:action="@{/account/register}" method="post" th:object="${newAccount}">
                         <div th:if="${errorMessage != null}" class="col-md-12">
                             <div class="col-md-12 alert alert-danger" th:text="${errorMessage}"></div>
                         </div>

@@ -35,7 +35,6 @@ public class Account {
 
     @CreationTimestamp
     @Column(updatable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime registrationDateTime;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)

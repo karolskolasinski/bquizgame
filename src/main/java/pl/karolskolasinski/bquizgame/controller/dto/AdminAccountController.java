@@ -29,7 +29,7 @@ public class AdminAccountController {
     @GetMapping("/listUsers")
     @PreAuthorize(value = "hasAnyRole('ADMIN')")  //todo  --------~> SecurityConfig TAK
     public String getUserList(Model model) {
-        model.addAttribute("accounts", accountService.getAll());
+        model.addAttribute("accounts", accountService.findAll());
         return "account/account-list";
     }
 
@@ -45,7 +45,6 @@ public class AdminAccountController {
     @GetMapping("/editRoles/{accountId}")
     @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String editRoles(Model model, @PathVariable(name = "accountId") Long accountId) {
-
         Optional<Account> accountOptional = accountService.findById(accountId);
         if (accountOptional.isPresent()) {
             model.addAttribute("roles", accountRoleService.getAll());

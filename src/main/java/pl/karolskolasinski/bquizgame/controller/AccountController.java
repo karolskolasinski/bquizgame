@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(path = "/user/")
+@RequestMapping(path = "/account/")
 public class AccountController {
 
     private AccountService accountService;
@@ -69,19 +69,21 @@ public class AccountController {
 
     /*Reset password GET*/
     @GetMapping("/resetPassword/{accountId}")
-    public String resetPassword(Model model, @PathVariable(name = "accountId") Long accountId) {
+    public String resetPassword(Model model, Principal principal, @PathVariable(name = "accountId") Long accountId) {
         Optional<Account> accountOptional = accountService.findById(accountId);
         if (accountOptional.isPresent()) {
-            model.addAttribute("account", accountOptional.get());
-            return "account/account-resetpassword";
+            if (accountOptional.get().getUsername().equals(principal.getName())) {
+                model.addAttribute("account", accountOptional.get());
+                return "account/account-resetpassword";
+            }
         }
-        return "redirect:/details";
+        return "redirect:/account/myProfile";
     }
 
     /*Reset password POST*/
     @PostMapping("/resetPassword")
     public String resetPassword(AccountPasswordResetRequest request) {
         accountService.resetPassword(request);
-        return "redirect:/details";
+        return "redirect:/account/myProfile";
     }
 }

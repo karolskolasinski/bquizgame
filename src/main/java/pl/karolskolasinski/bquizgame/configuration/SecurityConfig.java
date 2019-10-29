@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/js/**",
                         "/img/**",
                         "/webjars/**",
-                        "/user/register",
+                        "/account/register",
                         "/login").permitAll()
 //                reguły związane z rolami (np. /admin/**)
                 .anyRequest().authenticated()

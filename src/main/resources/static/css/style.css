@@ -74,3 +74,8 @@ a {
 .form-control::selection {
     background: #ffc107;
 }
+
+.dropdown-item.active, .dropdown-item:active {
+    color: rgba(0, 0, 0, 0.9);
+    background-color: #ffc107;
+}
