@@ -5,6 +5,7 @@ import pl.karolskolasinski.bquizgame.model.userplays.UserAnswer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Data
@@ -20,10 +21,9 @@ public class Answer {
     @NotEmpty
     private String answerContent;
 
-    @NotEmpty
+    @NotNull
+    @Column(columnDefinition = "tinyint default 0")
     private boolean correct;
-
-    private String reference;
 
     @ManyToOne
     private Question question;

@@ -7,10 +7,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import pl.karolskolasinski.bquizgame.model.account.Account;
 import pl.karolskolasinski.bquizgame.model.account.AccountRole;
-import pl.karolskolasinski.bquizgame.repository.AccountRepository;
-import pl.karolskolasinski.bquizgame.repository.AccountRoleRepository;
+import pl.karolskolasinski.bquizgame.model.schema.Answer;
+import pl.karolskolasinski.bquizgame.model.schema.Question;
+import pl.karolskolasinski.bquizgame.repository.*;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Component
@@ -19,12 +25,17 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private AccountRepository accountRepository;
     private AccountRoleRepository accountRoleRepository;
     private PasswordEncoder passwordEncoder;
+    private QuestionRepository questionRepository;
+    private AnswerRepository answerRepository;
+    private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
     @Autowired
-    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder) {
+    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
         this.accountRepository = accountRepository;
         this.accountRoleRepository = accountRoleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.questionRepository = questionRepository;
+        this.answerRepository = answerRepository;
     }
 
     @Override
@@ -35,6 +46,8 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
         addDefaultUser("admin", "admin", "admin@admin.com", "ADMIN", "USER");
         addDefaultUser("user", "user", "user@user.com", "USER");
+
+        addDefaultQuestions();
     }
 
     private void addDefaultUser(String username, String password, String email, String... roles) {
@@ -66,5 +79,54 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
             accountRoleRepository.save(newRole);
         }
+    }
+
+    private void addDefaultQuestions() {
+        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            tryReadFromFile(file, reader);
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void tryReadFromFile(File file, BufferedReader reader) throws IOException {
+        if (file.exists()) {
+            while (reader.ready()) {
+                /*Creating default question(s)*/
+                Question question = new Question();
+                question.setCategory(reader.readLine());
+                question.setDifficulty(Integer.parseInt(reader.readLine()));
+                question.setContent(reader.readLine());
+                questionRepository.save(question);
+
+                /*Creating default answers to each question*/
+                Answer answer1 = new Answer();
+                answer1.setCorrect(true);
+                bindAnswerWithQuestion(reader, question, answer1);
+                Answer answer2 = new Answer();
+                bindAnswerWithQuestion(reader, question, answer2);
+                Answer answer3 = new Answer();
+                bindAnswerWithQuestion(reader, question, answer3);
+                Answer answer4 = new Answer();
+                bindAnswerWithQuestion(reader, question, answer4);
+
+                question.setReference(reader.readLine());
+
+                /*Read separator*/
+                reader.readLine();
+                questionRepository.save(question);
+            }
+        } else {
+            System.err.println("file " + file.getName() + " does not exist.");
+        }
+    }
+
+    private void bindAnswerWithQuestion(BufferedReader reader, Question question, Answer answer) throws IOException {
+        answer.setAnswerContent(reader.readLine());
+        answer.setQuestion(question);
+        answerRepository.save(answer);
     }
 }

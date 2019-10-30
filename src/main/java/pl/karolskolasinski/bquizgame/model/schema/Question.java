@@ -5,7 +5,7 @@ import pl.karolskolasinski.bquizgame.model.userplays.UserAnswer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Data
@@ -21,12 +21,15 @@ public class Question {
     @NotEmpty
     private String category;
 
-    @NotEmpty
-    @Size(min = 1, max = 4)
+    @NotNull
+//    @NotEmpty
     int difficulty;
 
     @NotEmpty
     private String content;
+
+    @Column(columnDefinition = "text")
+    private String reference;
 
     @ManyToOne
     private Quiz quiz;

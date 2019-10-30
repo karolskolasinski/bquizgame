@@ -1,7 +1,6 @@
 package pl.karolskolasinski.bquizgame.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -57,6 +56,7 @@ public class AccountController {
         return "account/registration-form";
     }
 
+    /*Display My profile GET*/
     @GetMapping("/myProfile")
     public String myProfile(Model model, Principal principal) {
         Optional<Account> accountOptional = accountService.findByUsername(principal.getName());
