@@ -12,7 +12,6 @@ import pl.karolskolasinski.bquizgame.repository.AccountRepository;
 
 import java.util.Optional;
 
-
 @Service
 public class AuthenticationService implements UserDetailsService {
 

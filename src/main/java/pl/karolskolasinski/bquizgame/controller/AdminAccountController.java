@@ -1,4 +1,4 @@
-package pl.karolskolasinski.bquizgame.controller.dto;
+package pl.karolskolasinski.bquizgame.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

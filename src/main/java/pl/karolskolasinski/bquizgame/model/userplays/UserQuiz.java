@@ -26,6 +26,14 @@ public class UserQuiz {
     @ManyToOne
     private Account account;
 
+    @Column(nullable = false, columnDefinition = "tinyint default 1")
+    private byte numberOfPlayers;
+
+    private String player1Name;
+    private String player2Name;
+    private String player3Name;
+    private String player4Name;
+
     @ManyToOne
     private Quiz quiz;
 

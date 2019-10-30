@@ -32,7 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/img/**",
                         "/webjars/**",
                         "/account/register",
-                        "/login").permitAll()
+                        "/login",
+                        "/play",
+                        "/quiz/**",
+                        "/quizSetup/**").permitAll()
 //                reguły związane z rolami (np. /admin/**)
                 .anyRequest().authenticated()
 //                .antMatchers("/user/register").hasAnyRole("ADMIN")
