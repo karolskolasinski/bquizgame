@@ -33,7 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**",
                         "/account/register",
                         "/login",
-                        "/play",
                         "/quiz/**",
                         "/quizSetup/**").permitAll()
 //                reguły związane z rolami (np. /admin/**)

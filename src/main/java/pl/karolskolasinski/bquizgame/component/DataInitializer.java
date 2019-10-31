@@ -1,8 +1,10 @@
 package pl.karolskolasinski.bquizgame.component;
 
+import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import pl.karolskolasinski.bquizgame.model.account.Account;
@@ -100,7 +102,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
                 question.setCategory(reader.readLine());
                 question.setDifficulty(Integer.parseInt(reader.readLine()));
                 question.setContent(reader.readLine());
-                questionRepository.save(question);
+                if (!questionRepository.existsByContent(question.getContent())) {
+                    questionRepository.save(question);
+                }
 
                 /*Creating default answers to each question*/
                 Answer answer1 = new Answer();
@@ -117,7 +121,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
                 /*Read separator*/
                 reader.readLine();
-                questionRepository.save(question);
+                if (!questionRepository.existsByContent(question.getContent())) {
+                    questionRepository.save(question);
+                }
             }
         } else {
             System.err.println("file " + file.getName() + " does not exist.");
@@ -127,6 +133,10 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private void bindAnswerWithQuestion(BufferedReader reader, Question question, Answer answer) throws IOException {
         answer.setAnswerContent(reader.readLine());
         answer.setQuestion(question);
-        answerRepository.save(answer);
+        try {
+            answerRepository.save(answer);
+        } catch (TransientPropertyValueException | InvalidDataAccessApiUsageException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

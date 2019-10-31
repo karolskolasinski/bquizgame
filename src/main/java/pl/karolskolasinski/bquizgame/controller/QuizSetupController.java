@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
+import pl.karolskolasinski.bquizgame.service.QuestionService;
 import pl.karolskolasinski.bquizgame.service.QuizSetupService;
 
 @Controller
@@ -15,25 +16,28 @@ import pl.karolskolasinski.bquizgame.service.QuizSetupService;
 public class QuizSetupController {
 
     private QuizSetupService quizSetupService;
+    private QuestionService questionService;
 
     @Autowired
-    public QuizSetupController(QuizSetupService quizSetupService) {
+    public QuizSetupController(QuizSetupService quizSetupService, QuestionService questionService) {
         this.quizSetupService = quizSetupService;
+        this.questionService = questionService;
     }
 
     /*Get number of players GET*/
-    @GetMapping("/numberOfPlayers/{numberOfPlayers}")
+    @GetMapping("/setUsernames/{numberOfPlayers}")
     public String getNumberOfPlayers(Model model, @PathVariable(name = "numberOfPlayers") byte numberOfPlayers, UserQuiz userQuiz) {
         quizSetupService.createQuiz(numberOfPlayers, userQuiz);
         model.addAttribute("newUserQuiz", userQuiz);
-        return "quiz/quiz-setusernames";
+        return "quizsetup/quizsetup-usernames";
     }
 
-    /*Set players usernames POST*/
-    @PostMapping("/setUsernames")
+    /*Set players usernames and give allCategories to newUserQuiz for displaying in quizsetup-categories POST*/
+    @PostMapping("/setCategories")
     public String setUsernames(Model model, Long newUserQuizId, String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {
-        model.addAttribute("newUserQuiz", quizSetupService.setUsernamesToUserQuizById(newUserQuizId, usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4));
-        return "quiz/quiz-setcategories";
+        model.addAttribute("newUserQuiz", quizSetupService.setUsernamesToUserQuizByQuizId(newUserQuizId, usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4));
+        model.addAttribute("newUserQuiz", quizSetupService.setCategoriesToUserQuizByQuizId(newUserQuizId, questionService.returnAllCategories()));
+        return "quizsetup/quizsetup-categories";
     }
 }
 

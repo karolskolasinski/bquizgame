@@ -1,0 +1,6 @@
+.custom-switch .custom-control-label::before, .custom-switch .custom-control-label::after {
+    margin-top: 0.2rem;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #cc9100;
+}

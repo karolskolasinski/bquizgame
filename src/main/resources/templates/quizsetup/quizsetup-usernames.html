@@ -17,7 +17,7 @@
     <div class="card-deck mb-3">
         <div class="card mb-3 shadow-sm">
             <!--Option [1 player]-->
-            <form th:if="${newUserQuiz.numberOfPlayers == 1}" th:action="@{/quizSetup/setUsernames}" method="post"
+            <form th:if="${newUserQuiz.numberOfPlayers == 1}" th:action="@{/quizSetup/setCategories}" method="post"
                   th:object="${newUserQuiz}">
                 <input type="hidden" th:name="newUserQuizId" th:value="${newUserQuiz.getId()}">
                 <div class="row card-body text-center">
@@ -66,7 +66,7 @@
             </form>
 
             <!--Option [2 players]-->
-            <form th:if="${newUserQuiz.numberOfPlayers == 2}" th:action="@{/quizSetup/setUsernames}" method="post"
+            <form th:if="${newUserQuiz.numberOfPlayers == 2}" th:action="@{/quizSetup/setCategories}" method="post"
                   th:object="${newUserQuiz}">
                 <input type="hidden" th:name="newUserQuizId" th:value="${newUserQuiz.getId()}">
                 <div class="row card-body text-center">
@@ -116,7 +116,7 @@
             </form>
 
             <!--Option [3 players]-->
-            <form th:if="${newUserQuiz.numberOfPlayers == 3}" th:action="@{/quizSetup/setUsernames}" method="post"
+            <form th:if="${newUserQuiz.numberOfPlayers == 3}" th:action="@{/quizSetup/setCategories}" method="post"
                   th:object="${newUserQuiz}">
                 <input type="hidden" th:name="newUserQuizId" th:value="${newUserQuiz.getId()}">
                 <div class="row card-body text-center">
@@ -166,7 +166,7 @@
             </form>
 
             <!--Option [4 players]-->
-            <form th:if="${newUserQuiz.numberOfPlayers == 4}" th:action="@{/quizSetup/setUsernames}" method="post"
+            <form th:if="${newUserQuiz.numberOfPlayers == 4}" th:action="@{/quizSetup/setCategories}" method="post"
                   th:object="${newUserQuiz}">
                 <input type="hidden" th:name="newUserQuizId" th:value="${newUserQuiz.getId()}">
                 <div class="row card-body text-center">

@@ -34,6 +34,8 @@ public class UserQuiz {
     private String player3Name;
     private String player4Name;
 
+    private String categories;
+
     @ManyToOne
     private Quiz quiz;
 
