@@ -28,11 +28,8 @@ public class QuizController {
 
     @PostMapping("/board")
     public String board(Model model, Long newUserQuizId, HttpServletRequest request) {
-        if (quizSetupService.bindQuizWithUserQuiz(newUserQuizId, quizService.createQuiz())) {
-            model.addAttribute("newUserQuiz", quizSetupService.addChoosedCategoriesToNewUserQuiz(newUserQuizId, request));
-            return "quiz/quiz-board";
-        }
-        return "errorPage";   //todo
+        model.addAttribute("newUserQuiz", quizSetupService.addChoosedCategoriesToNewUserQuiz(newUserQuizId, request));
+        return "quiz/quiz-board";
     }
 }
 

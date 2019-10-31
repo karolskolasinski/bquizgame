@@ -2,24 +2,29 @@ package pl.karolskolasinski.bquizgame.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.model.schema.Quiz;
 import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
+import pl.karolskolasinski.bquizgame.repository.QuestionRepository;
+import pl.karolskolasinski.bquizgame.repository.QuizRepository;
 import pl.karolskolasinski.bquizgame.repository.QuizSetupRepository;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class QuizSetupService {
 
     private final QuizSetupRepository quizSetupRepository;
+    private final QuestionRepository questionRepository;
+    private final QuizRepository quizRepository;
 
     @Autowired
-    public QuizSetupService(QuizSetupRepository quizSetupRepository) {
+    public QuizSetupService(QuizSetupRepository quizSetupRepository, QuestionRepository questionRepository, QuizRepository quizRepository) {
         this.quizSetupRepository = quizSetupRepository;
+        this.questionRepository = questionRepository;
+        this.quizRepository = quizRepository;
     }
 
     /*Return Optional<UserQuiz> by id*/
@@ -62,7 +67,7 @@ public class QuizSetupService {
         Optional<UserQuiz> userQuizOptional = quizSetupRepository.findById(newUserQuizId);
         if (userQuizOptional.isPresent()) {
 
-            UserQuiz userQuiz = userQuizOptional.get();
+            UserQuiz newUserQuiz = userQuizOptional.get();
             Set<String> choosedCategories = new HashSet<>();
             Map<String, String[]> choosedCategoriesParameters = request.getParameterMap();
 
@@ -72,21 +77,27 @@ public class QuizSetupService {
                 }
             }
 
-            userQuiz.setCategories(String.join(",", choosedCategories));
-            quizSetupRepository.save(userQuiz);
-            return userQuiz;
-        }
-        return new UserQuiz();
-    }
+            newUserQuiz.setCategories(String.join(",", choosedCategories));
 
-    public boolean bindQuizWithUserQuiz(Long newUserQuizId, Quiz quiz) {
-        Optional<UserQuiz> userQuizOptional = quizSetupRepository.findById(newUserQuizId);
-        if (userQuizOptional.isPresent()) {
-            UserQuiz newUserQuiz = userQuizOptional.get();
+
+            Set<Question> allByCategoryIn = questionRepository.findAllByCategoryIn(choosedCategories);
+
+
+            List<Question> questions = new ArrayList<>(allByCategoryIn);
+            Collections.shuffle(questions);
+
+            questions = questions.subList(0, 4);
+
+
+
+
+            Quiz quiz = new Quiz();
+            quizRepository.save(quiz);
+            quiz.setQuestionList(allByCategoryIn);
             newUserQuiz.setQuiz(quiz);
             quizSetupRepository.save(newUserQuiz);
-            return true;
+            return newUserQuiz;
         }
-        return false;
+        return new UserQuiz();
     }
 }

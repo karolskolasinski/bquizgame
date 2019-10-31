@@ -31,8 +31,10 @@ public class Question {
     @Column(columnDefinition = "text")
     private String reference;
 
-    @ManyToOne
-    private Quiz quiz;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @ManyToMany(mappedBy = "questionList")
+    private Set<Quiz> quizez;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

@@ -6,5 +6,4 @@ import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
 
 @Repository
 public interface QuizSetupRepository extends JpaRepository<UserQuiz, Long> {
-
 }
