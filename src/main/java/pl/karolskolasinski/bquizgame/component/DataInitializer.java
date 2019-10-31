@@ -136,7 +136,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         try {
             answerRepository.save(answer);
         } catch (TransientPropertyValueException | InvalidDataAccessApiUsageException e) {
-            System.err.println(e.getMessage());
+            System.err.println("object (Answer) references an unsaved transient instance (Question)");
         }
     }
 }

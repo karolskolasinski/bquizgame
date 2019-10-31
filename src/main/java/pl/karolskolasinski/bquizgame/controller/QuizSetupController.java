@@ -27,7 +27,7 @@ public class QuizSetupController {
     /*Get number of players GET*/
     @GetMapping("/setUsernames/{numberOfPlayers}")
     public String getNumberOfPlayers(Model model, @PathVariable(name = "numberOfPlayers") byte numberOfPlayers, UserQuiz userQuiz) {
-        quizSetupService.createQuiz(numberOfPlayers, userQuiz);
+        quizSetupService.createUserQuizWithGivenNumberOfPlayers(numberOfPlayers, userQuiz);
         model.addAttribute("newUserQuiz", userQuiz);
         return "quizsetup/quizsetup-usernames";
     }
