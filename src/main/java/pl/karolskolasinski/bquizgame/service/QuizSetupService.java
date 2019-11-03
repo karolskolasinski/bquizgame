@@ -11,7 +11,6 @@ import pl.karolskolasinski.bquizgame.repository.QuizSetupRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class QuizSetupService {
@@ -28,8 +27,9 @@ public class QuizSetupService {
     }
 
     /*Return Optional<UserQuiz> by id*/
-    private Optional<UserQuiz> returnUserQuizById(Long id) {
-        return quizSetupRepository.findById(id);
+    public UserQuiz returnUserQuizById(Long id) {
+        Optional<UserQuiz> userQuizOptional = quizSetupRepository.findById(id);
+        return userQuizOptional.orElseGet(UserQuiz::new);
     }
 
     /*Create new UserQuiz with given number of players*/
@@ -40,64 +40,63 @@ public class QuizSetupService {
 
     /*Set names to UserQuiz*/
     public UserQuiz setUsernamesToUserQuizByQuizId(Long newUserQuizId, String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {
-        if (returnUserQuizById(newUserQuizId).isPresent()) {
-            UserQuiz userQuiz = returnUserQuizById(newUserQuizId).get();
-            userQuiz.setPlayer1Name(usernamePlayer1);
-            userQuiz.setPlayer2Name(usernamePlayer2);
-            userQuiz.setPlayer3Name(usernamePlayer3);
-            userQuiz.setPlayer4Name(usernamePlayer4);
-            quizSetupRepository.save(userQuiz);
-            return userQuiz;
-        }
-        return new UserQuiz();
+        UserQuiz userQuiz = returnUserQuizById(newUserQuizId);
+        userQuiz.setPlayer1Name(usernamePlayer1);
+        userQuiz.setPlayer2Name(usernamePlayer2);
+        userQuiz.setPlayer3Name(usernamePlayer3);
+        userQuiz.setPlayer4Name(usernamePlayer4);
+        userQuiz.setCurrentPlayer(usernamePlayer1);
+        quizSetupRepository.save(userQuiz);
+        return userQuiz;
     }
 
     /*Set all categories to newUserQuiz without saving to database!*/
     public UserQuiz setCategoriesToUserQuizByQuizId(Long newUserQuizId, Set<String> allCategories) {
-        if (returnUserQuizById(newUserQuizId).isPresent()) {
-            UserQuiz userQuiz = returnUserQuizById(newUserQuizId).get();
-            userQuiz.setCategories(String.join(",", allCategories));
-            return userQuiz;
-        }
-        return new UserQuiz();
+        UserQuiz userQuiz = returnUserQuizById(newUserQuizId);
+        userQuiz.setCategories(String.join(",", allCategories));
+        return userQuiz;
     }
 
     /*Add choosed category to newUserQuiz with saving to database!*/
     public UserQuiz addChoosedCategoriesToNewUserQuiz(Long newUserQuizId, HttpServletRequest request) {
         Optional<UserQuiz> userQuizOptional = quizSetupRepository.findById(newUserQuizId);
         if (userQuizOptional.isPresent()) {
-
             UserQuiz newUserQuiz = userQuizOptional.get();
+
+            /*Initialize variables (collections)*/
             Set<String> choosedCategories = new HashSet<>();
+            List<Question> questionsByChoosedCategories = new ArrayList<>();
             Map<String, String[]> choosedCategoriesParameters = request.getParameterMap();
 
+            /*Filling collections*/
             for (String choosedCategory : choosedCategoriesParameters.keySet()) {
                 if (choosedCategoriesParameters.get(choosedCategory)[0].equals("on")) {
                     choosedCategories.add(choosedCategory);   //todo -----> findByName(choosedCategory).ifPresent(ChoosedCategories::add);
+                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty1ByChoosedCategory(choosedCategory), questionsByChoosedCategories);
+                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty2ByChoosedCategory(choosedCategory), questionsByChoosedCategories);
+                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty3ByChoosedCategory(choosedCategory), questionsByChoosedCategories);
+                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty4ByChoosedCategory(choosedCategory), questionsByChoosedCategories);
                 }
             }
 
+            /*Binding and saving Quiz+UserQuiz*/
             newUserQuiz.setCategories(String.join(",", choosedCategories));
-
-
-            Set<Question> allByCategoryIn = questionRepository.findAllByCategoryIn(choosedCategories);
-
-
-            List<Question> questions = new ArrayList<>(allByCategoryIn);
-            Collections.shuffle(questions);
-
-            questions = questions.subList(0, 4);
-
-
-
-
+            Set<Question> fourQuestionsFromEachCategoryToAddToQuiz = new HashSet<>(questionsByChoosedCategories);
             Quiz quiz = new Quiz();
             quizRepository.save(quiz);
-            quiz.setQuestionList(allByCategoryIn);
+            quiz.setQuestionSet(fourQuestionsFromEachCategoryToAddToQuiz);
+            quizRepository.save(quiz);
             newUserQuiz.setQuiz(quiz);
             quizSetupRepository.save(newUserQuiz);
             return newUserQuiz;
         }
         return new UserQuiz();
+    }
+
+    /*Shuffling questions, sublist to 4 questions on the list, add them to Quiz questions list*/
+    private void shufflingThanSublistingAndAddingQuestionsToList(List<Question> allDifficultyByChoosedCategory, List<Question> questionsByChoosedCategories) {
+        Collections.shuffle(allDifficultyByChoosedCategory);
+        allDifficultyByChoosedCategory = allDifficultyByChoosedCategory.subList(0, 4);
+        questionsByChoosedCategories.addAll(allDifficultyByChoosedCategory);
     }
 }

@@ -79,3 +79,8 @@ a {
     color: rgba(0, 0, 0, 0.9);
     background-color: #ffc107;
 }
+
+.hover-nothing:hover {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}

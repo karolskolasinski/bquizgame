@@ -17,6 +17,8 @@ public class UserAnswer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private int overallScore;
+
     @ManyToOne
     private Question question;
 

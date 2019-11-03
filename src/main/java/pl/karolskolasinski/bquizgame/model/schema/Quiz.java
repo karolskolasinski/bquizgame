@@ -19,7 +19,7 @@ public class Quiz {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToMany(fetch = FetchType.EAGER)   // <-------- ??
-    private Set<Question> questionList;
+    private Set<Question> questionSet;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

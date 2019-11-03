@@ -22,7 +22,6 @@ public class Question {
     private String category;
 
     @NotNull
-//    @NotEmpty
     int difficulty;
 
     @NotEmpty
@@ -33,7 +32,7 @@ public class Question {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = "questionList")
+    @ManyToMany(mappedBy = "questionSet")
     private Set<Quiz> quizez;
 
     @ToString.Exclude

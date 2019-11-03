@@ -33,6 +33,7 @@ public class UserQuiz {
     private String player2Name;
     private String player3Name;
     private String player4Name;
+    private String currentPlayer;
 
     private String categories;
 
