@@ -21,7 +21,8 @@
                 <div class="col-sm-12 card-body mb-3 shadow-sm">
                     <div class="row">
                         <div class="col-sm-4">
-                            <h4>Gracz <span class="main-color" th:text="${newUserQuiz.getCurrentPlayer()}"></span></h4>
+                            <h4>Gracz <span class="main-color"
+                                            th:text="${userAnswer.getUserQuiz().getCurrentPlayer()}"></span></h4>
                         </div>
                         <div class="col-sm-4">
                             <h4>Wynik</h4>
@@ -34,51 +35,28 @@
 
                 <!--Question content-->
                 <div class="col-sm-12 p-0 pb-5 pt-5">
-                    <h3><span th:text="${currentQuestion.getContent()}"></span></h3>
+                    <h3><span th:text="${userAnswer.getQuestion().getContent()}"></span></h3>
                 </div>
 
                 <!--Question answer options-->
-                <div class="row col-sm-12">
-                    <div class="col-sm-6 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/1/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',') + 1,
-                             newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <div class="btn btn-warning btn-sm float-left hover-nothing">odpowiedź A:</div>
-                            <span th:text="${questionAnswerOptions.get(0).getAnswerContent()}"></span>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-6 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/2/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',') + 1,
-                             newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <div class="btn btn-warning btn-sm float-left hover-nothing">odpowiedź B:</div>
-                            <span th:text="${questionAnswerOptions.get(1).getAnswerContent()}"></span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="row col-sm-12">
-                    <div class="col-sm-6 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/1/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',') + 1,
-                             newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <div class="btn btn-warning btn-sm float-left hover-nothing">odpowiedź C:</div>
-                            <span th:text="${questionAnswerOptions.get(2).getAnswerContent()}"></span>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-6 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/2/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',') + 1,
-                             newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <div class="btn btn-warning btn-sm float-left hover-nothing">odpowiedź D:</div>
-                            <span th:text="${questionAnswerOptions.get(3).getAnswerContent()}"></span>
-                        </a>
+                <div class="col-sm-6 p-0" th:each="questionAnswer, index : ${userAnswer.getQuestion().getAnswers()}">
+                    <div th:href="@{'/quiz/pickQuestionResult/'}"
+                         th:styleappend="${questionAnswer.isCorrect()? '' : 'background: none'}"
+                         class="btn btn-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
+                        <div class="btn btn-warning btn-sm float-left hover-nothing col-lg-4">odpowiedź
+                            <span th:text="${T(pl.karolskolasinski.bquizgame.component.CharacterUtility).intToCharLetter(index.index)}"></span>:
+                        </div>
+                        <span class="col-lg-8" th:text="${questionAnswer.getAnswerContent()}"></span>
                     </div>
                 </div>
 
             </div>
+        </div>
+
+        <div class="col-sm-12">
+            <button class="btn btn-outline-warning btn-lg mt-3 mb-4 text-dark float-right mr-5">
+                Następne pytanie <i class="fas fa-arrow-circle-right"></i>
+            </button>
         </div>
     </div>
 

@@ -38,51 +38,13 @@
                 </div>
 
                 <!--Question answer options-->
-                <div class="col-sm-6 p-0">
-                    <a th:href="@{'/quiz/pickQuestionResult/'
-                    + ${newUserQuiz.getId()}
-                    + '/' + ${questionAnswerOptions.get(0).getQuestion().getDifficulty()}
-                    + '/' + ${questionAnswerOptions.get(0).getQuestion().getCategory()}
-                    + '/' + ${questionAnswerOptions.get(0).getId()}}"
+                <div class="col-sm-6 p-0" th:each="questionAnswer, index : ${questionAnswerOptions}">
+                    <a th:href="@{'/quiz/pickQuestionResult/' + ${newUserQuiz.getId()} + '/' + ${questionAnswer.getId()} + '/' + ${currentQuestion.getId()} + '/'+${questionAnswerOrder}}"
                        class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                        <div class="btn btn-warning btn-sm float-left hover-nothing col-lg-4">odpowiedź A:</div>
-                        <span class="col-lg-8" th:text="${questionAnswerOptions.get(0).getAnswerContent()}"></span>
-                    </a>
-                </div>
-
-                <div class="col-sm-6 p-0">
-                    <a th:href="@{'/quiz/pickQuestionResult/'
-                    + ${newUserQuiz.getId()}
-                    + '/' + ${questionAnswerOptions.get(1).getQuestion().getDifficulty()}
-                    + '/' + ${questionAnswerOptions.get(1).getQuestion().getCategory()}
-                    + '/' + ${questionAnswerOptions.get(1).getId()}}"
-                       class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                        <div class="btn btn-warning btn-sm float-left hover-nothing col-lg-4">odpowiedź B:</div>
-                        <span class="col-lg-8" th:text="${questionAnswerOptions.get(1).getAnswerContent()}"></span>
-                    </a>
-                </div>
-
-                <div class="col-sm-6 p-0">
-                    <a th:href="@{'/quiz/pickQuestionResult/'
-                    + ${newUserQuiz.getId()}
-                    + '/' + ${questionAnswerOptions.get(2).getQuestion().getDifficulty()}
-                    + '/' + ${questionAnswerOptions.get(2).getQuestion().getCategory()}
-                    + '/' + ${questionAnswerOptions.get(2).getId()}}"
-                       class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                        <div class="btn btn-warning btn-sm float-left hover-nothing col-lg-4">odpowiedź C:</div>
-                        <span class="col-lg-8" th:text="${questionAnswerOptions.get(2).getAnswerContent()}"></span>
-                    </a>
-                </div>
-
-                <div class="col-sm-6 p-0">
-                    <a th:href="@{'/quiz/pickQuestionResult/'
-                    + ${newUserQuiz.getId()}
-                    + '/' + ${questionAnswerOptions.get(3).getQuestion().getDifficulty()}
-                    + '/' + ${questionAnswerOptions.get(3).getQuestion().getCategory()}
-                    + '/' + ${questionAnswerOptions.get(3).getId()}}"
-                       class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                        <div class="btn btn-warning btn-sm float-left hover-nothing col-lg-4">odpowiedź D:</div>
-                        <span class="col-lg-8" th:text="${questionAnswerOptions.get(3).getAnswerContent()}"></span>
+                        <div class="btn btn-warning btn-sm float-left hover-nothing col-lg-4">odpowiedź <span
+                                th:text="${T(pl.karolskolasinski.bquizgame.component.CharacterUtility).intToCharLetter(index.index)}"></span>:
+                        </div>
+                        <span class="col-lg-8" th:text="${questionAnswer.getAnswerContent()}"></span>
                     </a>
                 </div>
 
