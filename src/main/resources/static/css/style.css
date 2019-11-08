@@ -61,10 +61,10 @@ label {
     color: #ffc107;
 }
 
-a {
-    height: fit-content;
-    width: fit-content;
-}
+/*a {*/
+    /*height: fit-content;*/
+    /*width: fit-content;*/
+/*}*/
 
 .custom-control-input:checked ~ .custom-control-label::before {
     border-color: #ffc107;
@@ -83,4 +83,20 @@ a {
 .hover-nothing:hover {
     background-color: #ffc107;
     border-color: #ffc107;
+}
+
+.btn-bg-success {
+    background-color: #28a74521;
+}
+
+.btn-bg-success:hover, .btn-bg-success:active {
+    background-color: #28a74545 !important;
+}
+
+.btn-bg-wrong {
+    background-color: #dc354521;
+}
+
+.btn-bg-wrong:hover, .btn-bg-wrong:active {
+    background-color: #dc354536 !important;
 }

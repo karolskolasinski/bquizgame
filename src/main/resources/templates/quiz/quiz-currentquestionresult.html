@@ -18,17 +18,45 @@
         <div class="card mb-3 shadow-sm">
             <div class="row card-body text-center">
 
+                <!--Table header-->
                 <div class="col-sm-12 card-body mb-3 shadow-sm">
                     <div class="row">
                         <div class="col-sm-4">
-                            <h4>Gracz <span class="main-color"
-                                            th:text="${userAnswer.getUserQuiz().getCurrentPlayer()}"></span></h4>
+                            <h4>Gracz
+                                <span class="main-color"
+                                      th:text="${userAnswer.getUserQuiz().getCurrentPlayer()}"></span>
+                            </h4>
                         </div>
-                        <div class="col-sm-4">
-                            <h4>Wynik</h4>
+                        <div class="col-sm-4"
+                             th:if="${userAnswer.getUserQuiz().getCurrentPlayer().equals(userAnswer.getUserQuiz().getPlayer1Name())}">
+                            <h4>Wynik <span class="main-color"
+                                            th:text="${userAnswer.getUserQuiz().getPlayer1Score()}"></span>
+                            </h4>
                         </div>
+                        <div class="col-sm-4"
+                             th:if="${userAnswer.getUserQuiz().getCurrentPlayer().equals(userAnswer.getUserQuiz().getPlayer2Name())}">
+                            <h4>Wynik <span class="main-color"
+                                            th:text="${userAnswer.getUserQuiz().getPlayer2Score()}"></span>
+                            </h4>
+                        </div>
+                        <div class="col-sm-4"
+                             th:if="${userAnswer.getUserQuiz().getCurrentPlayer().equals(userAnswer.getUserQuiz().getPlayer3Name())}">
+                            <h4>Wynik <span class="main-color"
+                                            th:text="${userAnswer.getUserQuiz().getPlayer3Score()}"></span>
+                            </h4>
+                        </div>
+                        <div class="col-sm-4"
+                             th:if="${userAnswer.getUserQuiz().getCurrentPlayer().equals(userAnswer.getUserQuiz().getPlayer4Name())}">
+                            <h4>Wynik <span class="main-color"
+                                            th:text="${userAnswer.getUserQuiz().getPlayer4Score()}"></span>
+                            </h4>
+                        </div>
+
                         <div class="col-sm-4">
-                            <h4>Miejsce</h4>
+                            <h4>Miejsce
+                                <span class="main-color" th:text="${currentPlayerPlace}"></span>
+                                <span class="text-black-50" th:text="'/ ' + ${userAnswer.getUserQuiz().getNumberOfPlayers()}"></span>
+                            </h4>
                         </div>
                     </div>
                 </div>
@@ -39,29 +67,44 @@
                 </div>
 
                 <!--Question answer options-->
-                <div class="col-sm-6 p-0" th:each="questionAnswer, index : ${userAnswer.getQuestion().getAnswers()}">
-                    <div th:href="@{'/quiz/pickQuestionResult/'}"
-                         th:styleappend="${questionAnswer.isCorrect()? '' : 'background: none'}"
-                         class="btn btn-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                        <div class="btn btn-warning btn-sm float-left hover-nothing col-lg-4">odpowiedź
-                            <span th:text="${T(pl.karolskolasinski.bquizgame.component.CharacterUtility).intToCharLetter(index.index)}"></span>:
+                <div class="col-sm-6 p-0" th:each="userQuestionAnswer, index : ${orderedQuestionAnswers}">
+                    <div th:classappend="${(userQuestionAnswer.getId() == selected_id && userQuestionAnswer.getId() == correct_id) ? 'btn-success btn-bg-success' :
+                            (userQuestionAnswer.getId() == correct_id && userQuestionAnswer.getId() != selected_id ? 'btn-success btn-bg-success' :
+                            (userQuestionAnswer.getId() != correct_id && userQuestionAnswer.getId() == selected_id ? 'btn-danger btn-bg-wrong' : 'btn-outline-warning hover-nothing'))}"
+                         class="btn btn-lg mt-3 mb-4 col-sm-10 text-dark">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="btn btn-warning btn-sm float-left hover-nothing">odpowiedź
+                                    <span th:text="${T(pl.karolskolasinski.bquizgame.component.CharacterUtility).intToCharLetter(index.index)}"></span>:
+                                </div>
+                            </div>
+
+                            <div class="col-xl-8">
+                                <span th:text="${userQuestionAnswer.getAnswerContent()}"></span>
+                            </div>
                         </div>
-                        <span class="col-lg-8" th:text="${questionAnswer.getAnswerContent()}"></span>
                     </div>
+                </div>
+
+                <!--Question reference-->
+                <div class="col-sm-12 p-5">
+                        <h3><span th:text="${userAnswer.getQuestion().getReference()}"></span></h3>
                 </div>
 
             </div>
         </div>
 
         <div class="col-sm-12">
-            <button class="btn btn-outline-warning btn-lg mt-3 mb-4 text-dark float-right mr-5">
+            <a th:href="@{'/quiz/board/' + ${userAnswer.getUserQuiz().getId()}}"
+               class="btn btn-outline-warning btn-lg mt-3 mb-4 text-dark float-right mr-5">
                 Następne pytanie <i class="fas fa-arrow-circle-right"></i>
-            </button>
+            </a>
         </div>
     </div>
 
     <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
     <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
+    <script type="text/javascript" th:src="@{/js/refresh-blocker.js}"></script>
 </div>
 
 </body>

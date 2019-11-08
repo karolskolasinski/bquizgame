@@ -102,6 +102,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
                 question.setCategory(reader.readLine());
                 question.setDifficulty(Integer.parseInt(reader.readLine()));
                 question.setContent(reader.readLine());
+                question.setReference(reader.readLine());
                 if (!questionRepository.existsByContent(question.getContent())) {
                     questionRepository.save(question);
                 }
@@ -116,8 +117,6 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
                 bindAnswerWithQuestion(reader, question, answer3);
                 Answer answer4 = new Answer();
                 bindAnswerWithQuestion(reader, question, answer4);
-
-                question.setReference(reader.readLine());
 
                 /*Read separator*/
                 reader.readLine();

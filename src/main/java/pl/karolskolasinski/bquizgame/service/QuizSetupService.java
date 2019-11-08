@@ -26,7 +26,6 @@ public class QuizSetupService {
         this.quizRepository = quizRepository;
     }
 
-    /*Return Optional<UserQuiz> by id*/
     public UserQuiz returnUserQuizById(Long id) {
         Optional<UserQuiz> userQuizOptional = quizSetupRepository.findById(id);
         return userQuizOptional.orElseGet(UserQuiz::new);
@@ -50,14 +49,14 @@ public class QuizSetupService {
         return userQuiz;
     }
 
-    /*Set all categories to newUserQuiz without saving to database!*/
+    /*Set all categories to newUserQuiz without saving to database*/
     public UserQuiz setCategoriesToUserQuizByQuizId(Long newUserQuizId, Set<String> allCategories) {
         UserQuiz userQuiz = returnUserQuizById(newUserQuizId);
         userQuiz.setCategories(String.join(",", allCategories));
         return userQuiz;
     }
 
-    /*Add choosed category to newUserQuiz with saving to database!*/
+    /*Add choosed category to newUserQuiz with saving to database*/
     public UserQuiz addChoosedCategoriesToNewUserQuiz(Long newUserQuizId, HttpServletRequest request) {
         Optional<UserQuiz> userQuizOptional = quizSetupRepository.findById(newUserQuizId);
         if (userQuizOptional.isPresent()) {
@@ -96,7 +95,7 @@ public class QuizSetupService {
     /*Shuffling questions, sublist to 4 questions on the list, add them to Quiz questions list*/
     private void shufflingThanSublistingAndAddingQuestionsToList(List<Question> allDifficultyByChoosedCategory, List<Question> questionsByChoosedCategories) {
         Collections.shuffle(allDifficultyByChoosedCategory);
-        allDifficultyByChoosedCategory = allDifficultyByChoosedCategory.subList(0, 4);
+        allDifficultyByChoosedCategory = allDifficultyByChoosedCategory.subList(0, 1);
         questionsByChoosedCategories.addAll(allDifficultyByChoosedCategory);
     }
 }

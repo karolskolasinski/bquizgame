@@ -7,6 +7,7 @@ import pl.karolskolasinski.bquizgame.model.schema.Quiz;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -29,13 +30,26 @@ public class UserQuiz {
     @Column(nullable = false, columnDefinition = "tinyint default 1")
     private byte numberOfPlayers;
 
+    /*Names*/
     private String player1Name;
     private String player2Name;
     private String player3Name;
     private String player4Name;
     private String currentPlayer;
-
     private String categories;
+
+    /*Scores*/
+    @Column(columnDefinition = "tinyint default 0")
+    private int player1Score;
+
+    @Column(columnDefinition = "tinyint default 0")
+    private int player2Score;
+
+    @Column(columnDefinition = "tinyint default 0")
+    private int player3Score;
+
+    @Column(columnDefinition = "tinyint default 0")
+    private int player4Score;
 
     @ManyToOne
     private Quiz quiz;

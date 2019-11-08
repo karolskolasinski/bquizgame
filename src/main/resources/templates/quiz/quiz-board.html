@@ -17,191 +17,83 @@
         <div class="card mb-3 shadow-sm">
             <div class="row card-body text-center">
 
+                <!--Table header-->
                 <div class="col-sm-12 card-body mb-3 shadow-sm">
                     <div class="row">
                         <div class="col-sm-4">
                             <h4>Gracz <span class="main-color" th:text="${newUserQuiz.getCurrentPlayer()}"></span></h4>
                         </div>
-                        <div class="col-sm-4">
-                            <h4>Wynik</h4>
+
+                        <div class="col-sm-4"
+                             th:if="${newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer1Name())}">
+                            <h4>Wynik <span class="main-color" th:text="${newUserQuiz.getPlayer1Score()}"></span>
+                            </h4>
                         </div>
+
+                        <div class="col-sm-4"
+                             th:if="${newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer2Name())}">
+                            <h4>Wynik <span class="main-color" th:text="${newUserQuiz.getPlayer2Score()}"></span>
+                            </h4>
+                        </div>
+
+                        <div class="col-sm-4"
+                             th:if="${newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer3Name())}">
+                            <h4>Wynik <span class="main-color" th:text="${newUserQuiz.getPlayer3Score()}"></span>
+                            </h4>
+                        </div>
+
+                        <div class="col-sm-4"
+                             th:if="${newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer4Name())}">
+                            <h4>Wynik <span class="main-color" th:text="${newUserQuiz.getPlayer4Score()}"></span>
+                            </h4>
+                        </div>
+
                         <div class="col-sm-4">
-                            <h4>Miejsce</h4>
+                            <h4>Miejsce
+                                <span class="main-color" th:text="${currentPlayerPlace}"></span>
+                                <span class="text-black-50" th:text="'/ ' + ${newUserQuiz.getNumberOfPlayers()}"></span>
+                            </h4>
                         </div>
                     </div>
                 </div>
 
-                <!--1st Category-->
-                <div class="col-sm-3 p-0">
+
+                <!--Questions headers and Questions-->
+                <div class="col-sm-3 p-0" th:each="category : ${categories}">
                     <div class="col-sm-12 p-0">
-                        <button class="btn btn-outline-dark btn-lg mt-3 mb-4 col-sm-10" disabled>
-                            <span th:text="${newUserQuiz.getCategories().substring(0, newUserQuiz.getCategories().indexOf(','))}"></span>
+                        <button class="btn btn-dark btn-lg mt-3 mb-4 col-sm-10" disabled>
+                            <span th:text="${category}"></span>
                         </button>
                     </div>
 
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/1/' + ${newUserQuiz.getCategories().substring(0, newUserQuiz.getCategories().indexOf(','))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="far fa-star-half"></i> 1 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/2/' + ${newUserQuiz.getCategories().substring(0, newUserQuiz.getCategories().indexOf(','))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="far fa-star"></i> 2 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/3/' + ${newUserQuiz.getCategories().substring(0, newUserQuiz.getCategories().indexOf(','))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="fas fa-star-half-alt"></i> 3 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/4/' + ${newUserQuiz.getCategories().substring(0, newUserQuiz.getCategories().indexOf(','))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="fas fa-star"></i> 4 pkt.
-                        </a>
+                    <div th:each="difficulty : ${#numbers.sequence(1, 4)}">
+                        <div th:each="question : ${newUserQuiz.getQuiz().getQuestionSet()}"
+                             th:if="${question.getCategory() == category && question.getDifficulty() == difficulty}">
+                            <div class="col-sm-12 p-0">
+                                <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/' + ${question.getDifficulty()} + '/' + ${category}}"
+                                   class="btn btn-warning btn-lg mt-3 mb-4 col-sm-10"
+                                   th:classappend="${T(pl.karolskolasinski.bquizgame.component.WithdrawQuestionUtility).disableQuestion(withdrawnQuestions, question.getId())? 'btn-outline-dark disabled' : ''}">
+                                    <span th:text="${question.getDifficulty()}"></span> pkt.
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!--2nd Category-->
-                <div class="col-sm-3 p-0">
-                    <div class="col-sm-12 p-0">
-                        <button class="btn btn-outline-dark btn-lg mt-3 mb-4 col-sm-10" disabled>
-                            <span th:text="${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',') + 1,
-                             newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1))}"></span>
-                        </button>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/1/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',') + 1,
-                             newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="far fa-star-half"></i> 1 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/2/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',') + 1,
-                             newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="far fa-star"></i> 2 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/3/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',') + 1,
-                             newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="fas fa-star-half-alt"></i> 3 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/4/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',') + 1,
-                             newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="fas fa-star"></i> 4 pkt.
-                        </a>
-                    </div>
-                </div>
-
-
-                <!--3rd Category-->
-                <div class="col-sm-3 p-0">
-                    <div class="col-sm-12 p-0">
-                        <button class="btn btn-outline-dark btn-lg mt-3 mb-4 col-sm-10" disabled>
-                            <span th:text="${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1,
-                            newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1))}"></span>
-                        </button>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/1/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1,
-                            newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="far fa-star-half"></i> 1 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/2/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1,
-                            newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="far fa-star"></i> 2 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/3/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1,
-                            newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="fas fa-star-half-alt"></i> 3 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/4/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1,
-                            newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',', newUserQuiz.getCategories().indexOf(',') + 1) + 1))}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="fas fa-star"></i> 4 pkt.
-                        </a>
-                    </div>
-                </div>
-
-                <!--4th Category-->
-                <div class="col-sm-3 p-0">
-                    <div class="col-sm-12 p-0">
-                        <button class="btn btn-outline-dark btn-lg mt-3 mb-4 col-sm-10" disabled>
-                            <span th:text="${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().lastIndexOf(',') + 1,
-                            newUserQuiz.getCategories().length())}"></span>
-                        </button>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/1/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().lastIndexOf(',') + 1,
-                            newUserQuiz.getCategories().length())}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="far fa-star-half"></i> 1 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/2/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().lastIndexOf(',') + 1,
-                            newUserQuiz.getCategories().length())}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="far fa-star"></i> 2 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/3/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().lastIndexOf(',') + 1,
-                            newUserQuiz.getCategories().length())}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="fas fa-star-half-alt"></i> 3 pkt.
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 p-0">
-                        <a th:href="@{'/quiz/pickQuestion/' + ${newUserQuiz.getId()} + '/4/' + ${newUserQuiz.getCategories().substring(newUserQuiz.getCategories().lastIndexOf(',') + 1,
-                            newUserQuiz.getCategories().length())}}"
-                           class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-10 text-dark">
-                            <i class="fas fa-star"></i> 4 pkt.
-                        </a>
-                    </div>
-                </div>
-
 
             </div>
+
+            <!--Summary-->
+            <div class="text-center" th:if="${withdrawnQuestions != null && withdrawnQuestions.size() == 16}">
+                <a th:href="@{'/quiz/summary/' + ${newUserQuiz.getId()}}"
+                   class="btn btn-warning btn-lg mt-3 mb-4 col-sm-5">Zakończ i zobacz podsumowanie</a>
+            </div>
+
         </div>
     </div>
 
     <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
     <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
+    <script type="text/javascript" th:src="@{/js/refresh-blocker.js}"></script>
 </div>
 
 </body>

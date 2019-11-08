@@ -35,7 +35,7 @@ public class QuizSetupController {
     /*Set players usernames and give allCategories to newUserQuiz for displaying in quizsetup-categories POST*/
     @PostMapping("/setCategories")
     public String setUsernames(Model model, Long newUserQuizId, String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {
-        model.addAttribute("newUserQuiz", quizSetupService.setUsernamesToUserQuizByQuizId(newUserQuizId, usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4));
+        model.addAttribute("newUserQuiz", quizSetupService.setUsernamesToUserQuizByQuizId(newUserQuizId, usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4)); //todo czy potrzebny ten model?
         model.addAttribute("newUserQuiz", quizSetupService.setCategoriesToUserQuizByQuizId(newUserQuizId, questionService.returnAllCategories()));
         return "quizsetup/quizsetup-categories";
     }
