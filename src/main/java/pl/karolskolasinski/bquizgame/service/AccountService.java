@@ -17,10 +17,10 @@ import java.util.*;
 @Service
 public class AccountService {
 
-    private AccountRepository accountRepository;
-    private PasswordEncoder passwordEncoder;
-    private AccountRoleService accountRoleService;
-    private AccountRoleRepository accountRoleRepository;
+    private final AccountRepository accountRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final AccountRoleService accountRoleService;
+    private final AccountRoleRepository accountRoleRepository;
 
     @Autowired
     public AccountService(AccountRepository accountRepository, PasswordEncoder passwordEncoder, AccountRoleService accountRoleService, AccountRoleRepository accountRoleRepository) {

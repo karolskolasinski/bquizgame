@@ -16,7 +16,7 @@ public class AccountRoleService {
     @Value("${account.default.roles:USER}")
     private String[] defaultRoles;
 
-    private AccountRoleRepository accountRoleRepository;
+    private final AccountRoleRepository accountRoleRepository;
 
     @Autowired
     public AccountRoleService(AccountRoleRepository accountRoleRepository) {
