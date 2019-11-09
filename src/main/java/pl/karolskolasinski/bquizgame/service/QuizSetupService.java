@@ -98,4 +98,28 @@ public class QuizSetupService {
         allDifficultyByChoosedCategory = allDifficultyByChoosedCategory.subList(0, 1);
         questionsByChoosedCategories.addAll(allDifficultyByChoosedCategory);
     }
+
+    public boolean duplicates(String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {
+        if (usernamePlayer2 == null) {
+            return false;
+        }
+        if (usernamePlayer3 == null) {
+            return duplicates(new String[]{usernamePlayer1, usernamePlayer2});
+        }
+        if (usernamePlayer4 == null) {
+            return duplicates(new String[]{usernamePlayer1, usernamePlayer2, usernamePlayer3});
+        }
+        return duplicates(new String[]{usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4});
+    }
+
+    private boolean duplicates(final String[] names) {
+        Set<String> temporary = new HashSet<>();
+        for (String name : names) {
+            if (temporary.contains(name)) {
+                return true;
+            }
+            temporary.add(name);
+        }
+        return false;
+    }
 }

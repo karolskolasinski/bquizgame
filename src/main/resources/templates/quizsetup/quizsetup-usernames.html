@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
     <title>BQuizGame</title>
@@ -16,6 +16,13 @@
 <div class="container">
     <div class="card-deck mb-3">
         <div class="card mb-3 shadow-sm">
+
+            <div class="d-flex justify-content-center m-3">
+                <div class="alert alert-danger text-center m-0" th:if="${errorMessage != null}"
+                     th:text="${errorMessage}">
+                </div>
+            </div>
+
             <!--Option [1 player]-->
             <form th:if="${newUserQuiz.numberOfPlayers == 1}" th:action="@{/quizSetup/setCategories}" method="post"
                   th:object="${newUserQuiz}">

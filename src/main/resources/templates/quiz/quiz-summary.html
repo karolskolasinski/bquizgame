@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
     <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
@@ -38,15 +38,15 @@
                     <div th:each="result : ${results}">
                         <div class="row">
                             <div class="col-sm-4 pt-5">
-                                <h3><span class="main-color" th:text="${result.getPlace()}"></span></h3>
+                                <h4><span class="main-color" th:text="${result.getPlace()}"></span></h4>
                             </div>
 
                             <div class="col-sm-4 pt-5">
-                                <h3><span class="main-color" th:text="${result.getName()}"></span></h3>
+                                <h4><span class="main-color" th:text="${result.getName()}"></span></h4>
                             </div>
 
                             <div class="col-sm-4 pt-5">
-                                <h3><span class="main-color" th:text="${result.getScore()}"></span></h3>
+                                <h4><span class="main-color" th:text="${result.getScore()}"></span></h4>
                             </div>
                         </div>
                     </div>
