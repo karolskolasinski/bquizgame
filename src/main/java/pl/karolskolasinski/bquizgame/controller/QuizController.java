@@ -37,15 +37,9 @@ public class QuizController {
     @PostMapping("/board")
     public String board(Model model, Long newUserQuizId, HttpServletRequest request) {
         UserQuiz userQuiz = quizSetupService.addChoosedCategoriesToNewUserQuiz(newUserQuizId, request);
-
-        Set<Question> questionSet = userQuiz.getQuiz().getQuestionSet();
-        List<String> categories = questionSet.stream().map(Question::getCategory).distinct().collect(Collectors.toList());
-
-        model.addAttribute("categories", categories);
+        model.addAttribute("categories", quizService.categories(newUserQuizId));
         model.addAttribute("newUserQuiz", quizSetupService.addChoosedCategoriesToNewUserQuiz(newUserQuizId, request));
-
         model.addAttribute("currentPlayerPlace", quizService.playerPlace(newUserQuizId, userQuiz.getCurrentPlayer()));
-
         return "quiz/quiz-board";
     }
 
@@ -74,15 +68,8 @@ public class QuizController {
     @GetMapping("/board/{newUserQuizId}")
     public String scoreCounter(Model model, @PathVariable(name = "newUserQuizId") Long newUserQuizId) {
         model.addAttribute("newUserQuiz", quizService.setNextPlayerAndReturnNewUserQuiz(newUserQuizId));
-
-        List<Question> answered = quizService.withdrawQuestion(newUserQuizId);
-
-        model.addAttribute("withdrawnQuestions", answered);
-
-
-        Set<Question> questionSet = quizSetupService.returnUserQuizById(newUserQuizId).getQuiz().getQuestionSet();
-        List<String> categories = questionSet.stream().map(Question::getCategory).distinct().collect(Collectors.toList());
-        model.addAttribute("categories", categories);
+        model.addAttribute("withdrawnQuestions", quizService.withdrawQuestion(newUserQuizId));
+        model.addAttribute("categories", quizService.categories(newUserQuizId));
         model.addAttribute("currentPlayerPlace", quizService.playerPlace(newUserQuizId, quizSetupService.returnUserQuizById(newUserQuizId).getCurrentPlayer()));
         return "quiz/quiz-board";
     }

@@ -31,6 +31,11 @@ public class QuizService {
         this.userAnswerRepository = userAnswerRepository;
     }
 
+    public List<String> categories(Long newUserQuizId) {
+        Set<Question> questionSet = quizSetupRepository.getOne(newUserQuizId).getQuiz().getQuestionSet();
+        return questionSet.stream().map(Question::getCategory).distinct().sorted().collect(Collectors.toList());
+    }
+
     public Question pickQuestion(Long newUserQuizId, int difficulty, String category) {
         Optional<UserQuiz> userQuizOptional = quizSetupRepository.findById(newUserQuizId);
         if (userQuizOptional.isPresent()) {
@@ -89,7 +94,6 @@ public class QuizService {
     /*Count current player score*/
     public UserQuiz setNextPlayerAndReturnNewUserQuiz(Long newUserQuizId) {
         UserQuiz newUserQuiz = quizSetupRepository.getOne(newUserQuizId);
-
         playerQueue(newUserQuiz);
         return newUserQuiz;
     }
