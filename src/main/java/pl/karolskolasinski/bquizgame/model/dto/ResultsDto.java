@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Results {
+public class ResultsDto {
 
     private Integer place;
     private String name;

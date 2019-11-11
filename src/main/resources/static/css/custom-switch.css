@@ -1,6 +1,15 @@
 .custom-switch .custom-control-label::before, .custom-switch .custom-control-label::after {
-    margin-top: 0.2rem;
+    margin-top: 0.7rem;
+    margin-left: 3rem;
 }
 .custom-control-input:checked ~ .custom-control-label::before {
     background-color: #cc9100;
+}
+
+.custom-switch-position {
+    margin-left: 2rem;
+}
+
+.pl-1_75 {
+    padding-left: 1.75rem;
 }

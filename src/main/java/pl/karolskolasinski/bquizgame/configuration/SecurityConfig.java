@@ -36,8 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/quiz/**",
                         "/quizSetup/**").permitAll()
 //                reguły związane z rolami (np. /admin/**)
-                .anyRequest().authenticated()
-//                .antMatchers("/user/register").hasAnyRole("ADMIN")
+//                .anyRequest().authenticated()
+                .antMatchers("/editor/**").hasAnyRole("ADMIN", "MODERATOR")
                 .and()
                     .formLogin()
                         .loginPage("/login")
@@ -58,7 +58,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(authenticationService);
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
-
         auth.authenticationProvider(daoAuthenticationProvider);
     }
 }

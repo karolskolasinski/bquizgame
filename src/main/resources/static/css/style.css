@@ -61,11 +61,6 @@ label {
     color: #ffc107;
 }
 
-/*a {*/
-    /*height: fit-content;*/
-    /*width: fit-content;*/
-/*}*/
-
 .custom-control-input:checked ~ .custom-control-label::before {
     border-color: #ffc107;
     background-color: #ffc107;
@@ -99,4 +94,9 @@ label {
 
 .btn-bg-wrong:hover, .btn-bg-wrong:active {
     background-color: #dc354536 !important;
+}
+
+.m-1px_pt-2px {
+    margin: 1px;
+    padding-top: 2px;
 }

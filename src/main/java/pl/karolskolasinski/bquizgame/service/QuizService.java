@@ -2,7 +2,7 @@ package pl.karolskolasinski.bquizgame.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.karolskolasinski.bquizgame.model.dto.Results;
+import pl.karolskolasinski.bquizgame.model.dto.ResultsDto;
 import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.model.schema.Quiz;
@@ -219,14 +219,14 @@ public class QuizService {
         return 1;
     }
 
-    public List<Results> results(Long newUserQuizId) {
+    public List<ResultsDto> results(Long newUserQuizId) {
         UserQuiz newUserQuiz = quizSetupRepository.getOne(newUserQuizId);
-        List<Results> results = new ArrayList<>();
+        List<ResultsDto> results = new ArrayList<>();
 
-        Results player1resuts = new Results();
-        Results player2resuts = new Results();
-        Results player3resuts = new Results();
-        Results player4resuts = new Results();
+        ResultsDto player1resuts = new ResultsDto();
+        ResultsDto player2resuts = new ResultsDto();
+        ResultsDto player3resuts = new ResultsDto();
+        ResultsDto player4resuts = new ResultsDto();
 
         switch (newUserQuiz.getNumberOfPlayers()) {
             case 1:
@@ -286,7 +286,7 @@ public class QuizService {
             default:
                 break;
         }
-        results.sort(Comparator.comparing(Results::getPlace));
+        results.sort(Comparator.comparing(ResultsDto::getPlace));
         return results;
     }
 
