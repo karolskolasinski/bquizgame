@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="../../static/css/custom-switch.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
+    <title>Edytor pytań</title>
+    <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
+    <link rel="stylesheet" th:href="@{/css/custom-switch.css}"/>
+</head>
+<body>
+<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
+
+<div class="container">
+    <div class="row col-md-12">
+        <h1 class="display-4 mt-4 mb-3 border-top pt-4">Wybierz kategorię i stopień trudności</h1>
+    </div>
+
+    <div class="card-deck mb-3">
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body text-left">
+                    <form th:action="@{/editor/choose}" method="post">
+
+                        <label class="small pt-4">Kategoria:</label>
+                        <select class="form-control" th:field="*{searchQuestion.categories}">
+                            <option th:each="category : ${searchQuestion.categories}" th:value="${category}"
+                                    th:text="${category}"></option>
+                        </select>
+
+                        <label class="small pt-4">Stopień trudności (niewymagane):</label>
+                        <select class="form-control" th:field="*{searchQuestion.difficulty}">
+                            <option value="0" selected></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+
+                        <!--Button-->
+                        <div class="col-md-12 pt-4 text-right">
+                            <button type="submit" class="btn btn-outline-warning">Wyświetl</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
+    <script type="text/javascript" th:src="@{/js/copy-to-clipboard.js}"></script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="../../static/css/custom-switch.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
+    <title>Edytor pytań</title>
+    <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
+
+<div class="container">
+    <div class="row col-md-12">
+        <h1 class="display-4 mt-4 mb-3 border-top pt-4">Wybierz pytanie do edycji</h1>
+    </div>
+
+    <div class="card-deck mb-3">
+        <div class="col-md-12">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body text-left">
+
+                    <div class="row border border-warning m-3">
+                        <div class="col-sm-2">Trudność</div>
+                        <div class="col-sm-10">Pytanie</div>
+                    </div>
+
+                    <div class="row border m-3" th:each="question : ${questionsList}">
+                        <div class="col-sm-1 mt-2" th:text="${question.difficulty}"></div>
+                        <div class="col-sm-10 mt-2" th:text="${question.content}"></div>
+                        <div class="col-sm-1">
+                            <a class="btn btn-outline-warning btn-sm m-1"
+                               th:href="@{'/editor/edit/' + ${question.getId()}}">Edytuj</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
+    <script type="text/javascript" th:src="@{/js/copy-to-clipboard.js}"></script>
+</div>
+
+</body>
+</html>

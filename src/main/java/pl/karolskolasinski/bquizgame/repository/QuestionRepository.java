@@ -12,6 +12,9 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     @Query(value = "SELECT category FROM bquizgame.question", nativeQuery = true)
     Set<String> findAllCategories();
 
+    @Query(value = "SELECT * FROM bquizgame.question WHERE category = :choosedCategory", nativeQuery = true)
+    List<Question> findAllByChoosedCategory(String choosedCategory);
+
     @Query(value = "SELECT * FROM bquizgame.question WHERE difficulty = 1 AND category = :choosedCategory", nativeQuery = true)
     List<Question> findAllDifficulty1ByChoosedCategory(String choosedCategory);
 

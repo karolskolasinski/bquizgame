@@ -32,7 +32,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" sec:authorize="hasAnyRole('MODERATOR', 'ADMIN') && isAuthenticated()" th:href="@{/admin/task/list}"><i class="fas fa-chart-area"></i> Statystyki kategorii</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" sec:authorize="hasAnyRole('ADMIN', 'MODERATOR') && isAuthenticated()" th:href="@{/editor/edit}"> <i class="fas fa-edit"></i> Edytor pytań</a>
+                    <a class="dropdown-item" sec:authorize="hasAnyRole('ADMIN', 'MODERATOR') && isAuthenticated()" th:href="@{/editor/choose}"> <i class="fas fa-edit"></i> Edytor pytań</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" sec:authorize="hasAnyRole('ADMIN', 'MODERATOR') && isAuthenticated()" th:href="@{/editor/add}"> <i class="far fa-plus-square"></i> Dodawacz pytań</a>
                     <div class="dropdown-divider"></div>

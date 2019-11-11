@@ -31,26 +31,25 @@ public class QuestionService {
         Set<Answer> answers = new HashSet<>();
         Answer answer1 = returnAnswerWithContent(answersContent.getAnswer1Content(), true);
         Answer answer2 = returnAnswerWithContent(answersContent.getAnswer2Content(), false);
-
-        if (!answersContent.getAnswer3Content().isEmpty()) {
-            Answer answer3 = returnAnswerWithContent(answersContent.getAnswer3Content(), false);
-            answers.add(answer3);
-            answerRepository.save(answer3);
-            Objects.requireNonNull(answer3).setQuestion(question);
-        }
-        if (!answersContent.getAnswer4Content().isEmpty()) {
-            Answer answer4 = returnAnswerWithContent(answersContent.getAnswer4Content(), false);
-            answers.add(answer4);
-            answerRepository.save(answer4);
-            Objects.requireNonNull(answer4).setQuestion(question);
-        }
+        Answer answer3 = returnAnswerWithContent(answersContent.getAnswer3Content(), false);
+        Answer answer4 = returnAnswerWithContent(answersContent.getAnswer4Content(), false);
         answers.add(answer1);
         answers.add(answer2);
         answerRepository.save(answer1);
         answerRepository.save(answer2);
+        if (!answer3.getAnswerContent().isEmpty()) {
+            answers.add(answer3);
+            answerRepository.save(answer3);
+        }
+        if (!answer4.getAnswerContent().isEmpty()) {
+            answers.add(answer4);
+            answerRepository.save(answer4);
+        }
         question.setAnswers(answers);
         answer1.setQuestion(question);
         answer2.setQuestion(question);
+        answer3.setQuestion(question);
+        answer4.setQuestion(question);
     }
 
     private Answer returnAnswerWithContent(String content, boolean correct) {
@@ -69,5 +68,21 @@ public class QuestionService {
             }
         }
         questionRepository.save(question);
+    }
+
+    public List<Question> getAllByCategory(String catgory) {
+        return questionRepository.findAllByChoosedCategory(catgory);
+    }
+
+    public List<Question> getAllByCategoryAndDifficulty(String catgory, int difficulty) {
+        if (difficulty == 1) {
+            return questionRepository.findAllDifficulty1ByChoosedCategory(catgory);
+        } else if (difficulty == 2) {
+            return questionRepository.findAllDifficulty2ByChoosedCategory(catgory);
+        } else if (difficulty == 3) {
+            return questionRepository.findAllDifficulty3ByChoosedCategory(catgory);
+        } else {
+            return questionRepository.findAllDifficulty4ByChoosedCategory(catgory);
+        }
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.karolskolasinski.bquizgame.model.dto.AnswersContentDto;
-import pl.karolskolasinski.bquizgame.model.schema.Answer;
+import pl.karolskolasinski.bquizgame.model.dto.SearchQuestionDto;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.service.QuestionService;
 
@@ -36,7 +36,27 @@ public class EditorController {
     public String createPostMethod(Question question, AnswersContentDto answersContent, HttpServletRequest request) {
         questionService.bindAnswersWithQuestion(question, answersContent);
         questionService.setDifficultyAndSave(question, request);
-        return "redirect:/editor/editor-edit";
+        return "redirect:/editor/editor-editlist";
     }
+
+    @GetMapping("/choose")
+    public String chooseCategoryAndDifficulty(Model model, SearchQuestionDto searchQuestion) {
+        searchQuestion.setCategories(questionService.returnAllCategories());
+        model.addAttribute("searchQuestion", searchQuestion);
+        return "editor/editor-choose";
+    }
+
+    @PostMapping("/choose")
+    public String questionsToDisplay(Model model, SearchQuestionDto searchQuestion) {
+        String catgory = searchQuestion.getCategories().iterator().next();
+        if (searchQuestion.getDifficulty() == 0) {
+            model.addAttribute("questionsList", questionService.getAllByCategory(catgory));
+        } else {
+            model.addAttribute("questionsList", questionService.getAllByCategoryAndDifficulty(catgory, searchQuestion.getDifficulty()));
+        }
+        return "editor/editor-editlist";
+    }
+
+
 
 }
