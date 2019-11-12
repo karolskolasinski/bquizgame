@@ -21,6 +21,7 @@
             <div class="card mb-4 shadow-sm">
                 <div class="card-body text-left">
                     <form th:action="@{/editor/add}" method="post" th:object="${newQuestion}">
+                        <input type="hidden" th:field="*{id}" th:value="*{id}"/>
 
                         <!--Question-->
                         <div class="col-md-3 pb-4">
@@ -34,36 +35,36 @@
                         <div class="row">
                             <div class="custom-control custom-switch pl-1_75">
                                 <input type="radio" class="custom-control-input" th:name="*{difficulty}"
-                                       th:id="1" th:value="1" th:required="required">
+                                       th:id="difficulty-1" th:value="1" th:required="required" th:checked="*{difficulty == 1}">
                                 <label class="custom-control-label btn btn-lg btn-outline-warning mb-4 text-dark"
-                                       th:for="1">
+                                       th:for="difficulty-1">
                                     <span class="custom-switch-position" th:text="1"></span>
                                 </label>
                             </div>
 
                             <div class="custom-control custom-switch pl-1_75">
                                 <input type="radio" class="custom-control-input" th:name="*{difficulty}"
-                                       th:id="2" th:value="2">
+                                       th:id="difficulty-2" th:value="2" th:checked="*{difficulty == 2}">
                                 <label class="custom-control-label btn btn-lg btn-outline-warning mb-4 text-dark"
-                                       th:for="2">
+                                       th:for="difficulty-2">
                                     <span class="custom-switch-position" th:text="2"></span>
                                 </label>
                             </div>
 
                             <div class="custom-control custom-switch pl-1_75">
                                 <input type="radio" class="custom-control-input" th:name="*{difficulty}"
-                                       th:id="3" th:value="3">
+                                       th:id="difficulty-3" th:value="3" th:checked="*{difficulty == 3}">
                                 <label class="custom-control-label btn btn-lg btn-outline-warning mb-4 text-dark"
-                                       th:for="3">
+                                       th:for="difficulty-3">
                                     <span class="custom-switch-position" th:text="3"></span>
                                 </label>
                             </div>
 
                             <div class="custom-control custom-switch pl-1_75">
                                 <input type="radio" class="custom-control-input" th:name="*{difficulty}"
-                                       th:id="4" th:value="4">
+                                       th:id="difficulty-4" th:value="4" th:checked="*{difficulty == 4}">
                                 <label class="custom-control-label btn btn-lg btn-outline-warning mb-4 text-dark"
-                                       th:for="4">
+                                       th:for="difficulty-4">
                                     <span class="custom-switch-position" th:text="4"></span>
                                 </label>
                             </div>
@@ -105,7 +106,7 @@
                         <!--Reference-->
                         <div class="col-md-12 pb-4">
                             <label for="reference" class="small">Opis:</label>
-                            <textarea th:rows="3" class="form-control" type="text" id="reference"
+                            <textarea th:rows="4" class="form-control" type="text" id="reference"
                                       th:field="*{reference}"></textarea>
                         </div>
 

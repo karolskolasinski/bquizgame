@@ -9,6 +9,7 @@ import pl.karolskolasinski.bquizgame.repository.AnswerRepository;
 import pl.karolskolasinski.bquizgame.repository.QuestionRepository;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotEmpty;
 import java.util.*;
 
 @Service
@@ -62,7 +63,11 @@ public class QuestionService {
     public void setDifficultyAndSave(Question question, HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         for (Map.Entry<String, String[]> stringEntry : parameterMap.entrySet()) {
-            if (stringEntry.getKey().equals("0")) {
+            if (stringEntry.getKey().equals("0") ||
+                    stringEntry.getKey().equals("1") ||
+                    stringEntry.getKey().equals("2") ||
+                    stringEntry.getKey().equals("3") ||
+                    stringEntry.getKey().equals("4")) {
                 String difficulty = Arrays.toString(stringEntry.getValue());
                 question.setDifficulty(Integer.parseInt(difficulty.substring(1, difficulty.length() - 1)));
             }
@@ -84,5 +89,24 @@ public class QuestionService {
         } else {
             return questionRepository.findAllDifficulty4ByChoosedCategory(catgory);
         }
+    }
+
+    public Question getOneById(Long questionId) {
+        Optional<Question> questionOptional = questionRepository.findById(questionId);
+        return questionOptional.orElseGet(Question::new);
+    }
+
+    public AnswersContentDto extractAnswersContent(Question questionById) {
+        Set<Answer> answers = questionById.getAnswers();
+        List<String> answersContents = new ArrayList<>();
+        for (Answer answer : answers) {
+            answersContents.add(answer.getAnswerContent());
+        }
+        AnswersContentDto answersContentDto = new AnswersContentDto();
+        answersContentDto.setAnswer1Content(answersContents.get(0));
+        answersContentDto.setAnswer2Content(answersContents.get(1));
+        answersContentDto.setAnswer3Content(answersContents.get(2));
+        answersContentDto.setAnswer4Content(answersContents.get(3));
+        return answersContentDto;
     }
 }

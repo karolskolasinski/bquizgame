@@ -36,7 +36,8 @@ public class EditorController {
     public String createPostMethod(Question question, AnswersContentDto answersContent, HttpServletRequest request) {
         questionService.bindAnswersWithQuestion(question, answersContent);
         questionService.setDifficultyAndSave(question, request);
-        return "redirect:/editor/editor-editlist";
+        String referer = request.getHeader("referer");
+        return "redirect:" + referer;
     }
 
     @GetMapping("/choose")
@@ -57,6 +58,13 @@ public class EditorController {
         return "editor/editor-editlist";
     }
 
+    @GetMapping("/edit/{questionId}")
+    public String update(Model model, @PathVariable(name = "questionId") Long questionId) {
+        Question questionById = questionService.getOneById(questionId);
+        model.addAttribute("answersContent", questionService.extractAnswersContent(questionById));
+        model.addAttribute("newQuestion", questionById);
+        return "editor/editor-add";
+    }
 
 
 }
