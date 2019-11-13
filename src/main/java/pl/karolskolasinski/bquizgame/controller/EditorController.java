@@ -61,8 +61,10 @@ public class EditorController {
     @GetMapping("/edit/{questionId}")
     public String update(Model model, @PathVariable(name = "questionId") Long questionId) {
         Question questionById = questionService.getOneById(questionId);
+        Set<String> categories = questionService.returnAllCategories();
         model.addAttribute("answersContent", questionService.extractAnswersContent(questionById));
         model.addAttribute("newQuestion", questionById);
+        model.addAttribute("categories", categories);
         return "editor/editor-add";
     }
 

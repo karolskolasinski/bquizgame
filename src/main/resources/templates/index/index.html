@@ -20,49 +20,75 @@
 
 <div class="container text-center">
     <h1 class="display-4 mt-4 mb-3 border-top pt-4">Zagraj teraz!</h1>
-    <a class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-3" sec:authorize="isAuthenticated()" th:href="@{/quizSetup/authQuiz}"><i class="fas fa-play"></i> Start</a>
-    <a class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-3" sec:authorize="!isAuthenticated()" th:href="@{/quizSetup/numberofplayers}"><i class="fas fa-play"></i> Start</a>
+    <a class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-3" sec:authorize="isAuthenticated()"
+       th:href="@{/quizSetup/authQuiz}"><i class="fas fa-play"></i> Start</a>
+    <a class="btn btn-outline-warning btn-lg mt-3 mb-4 col-sm-3" sec:authorize="!isAuthenticated()"
+       th:href="@{/quizSetup/numberofplayers}"><i class="fas fa-play"></i> Start</a>
 </div>
 
 <div class="container">
     <h3 class="text-center display-4 mt-4 mb-3 border-top pt-4">Statystyki</h3>
     <div class="card-deck mb-3 text-center">
+
         <div class="card mb-4 shadow-sm">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">Ten tydzień</h4>
             </div>
             <div class="card-body text-left">
                 <ul class="mt-3 mb-4">
-                    <li>rozegranych quizów</li>
-                    <li>% poprawnych odpowiedzi</li>
-                    <li>najwyższy wynik</li>
-                    <li>najlepszy użytkownik</li>
+                    <li>rozegranych quizów
+                        <span class="main-color" th:text="${gamesPlayedLastWeek}"></span>
+                    </li>
+                    <li>% poprawnych odpowiedzi
+                        <span class="main-color" th:text="${percentageOfCorrectAnswersLastWeek} + '%'"></span>
+                    </li>
+                    <li>najwyższy wynik
+                        <span class="main-color" th:text="${bestScoreLastWeek}"></span>
+                    </li>
+                    <li>najlepszy użytkownik
+                        <span class="main-color" th:text="${bestUserLastWeek}"></span>
+                    </li>
                 </ul>
             </div>
         </div>
+
         <div class="card mb-4 shadow-sm">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">Ten miesiąc</h4>
             </div>
             <div class="card-body text-left">
                 <ul class="mt-3 mb-4">
-                    <li>rozegranych quizów</li>
-                    <li>% poprawnych odpowiedzi</li>
-                    <li>najwyższy wynik</li>
-                    <li>najlepszy użytkownik</li>
+                    <li>rozegranych quizów
+                        <span class="main-color" th:text="${gamesPlayedLastMonth}"></span>
+                    </li>
+                    <li>% poprawnych odpowiedzi
+                        <span class="main-color" th:text="${percentageOfCorrectAnswersLastMonth} + '%'"></span>
+                    </li>
+                    <li>najwyższy wynik
+                        <span class="main-color" th:text="${bestScoreLastMonth}"></span>
+                    </li>
+                    <li>najlepszy użytkownik
+                        <span class="main-color" th:text="${bestUserLastMonth}"></span>
+                    </li>
                 </ul>
             </div>
         </div>
+
         <div class="card mb-4 shadow-sm">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">Wszystkie</h4>
             </div>
             <div class="card-body text-left">
                 <ul class="mt-3 mb-4">
-                    <li>rozegranych quizów</li>
-                    <li>% poprawnych odpowiedzi</li>
-                    <li>najwyższy wynik</li>
-                    <li>najlepszy użytkownik</li>
+                    <li>rozegranych quizów
+                        <span class="main-color" th:text="${gamesPlayedAll}"></span>
+                    </li>
+                    <li>% poprawnych odpowiedzi
+                        <span class="main-color" th:text="${percentageOfCorrectAnswersAll} + '%'"></span>
+                    </li>
+                    <li>najwyższy wynik
+                        <span class="main-color" th:text="${bestScoreAll}"></span>
+                    </li>
                 </ul>
             </div>
         </div>

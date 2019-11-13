@@ -122,4 +122,70 @@ public class QuizSetupService {
         }
         return false;
     }
+
+    /*LAST WEEK STATISTICS*/
+    public int gamesPlayedLastWeek() {
+        return quizSetupRepository.gamesPlayedLastWeek();
+    }
+
+    public double correctAnswersLastWeek() {
+        return quizSetupRepository.correctAnswersLastWeek();
+    }
+
+    public double allAnswersLastWeek() {
+        return quizSetupRepository.allAnswersLastWeek();
+    }
+
+    public int bestScoreLastWeek() {
+        return quizSetupRepository.bestScoreLastWeek();
+    }
+
+    public String bestUserLastWeek() {
+        return quizSetupRepository.bestUserLastWeek();
+    }
+
+
+    /*LAST MONTH STATISTICS*/
+    public int gamesPlayedLastMonth() {
+        return quizSetupRepository.gamesPlayedLastMonth();
+    }
+
+    public double correctAnswersLastMonth() {
+        return quizSetupRepository.correctAnswersLastMonth();
+    }
+
+    public double allAnswersLastMonth() {
+        return quizSetupRepository.allAnswersLastMonth();
+    }
+
+    public int bestScoreLastMonth() {
+        return quizSetupRepository.bestScoreLastMonth();
+    }
+
+    public String bestUserLastMonth() {
+        return quizSetupRepository.bestUserLastMonth();
+    }
+
+
+    /*ALL STATISTICS*/
+    public int gamesPlayedAll() {
+        return quizSetupRepository.gamesPlayedAll();
+    }
+
+    public double correctAnswersAll() {
+        return quizSetupRepository.correctAnswersAll();
+    }
+
+    public double allAnswersAll() {
+        return quizSetupRepository.allAnswersAll();
+    }
+
+    public int bestScoreAll() {
+        return quizSetupRepository.bestScoreAll();
+    }
+
+    public void clearUnplayedQuizzes() {
+        System.out.println("clearUnplayedQuizzes");
+        quizSetupRepository.clearUnplayedQuizzes();
+    }
 }
