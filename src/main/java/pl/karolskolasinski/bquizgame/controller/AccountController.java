@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.karolskolasinski.bquizgame.model.account.Account;
 import pl.karolskolasinski.bquizgame.model.account.AccountPasswordResetRequest;
 import pl.karolskolasinski.bquizgame.service.AccountService;
+import pl.karolskolasinski.bquizgame.service.QuizSetupService;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -19,10 +20,12 @@ import java.util.Optional;
 public class AccountController {
 
     private AccountService accountService;
+    private QuizSetupService quizSetupService;
 
     @Autowired
-    public AccountController(AccountService accountService) {
+    public AccountController(AccountService accountService, QuizSetupService quizSetupService) {
         this.accountService = accountService;
+        this.quizSetupService = quizSetupService;
     }
 
     /*Register GET*/
@@ -85,5 +88,16 @@ public class AccountController {
     public String resetPassword(AccountPasswordResetRequest request) {
         accountService.resetPassword(request);
         return "redirect:/account/myProfile";
+    }
+
+    @GetMapping("/myStats")
+    public String getMyPlayedQuizzes(Model model, Principal principal) {
+        Optional<Account> loggedAccount = accountService.findByUsername(principal.getName());
+        if (loggedAccount.isPresent()) {
+            Account account = loggedAccount.get();
+            model.addAttribute("playedQuizzes", quizSetupService.playedQuizesByPlayerAccountId(account.getId()));
+            return "account/account-mystats";
+        }
+        return "account/account-mystats";
     }
 }

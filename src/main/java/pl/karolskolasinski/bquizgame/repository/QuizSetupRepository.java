@@ -10,6 +10,7 @@ import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface QuizSetupRepository extends JpaRepository<UserQuiz, Long> {
@@ -25,7 +26,7 @@ public interface QuizSetupRepository extends JpaRepository<UserQuiz, Long> {
     double allAnswersLastWeek();
 
     @Query(value = "SELECT max(difficulty) FROM (SELECT sum(difficulty) AS difficulty FROM bquizgame.user_answer ua JOIN bquizgame.question q ON ua.question_id = q.id JOIN bquizgame.answer a ON ua.answer_id = a.id JOIN bquizgame.user_quiz uq ON ua.user_quiz_id = uq.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY) GROUP BY ua.user_quiz_id) AS max_week", nativeQuery = true)
-    int bestScoreLastWeek();
+    Optional<Integer> bestScoreLastWeek();
 
     @Query(value = "SELECT u FROM (SELECT max(difficulty), u FROM (SELECT sum(difficulty) AS difficulty, username AS u FROM bquizgame.user_answer ua JOIN bquizgame.question q ON ua.question_id = q.id JOIN bquizgame.answer a ON ua.answer_id = a.id JOIN bquizgame.user_quiz uq ON ua.user_quiz_id = uq.id JOIN bquizgame.account ac on uq.account_id = ac.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY) GROUP BY ua.user_quiz_id ORDER BY difficulty DESC) AS max_week) as d_u", nativeQuery = true)
     String bestUserLastWeek();
@@ -42,7 +43,7 @@ public interface QuizSetupRepository extends JpaRepository<UserQuiz, Long> {
     double allAnswersLastMonth();
 
     @Query(value = "SELECT max(difficulty) FROM (SELECT sum(difficulty) AS difficulty FROM bquizgame.user_answer ua JOIN bquizgame.question q ON ua.question_id = q.id JOIN bquizgame.answer a ON ua.answer_id = a.id JOIN bquizgame.user_quiz uq ON ua.user_quiz_id = uq.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY ua.user_quiz_id) AS max_month", nativeQuery = true)
-    int bestScoreLastMonth();
+    Optional<Integer> bestScoreLastMonth();
 
     @Query(value = "SELECT u FROM (SELECT max(difficulty), u FROM (SELECT sum(difficulty) AS difficulty, username AS u FROM bquizgame.user_answer ua JOIN bquizgame.question q ON ua.question_id = q.id JOIN bquizgame.answer a ON ua.answer_id = a.id JOIN bquizgame.user_quiz uq ON ua.user_quiz_id = uq.id JOIN bquizgame.account ac on uq.account_id = ac.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 1 MONTH) GROUP BY ua.user_quiz_id ORDER BY difficulty DESC) AS max_month) as d_u", nativeQuery = true)
     String bestUserLastMonth();
@@ -66,4 +67,8 @@ public interface QuizSetupRepository extends JpaRepository<UserQuiz, Long> {
     @Modifying
     @Query(value = "DELETE FROM bquizgame.user_quiz WHERE quiz_id IS NULL", nativeQuery = true)
     void clearUnplayedQuizzes();
+
+    /*USER STATISTICS*/
+    @Query(value = "SELECT count(*) FROM bquizgame.user_quiz WHERE account_id = :accountId", nativeQuery = true)
+    int playedQuizesByPlayerAccountId(Long accountId);
 }

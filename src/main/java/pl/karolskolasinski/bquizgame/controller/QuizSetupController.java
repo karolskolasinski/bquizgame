@@ -45,14 +45,14 @@ public class QuizSetupController {
     @PostMapping("/setCategories")
     public String setUsernames(Model model, Long newUserQuizId, String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {
         if (quizSetupService.duplicates(usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4)) {
-            return usernamesError(model, newUserQuizId);
+            return usernamesDuplicateError(model, newUserQuizId);
         }
         model.addAttribute("newUserQuiz", quizSetupService.setUsernamesToUserQuizByQuizId(newUserQuizId, usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4)); //todo czy potrzebny ten model?
         model.addAttribute("newUserQuiz", quizSetupService.setCategoriesToUserQuizByQuizId(newUserQuizId, questionService.returnAllCategories()));
         return "quizsetup/quizsetup-categories";
     }
 
-    private String usernamesError(Model model, Long newUserQuizId) {
+    private String usernamesDuplicateError(Model model, Long newUserQuizId) {
         model.addAttribute("newUserQuiz", quizSetupService.returnUserQuizById(newUserQuizId));
         model.addAttribute("errorMessage", "Nie możesz podać dwóch takich samych nazw.");
         return "quizsetup/quizsetup-usernames";
@@ -68,7 +68,6 @@ public class QuizSetupController {
         model.addAttribute("newUserQuiz", quizSetupService.setCategoriesToUserQuizByQuizId(newUserQuiz.getId(), questionService.returnAllCategories()));
         return "quizsetup/quizsetup-categories";
     }
-
 
 }
 

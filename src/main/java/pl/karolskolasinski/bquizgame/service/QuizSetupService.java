@@ -137,7 +137,8 @@ public class QuizSetupService {
     }
 
     public int bestScoreLastWeek() {
-        return quizSetupRepository.bestScoreLastWeek();
+        Optional<Integer> bestScoreLastWeek = quizSetupRepository.bestScoreLastWeek();
+        return bestScoreLastWeek.orElse(0);
     }
 
     public String bestUserLastWeek() {
@@ -159,7 +160,8 @@ public class QuizSetupService {
     }
 
     public int bestScoreLastMonth() {
-        return quizSetupRepository.bestScoreLastMonth();
+        Optional<Integer> bestScoreLastMonth = quizSetupRepository.bestScoreLastMonth();
+        return bestScoreLastMonth.orElse(0);
     }
 
     public String bestUserLastMonth() {
@@ -188,4 +190,11 @@ public class QuizSetupService {
         System.out.println("clearUnplayedQuizzes");
         quizSetupRepository.clearUnplayedQuizzes();
     }
+
+
+    /*USER STATISTICS*/
+    public int playedQuizesByPlayerAccountId(Long accountId) {
+        return quizSetupRepository.playedQuizesByPlayerAccountId(accountId);
+    }
+
 }
