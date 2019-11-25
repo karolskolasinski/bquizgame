@@ -10,6 +10,8 @@ import pl.karolskolasinski.bquizgame.repository.QuizRepository;
 import pl.karolskolasinski.bquizgame.repository.QuizSetupRepository;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -193,8 +195,19 @@ public class QuizSetupService {
 
 
     /*USER STATISTICS*/
-    public int playedQuizesByPlayerAccountId(Long accountId) {
-        return quizSetupRepository.playedQuizesByPlayerAccountId(accountId);
+    public int playedQuizesByAccountId(Long accountId) {
+        return quizSetupRepository.playedQuizesByAccountId(accountId);
     }
+
+    public String lastQuizDateTimeByAccountId(Long accountId) {
+        LocalDateTime localDateTime = quizSetupRepository.lastQuizDateTimeByAccountId(accountId);
+        return localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+    }
+
+    public Integer maxScoreByUsername(String username) {
+        Set<Integer> integers = quizSetupRepository.maxScoreByUsername(username);
+        return integers.iterator().next();
+    }
+
 
 }

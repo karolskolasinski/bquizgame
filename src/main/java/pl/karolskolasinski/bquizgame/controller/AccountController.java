@@ -95,7 +95,9 @@ public class AccountController {
         Optional<Account> loggedAccount = accountService.findByUsername(principal.getName());
         if (loggedAccount.isPresent()) {
             Account account = loggedAccount.get();
-            model.addAttribute("playedQuizzes", quizSetupService.playedQuizesByPlayerAccountId(account.getId()));
+            model.addAttribute("playedQuizzes", quizSetupService.playedQuizesByAccountId(account.getId()));
+            model.addAttribute("lastQuizDateTime", quizSetupService.lastQuizDateTimeByAccountId(account.getId()));
+            model.addAttribute("maxScoreByUsername", quizSetupService.maxScoreByUsername(principal.getName()));
             return "account/account-mystats";
         }
         return "account/account-mystats";

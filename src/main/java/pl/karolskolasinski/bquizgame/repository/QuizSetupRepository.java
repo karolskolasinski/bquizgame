@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public interface QuizSetupRepository extends JpaRepository<UserQuiz, Long> {
@@ -70,5 +72,11 @@ public interface QuizSetupRepository extends JpaRepository<UserQuiz, Long> {
 
     /*USER STATISTICS*/
     @Query(value = "SELECT count(*) FROM bquizgame.user_quiz WHERE account_id = :accountId", nativeQuery = true)
-    int playedQuizesByPlayerAccountId(Long accountId);
+    int playedQuizesByAccountId(Long accountId);
+
+    @Query(value = "SELECT max(bquizgame.user_quiz.quiz_start_date_time) FROM bquizgame.user_quiz WHERE account_id = :accountId", nativeQuery = true)
+    LocalDateTime lastQuizDateTimeByAccountId(Long accountId);
+
+    @Query(value = "SELECT max(bquizgame.user_quiz.player1score) FROM bquizgame.user_quiz WHERE player1name = :username", nativeQuery = true)
+    Set<Integer> maxScoreByUsername(String username);
 }
