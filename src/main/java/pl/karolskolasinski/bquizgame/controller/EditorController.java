@@ -68,5 +68,10 @@ public class EditorController {
         return "editor/editor-add";
     }
 
+    @GetMapping("/categoryStats")
+    public String getCategoryStats(Model model) {
+        model.addAttribute("categoryByDifficulty", questionService.countCategoriesByDifficulty());
+        return "account/account-categorystats";
+    }
 
 }

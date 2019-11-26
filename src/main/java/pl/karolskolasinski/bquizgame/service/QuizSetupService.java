@@ -203,17 +203,14 @@ public class QuizSetupService {
 
     public String lastQuizDateTimeByAccountId(Long accountId) {
         LocalDateTime localDateTime = quizSetupRepository.lastQuizDateTimeByAccountId(accountId);
-        return localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        if (localDateTime != null) {
+            return localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        }
+        return "brak rozegranych quizów";
     }
 
     public Integer maxScoreByUsername(String username) {
         Set<Integer> integers = quizSetupRepository.maxScoreByUsername(username);
         return integers.iterator().next();
     }
-
-    /*CATEGORY STATISTICS*/
-    public List<ICategoryStatsDto> countCategoriesByDifficulty() {
-        return questionRepository.countCategoriesByDifficulty();
-    }
-
 }

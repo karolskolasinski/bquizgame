@@ -35,8 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/login",
                         "/quiz/**",
                         "/quizSetup/**").permitAll()
-//                reguły związane z rolami (np. /admin/**)
-//                .anyRequest().authenticated()
+                .antMatchers("/account/**").authenticated()
                 .antMatchers("/editor/**").hasAnyRole("ADMIN", "MODERATOR")
                 .and()
                     .formLogin()

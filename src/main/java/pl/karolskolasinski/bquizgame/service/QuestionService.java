@@ -110,4 +110,9 @@ public class QuestionService {
         answersContentDto.setAnswer4Content(answersContents.get(3));
         return answersContentDto;
     }
+
+    /*CATEGORY STATISTICS*/
+    public List<ICategoryStatsDto> countCategoriesByDifficulty() {
+        return questionRepository.countCategoriesByDifficulty();
+    }
 }
