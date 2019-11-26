@@ -3,13 +3,14 @@ package pl.karolskolasinski.bquizgame.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.karolskolasinski.bquizgame.model.dto.AnswersContentDto;
+import pl.karolskolasinski.bquizgame.model.dto.CategoryStatsDto;
+import pl.karolskolasinski.bquizgame.model.dto.ICategoryStatsDto;
 import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.repository.AnswerRepository;
 import pl.karolskolasinski.bquizgame.repository.QuestionRepository;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotEmpty;
 import java.util.*;
 
 @Service

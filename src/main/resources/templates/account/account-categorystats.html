@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
+    <title>Statysyki</title>
+    <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
+
+<div class="container">
+    <div class="row col-md-12">
+        <h1 class="display-4 mt-4 mb-3 border-top pt-4">Statysyki kategorii</h1>
+    </div>
+
+    <div class="card-deck mb-3">
+        <div class="col-md-9">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4 mt-2 main-color">Kategoria</div>
+                        <div class="col-md-4 mt-2 main-color">Stopień trudności</div>
+                        <div class="col-md-4 mt-2 main-color">Ilość pytań</div>
+                    </div>
+
+                    <div class="row mb-3" th:each="category : ${categoryByDifficulty}">
+                        <div class="col-md-4 mt-2" th:text="${category.getCategory()}"></div>
+                        <div class="col-md-4 mt-2" th:text="${category.getDifficulty()}"></div>
+                        <div class="col-md-4 mt-2" th:text="${category.getCount()}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
+</div>
+
+</body>
+</html>

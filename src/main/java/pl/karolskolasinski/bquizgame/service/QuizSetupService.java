@@ -2,6 +2,7 @@ package pl.karolskolasinski.bquizgame.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.karolskolasinski.bquizgame.model.dto.ICategoryStatsDto;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.model.schema.Quiz;
 import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
@@ -209,5 +210,9 @@ public class QuizSetupService {
         return integers.iterator().next();
     }
 
+    /*CATEGORY STATISTICS*/
+    public List<ICategoryStatsDto> countCategoriesByDifficulty() {
+        return questionRepository.countCategoriesByDifficulty();
+    }
 
 }

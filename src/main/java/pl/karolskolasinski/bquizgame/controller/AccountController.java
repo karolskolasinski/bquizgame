@@ -102,4 +102,10 @@ public class AccountController {
         }
         return "account/account-mystats";
     }
+
+    @GetMapping("/categoryStats")
+    public String getCategoryStats(Model model) {
+        model.addAttribute("categoryByDifficulty", quizSetupService.countCategoriesByDifficulty());
+        return "account/account-categorystats";
+    }
 }

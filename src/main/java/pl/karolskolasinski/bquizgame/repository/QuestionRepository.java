@@ -2,6 +2,7 @@ package pl.karolskolasinski.bquizgame.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import pl.karolskolasinski.bquizgame.model.dto.ICategoryStatsDto;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 
 import java.util.List;
@@ -28,5 +29,8 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     List<Question> findAllDifficulty4ByChoosedCategory(String choosedCategory);
 
     boolean existsByContent(String content);
+
+    @Query(value = "SELECT bquizgame.question.category AS category, bquizgame.question.difficulty AS difficulty, count(*) AS count FROM bquizgame.question GROUP BY bquizgame.question.difficulty, bquizgame.question.category ORDER BY bquizgame.question.category, bquizgame.question.difficulty", nativeQuery = true)
+    List<ICategoryStatsDto> countCategoriesByDifficulty();
 
 }
