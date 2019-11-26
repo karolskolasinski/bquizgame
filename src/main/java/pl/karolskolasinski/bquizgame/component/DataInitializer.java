@@ -45,10 +45,8 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addDefaultRole("USER");
         addDefaultRole("ADMIN");
         addDefaultRole("MODERATOR");
-
         addDefaultUser("admin", "admin", "admin@admin.com", "ADMIN", "USER");
         addDefaultUser("user", "user", "user@user.com", "USER");
-
         addDefaultQuestions();
     }
 
@@ -58,10 +56,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
             account.setUsername(username);
             account.setPassword(passwordEncoder.encode(password));
             account.setEmail(email);
-
-            Set<AccountRole> userRoles = findRoles(roles);
-            account.setAccountRoles(userRoles);
-
+            account.setAccountRoles(findRoles(roles));
             accountRepository.save(account);
         }
     }
@@ -78,7 +73,6 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         if (!accountRoleRepository.existsByName(role)) {
             AccountRole newRole = new AccountRole();
             newRole.setName(role);
-
             accountRoleRepository.save(newRole);
         }
     }
@@ -87,41 +81,43 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            tryReadFromFile(file, reader);
+            tryReadFromFileAndSaveToDatabase(file, reader);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void tryReadFromFile(File file, BufferedReader reader) throws IOException {
+    private void tryReadFromFileAndSaveToDatabase(File file, BufferedReader reader) throws IOException {
         if (file.exists()) {
             while (reader.ready()) {
-                /*Creating default question(s)*/
+
+                /*Creating default questions*/
                 Question question = new Question();
                 question.setCategory(reader.readLine());
                 question.setDifficulty(Integer.parseInt(reader.readLine()));
                 question.setContent(reader.readLine());
                 question.setReference(reader.readLine());
+
                 if (!questionRepository.existsByContent(question.getContent())) {
                     questionRepository.save(question);
-                }
+                    /*Creating answers to each question*/
+                    Answer answer1 = new Answer();
+                    answer1.setCorrect(true);
+                    bindAnswerWithQuestion(reader, question, answer1);
+                    Answer answer2 = new Answer();
+                    bindAnswerWithQuestion(reader, question, answer2);
+                    Answer answer3 = new Answer();
+                    bindAnswerWithQuestion(reader, question, answer3);
+                    Answer answer4 = new Answer();
+                    bindAnswerWithQuestion(reader, question, answer4);
 
-                /*Creating default answers to each question*/
-                Answer answer1 = new Answer();
-                answer1.setCorrect(true);
-                bindAnswerWithQuestion(reader, question, answer1);
-                Answer answer2 = new Answer();
-                bindAnswerWithQuestion(reader, question, answer2);
-                Answer answer3 = new Answer();
-                bindAnswerWithQuestion(reader, question, answer3);
-                Answer answer4 = new Answer();
-                bindAnswerWithQuestion(reader, question, answer4);
-
-                /*Read separator*/
-                reader.readLine();
-                if (!questionRepository.existsByContent(question.getContent())) {
-                    questionRepository.save(question);
+                    /*Read separator*/
+                    reader.readLine();
+                } else {
+                    for (int i = 0; i <= 4; i++) {
+                        reader.readLine();
+                    }
                 }
             }
         } else {

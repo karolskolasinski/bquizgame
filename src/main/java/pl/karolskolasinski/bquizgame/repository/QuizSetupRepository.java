@@ -62,7 +62,7 @@ public interface QuizSetupRepository extends JpaRepository<UserQuiz, Long> {
     double allAnswersAll();
 
     @Query(value = "SELECT max(difficulty) FROM (SELECT sum(difficulty) AS difficulty FROM bquizgame.user_answer ua JOIN bquizgame.question q ON ua.question_id = q.id JOIN bquizgame.answer a ON ua.answer_id = a.id WHERE a.correct = 1 GROUP BY ua.user_quiz_id) AS max_all", nativeQuery = true)
-    int bestScoreAll();
+    Optional<Integer>  bestScoreAll();
 
     /*CLEAR DATA*/
     @Transactional

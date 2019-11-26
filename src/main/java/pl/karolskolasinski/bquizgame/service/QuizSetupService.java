@@ -186,7 +186,8 @@ public class QuizSetupService {
     }
 
     public int bestScoreAll() {
-        return quizSetupRepository.bestScoreAll();
+        Optional<Integer> bestScoreAll = quizSetupRepository.bestScoreAll();
+        return bestScoreAll.orElse(0);
     }
 
     public void clearUnplayedQuizzes() {
