@@ -53,6 +53,7 @@ public class AccountController {
         return "redirect:/login";
     }
 
+    /*Registration error*/
     private String registrationError(Model model, Account account, String message) {
         model.addAttribute("newAccount", account);
         model.addAttribute("errorMessage", message);
@@ -89,6 +90,7 @@ public class AccountController {
         return "redirect:/account/myProfile";
     }
 
+    /*Get account statistics GET*/
     @GetMapping("/myStats")
     public String getMyPlayedQuizzes(Model model, Principal principal) {
         Long accountId = accountService.findByUsername(principal.getName()).getId();

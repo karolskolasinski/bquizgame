@@ -23,23 +23,24 @@ public class EditorController {
         this.questionService = questionService;
     }
 
+    /*Add new question GET*/
     @GetMapping("/add")
-    public String addQuestion(Model model, Question question, AnswersContentDto answersContent) {
-        Set<String> categories = questionService.returnAllCategories();
+    public String addNewQuestion(Model model, Question question, AnswersContentDto answersContent) {
         model.addAttribute("newQuestion", question);
         model.addAttribute("answersContent", answersContent);
-        model.addAttribute("categories", categories);
+        model.addAttribute("categories", questionService.returnAllCategories());
         return "editor/editor-add";
     }
 
+    /*Add new question POST*/
     @PostMapping("/add")
-    public String createPostMethod(Question question, AnswersContentDto answersContent, HttpServletRequest request) {
+    public String addNewQuestion(Question question, AnswersContentDto answersContent, HttpServletRequest request) {
         questionService.bindAnswersWithQuestion(question, answersContent);
         questionService.setDifficultyAndSave(question, request);
-        String referer = request.getHeader("referer");
-        return "redirect:" + referer;
+        return "redirect:" + request.getHeader("referer");
     }
 
+    /*Choose category and difficulty to edit GET*/
     @GetMapping("/choose")
     public String chooseCategoryAndDifficulty(Model model, SearchQuestionDto searchQuestion) {
         searchQuestion.setCategories(questionService.returnAllCategories());
@@ -47,6 +48,7 @@ public class EditorController {
         return "editor/editor-choose";
     }
 
+    /*Choose category and difficulty to edit POST*/
     @PostMapping("/choose")
     public String questionsToDisplay(Model model, SearchQuestionDto searchQuestion) {
         String catgory = searchQuestion.getCategories().iterator().next();
@@ -58,20 +60,20 @@ public class EditorController {
         return "editor/editor-editlist";
     }
 
+    /*Update question GET*/
     @GetMapping("/edit/{questionId}")
     public String update(Model model, @PathVariable(name = "questionId") Long questionId) {
         Question questionById = questionService.getOneById(questionId);
-        Set<String> categories = questionService.returnAllCategories();
         model.addAttribute("answersContent", questionService.extractAnswersContent(questionById));
         model.addAttribute("newQuestion", questionById);
-        model.addAttribute("categories", categories);
+        model.addAttribute("categories", questionService.returnAllCategories());
         return "editor/editor-add";
     }
 
+    /*Category statistics GET*/
     @GetMapping("/categoryStats")
     public String getCategoryStats(Model model) {
         model.addAttribute("categoryByDifficulty", questionService.countCategoriesByDifficulty());
         return "account/account-categorystats";
     }
-
 }
