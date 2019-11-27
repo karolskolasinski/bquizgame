@@ -25,16 +25,15 @@ public class AccountRoleService {
 
     public Set<AccountRole> getDefaultRoles() {
         Set<AccountRole> accountRoles = new HashSet<>();
-
         for (String role : defaultRoles) {
             Optional<AccountRole> accountRoleOptional = accountRoleRepository.findByName(role);
             accountRoleOptional.ifPresent(accountRoles::add);
         }
-
         return accountRoles;
     }
 
     public List<AccountRole> getAll() {
         return accountRoleRepository.findAll();
     }
+
 }

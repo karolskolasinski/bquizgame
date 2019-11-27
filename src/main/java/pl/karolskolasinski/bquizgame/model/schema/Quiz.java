@@ -18,11 +18,11 @@ public class Quiz {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)   // <-------- ??
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Question> questionSet;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "quiz", fetch = FetchType.EAGER)   // <-------- ??
+    @OneToMany(mappedBy = "quiz", fetch = FetchType.EAGER)
     private Set<UserQuiz> userQuizzes;
 }

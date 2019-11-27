@@ -11,6 +11,7 @@ import pl.karolskolasinski.bquizgame.model.userplays.UserAnswer;
 import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
 import pl.karolskolasinski.bquizgame.repository.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -100,35 +101,39 @@ public class QuizService {
     }
 
     private void playerScore(UserQuiz newUserQuiz, UserAnswer userAnswer) {
+        byte numberOfPlayers = newUserQuiz.getNumberOfPlayers();
+        @NotNull boolean correct = userAnswer.getAnswer().isCorrect();
+        @NotNull int scoreToAdd = userAnswer.getQuestion().getDifficulty();
+        String currentPlayer = newUserQuiz.getCurrentPlayer();
 
-        if (newUserQuiz.getNumberOfPlayers() == 1 && userAnswer.getAnswer().isCorrect()) {
-            newUserQuiz.setPlayer1Score(newUserQuiz.getPlayer1Score() + userAnswer.getQuestion().getDifficulty());
+        if (numberOfPlayers == 1 && correct) {
+            newUserQuiz.setPlayer1Score(newUserQuiz.getPlayer1Score() + scoreToAdd);
             quizSetupRepository.save(newUserQuiz);
-        } else if (newUserQuiz.getNumberOfPlayers() == 2 && userAnswer.getAnswer().isCorrect()) {
-            if (newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer1Name())) {
-                newUserQuiz.setPlayer1Score(newUserQuiz.getPlayer1Score() + userAnswer.getQuestion().getDifficulty());
+        } else if (numberOfPlayers == 2 && correct) {
+            if (currentPlayer.equals(newUserQuiz.getPlayer1Name())) {
+                newUserQuiz.setPlayer1Score(newUserQuiz.getPlayer1Score() + scoreToAdd);
             } else {
-                newUserQuiz.setPlayer2Score(newUserQuiz.getPlayer2Score() + userAnswer.getQuestion().getDifficulty());
+                newUserQuiz.setPlayer2Score(newUserQuiz.getPlayer2Score() + scoreToAdd);
             }
             quizSetupRepository.save(newUserQuiz);
-        } else if (newUserQuiz.getNumberOfPlayers() == 3 && userAnswer.getAnswer().isCorrect()) {
-            if (newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer1Name())) {
-                newUserQuiz.setPlayer1Score(newUserQuiz.getPlayer1Score() + userAnswer.getQuestion().getDifficulty());
-            } else if (newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer2Name())) {
-                newUserQuiz.setPlayer2Score(newUserQuiz.getPlayer2Score() + userAnswer.getQuestion().getDifficulty());
+        } else if (numberOfPlayers == 3 && correct) {
+            if (currentPlayer.equals(newUserQuiz.getPlayer1Name())) {
+                newUserQuiz.setPlayer1Score(newUserQuiz.getPlayer1Score() + scoreToAdd);
+            } else if (currentPlayer.equals(newUserQuiz.getPlayer2Name())) {
+                newUserQuiz.setPlayer2Score(newUserQuiz.getPlayer2Score() + scoreToAdd);
             } else {
-                newUserQuiz.setPlayer3Score(newUserQuiz.getPlayer3Score() + userAnswer.getQuestion().getDifficulty());
+                newUserQuiz.setPlayer3Score(newUserQuiz.getPlayer3Score() + scoreToAdd);
             }
             quizSetupRepository.save(newUserQuiz);
-        } else if (newUserQuiz.getNumberOfPlayers() == 4 && userAnswer.getAnswer().isCorrect()) {
-            if (newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer1Name())) {
-                newUserQuiz.setPlayer1Score(newUserQuiz.getPlayer1Score() + userAnswer.getQuestion().getDifficulty());
-            } else if (newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer2Name())) {
-                newUserQuiz.setPlayer2Score(newUserQuiz.getPlayer2Score() + userAnswer.getQuestion().getDifficulty());
-            } else if (newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer3Name())) {
-                newUserQuiz.setPlayer3Score(newUserQuiz.getPlayer3Score() + userAnswer.getQuestion().getDifficulty());
+        } else if (numberOfPlayers == 4 && correct) {
+            if (currentPlayer.equals(newUserQuiz.getPlayer1Name())) {
+                newUserQuiz.setPlayer1Score(newUserQuiz.getPlayer1Score() + scoreToAdd);
+            } else if (currentPlayer.equals(newUserQuiz.getPlayer2Name())) {
+                newUserQuiz.setPlayer2Score(newUserQuiz.getPlayer2Score() + scoreToAdd);
+            } else if (currentPlayer.equals(newUserQuiz.getPlayer3Name())) {
+                newUserQuiz.setPlayer3Score(newUserQuiz.getPlayer3Score() + scoreToAdd);
             } else {
-                newUserQuiz.setPlayer4Score(newUserQuiz.getPlayer4Score() + userAnswer.getQuestion().getDifficulty());
+                newUserQuiz.setPlayer4Score(newUserQuiz.getPlayer4Score() + scoreToAdd);
             }
             quizSetupRepository.save(newUserQuiz);
         }
@@ -223,7 +228,6 @@ public class QuizService {
     public List<ResultsDto> results(Long newUserQuizId) {
         UserQuiz newUserQuiz = quizSetupRepository.getOne(newUserQuizId);
         List<ResultsDto> results = new ArrayList<>();
-
         ResultsDto player1resuts = new ResultsDto();
         ResultsDto player2resuts = new ResultsDto();
         ResultsDto player3resuts = new ResultsDto();
@@ -231,58 +235,22 @@ public class QuizService {
 
         switch (newUserQuiz.getNumberOfPlayers()) {
             case 1:
-                player1resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer1Name()));
-                player1resuts.setName(newUserQuiz.getPlayer1Name());
-                player1resuts.setScore(newUserQuiz.getPlayer1Score());
-                results.add(player1resuts);
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player1resuts, newUserQuiz.getPlayer1Name(), newUserQuiz.getPlayer1Score());
                 break;
             case 2:
-                player1resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer1Name()));
-                player1resuts.setName(newUserQuiz.getPlayer1Name());
-                player1resuts.setScore(newUserQuiz.getPlayer1Score());
-                results.add(player1resuts);
-
-                player2resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer2Name()));
-                player2resuts.setName(newUserQuiz.getPlayer2Name());
-                player2resuts.setScore(newUserQuiz.getPlayer2Score());
-                results.add(player2resuts);
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player1resuts, newUserQuiz.getPlayer1Name(), newUserQuiz.getPlayer1Score());
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player2resuts, newUserQuiz.getPlayer2Name(), newUserQuiz.getPlayer2Score());
                 break;
             case 3:
-                player1resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer1Name()));
-                player1resuts.setName(newUserQuiz.getPlayer1Name());
-                player1resuts.setScore(newUserQuiz.getPlayer1Score());
-                results.add(player1resuts);
-
-                player2resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer2Name()));
-                player2resuts.setName(newUserQuiz.getPlayer2Name());
-                player2resuts.setScore(newUserQuiz.getPlayer2Score());
-                results.add(player2resuts);
-
-                player3resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer3Name()));
-                player3resuts.setName(newUserQuiz.getPlayer3Name());
-                player3resuts.setScore(newUserQuiz.getPlayer3Score());
-                results.add(player3resuts);
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player1resuts, newUserQuiz.getPlayer1Name(), newUserQuiz.getPlayer1Score());
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player2resuts, newUserQuiz.getPlayer2Name(), newUserQuiz.getPlayer2Score());
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player3resuts, newUserQuiz.getPlayer3Name(), newUserQuiz.getPlayer3Score());
                 break;
             case 4:
-                player1resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer1Name()));
-                player1resuts.setName(newUserQuiz.getPlayer1Name());
-                player1resuts.setScore(newUserQuiz.getPlayer1Score());
-                results.add(player1resuts);
-
-                player2resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer2Name()));
-                player2resuts.setName(newUserQuiz.getPlayer2Name());
-                player2resuts.setScore(newUserQuiz.getPlayer2Score());
-                results.add(player2resuts);
-
-                player3resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer3Name()));
-                player3resuts.setName(newUserQuiz.getPlayer3Name());
-                player3resuts.setScore(newUserQuiz.getPlayer3Score());
-                results.add(player3resuts);
-
-                player4resuts.setPlace(playerPlace(newUserQuizId, newUserQuiz.getPlayer4Name()));
-                player4resuts.setName(newUserQuiz.getPlayer4Name());
-                player4resuts.setScore(newUserQuiz.getPlayer4Score());
-                results.add(player4resuts);
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player1resuts, newUserQuiz.getPlayer1Name(), newUserQuiz.getPlayer1Score());
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player2resuts, newUserQuiz.getPlayer2Name(), newUserQuiz.getPlayer2Score());
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player3resuts, newUserQuiz.getPlayer3Name(), newUserQuiz.getPlayer3Score());
+                addPlayerResultsToResultsDtoList(newUserQuizId, results, player4resuts, newUserQuiz.getPlayer4Name(), newUserQuiz.getPlayer4Score());
                 break;
             default:
                 break;
@@ -290,4 +258,12 @@ public class QuizService {
         results.sort(Comparator.comparing(ResultsDto::getPlace));
         return results;
     }
+
+    private void addPlayerResultsToResultsDtoList(Long newUserQuizId, List<ResultsDto> results, ResultsDto playerResuts, String playerName, int playerScore) {
+        playerResuts.setPlace(playerPlace(newUserQuizId, playerName));
+        playerResuts.setName(playerName);
+        playerResuts.setScore(playerScore);
+        results.add(playerResuts);
+    }
+
 }

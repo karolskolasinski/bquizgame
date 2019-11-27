@@ -30,19 +30,17 @@ public class AccountService {
         this.accountRoleRepository = accountRoleRepository;
     }
 
-    /*Register*/
     public boolean register(Account account) {
         if (accountRepository.existsByUsername(account.getUsername())) {
             return false;
         }
-        //szyfrowanie hasła
+        /*password encryption*/
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setAccountRoles(accountRoleService.getDefaultRoles());
         accountRepository.save(account);
         return true;
     }
 
-    /*Remove*/
     public void remove(Long accountId) {
         if (accountRepository.existsById(accountId)) {
             Account account = accountRepository.getOne(accountId);
@@ -52,21 +50,17 @@ public class AccountService {
         }
     }
 
-    /*Reset password*/
     public void resetPassword(AccountPasswordResetRequest request) {
         if (accountRepository.existsById(request.getAccountId())) {
             Account account = accountRepository.getOne(request.getAccountId());
-
             account.setPassword(passwordEncoder.encode(request.getResetPassword()));
             accountRepository.save(account);
         }
     }
 
-    /*Edit roles*/
     public void editRoles(Long accountId, HttpServletRequest request) {
         if (accountRepository.existsById(accountId)) {
             Account account = accountRepository.getOne(accountId);
-            // kluczem w form parameters jest nazwa parametru th:name
             Map<String, String[]> formParameters = request.getParameterMap();
             Set<AccountRole> newCollectionOfRoles = new HashSet<>();
             for (String roleName : formParameters.keySet()) {
@@ -102,4 +96,5 @@ public class AccountService {
     public Page<Account> getPage(PageRequest of) {
         return accountRepository.findAll(of);
     }
+
 }

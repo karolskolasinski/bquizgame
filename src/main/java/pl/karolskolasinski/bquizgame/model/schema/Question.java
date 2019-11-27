@@ -37,11 +37,11 @@ public class Question {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)   // <-------- ??
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
     private Set<Answer> answers;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)   // <-------- ??
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
     private Set<UserAnswer> userAnswers;
 }

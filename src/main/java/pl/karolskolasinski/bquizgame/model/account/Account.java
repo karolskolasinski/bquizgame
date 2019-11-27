@@ -57,4 +57,3 @@ public class Account {
         return builder.toString().substring(0, builder.length() - 2);
     }
 }
-

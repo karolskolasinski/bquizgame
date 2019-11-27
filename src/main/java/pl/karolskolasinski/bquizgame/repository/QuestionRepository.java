@@ -32,5 +32,4 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
 
     @Query(value = "SELECT bquizgame.question.category AS category, bquizgame.question.difficulty AS difficulty, count(*) AS count FROM bquizgame.question GROUP BY bquizgame.question.difficulty, bquizgame.question.category ORDER BY bquizgame.question.category, bquizgame.question.difficulty", nativeQuery = true)
     List<ICategoryStatsDto> countCategoriesByDifficulty();
-
 }

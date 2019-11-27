@@ -27,11 +27,9 @@ public class AuthenticationService implements UserDetailsService {
         Optional<Account> optionalAccount = accountRepository.findByUsername(username);
         if (optionalAccount.isPresent()) {
             Account account = optionalAccount.get();
-
             String[] roles = account.getAccountRoles()
                     .stream()
                     .map(AccountRole::getName).toArray(String[]::new);
-
             return User.builder()
                     .username(account.getUsername())
                     .password(account.getPassword())
@@ -40,4 +38,5 @@ public class AuthenticationService implements UserDetailsService {
         }
         throw new UsernameNotFoundException("Username not found.");
     }
+
 }

@@ -2,7 +2,6 @@ package pl.karolskolasinski.bquizgame.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.karolskolasinski.bquizgame.model.dto.ICategoryStatsDto;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.model.schema.Quiz;
 import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
@@ -41,7 +40,7 @@ public class QuizSetupService {
     }
 
     /*Set names to UserQuiz*/
-    public UserQuiz setUsernamesToUserQuizByQuizId(Long newUserQuizId, String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {
+    public void setUsernamesToUserQuizByQuizId(Long newUserQuizId, String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {
         UserQuiz userQuiz = returnUserQuizById(newUserQuizId);
         userQuiz.setPlayer1Name(usernamePlayer1);
         userQuiz.setPlayer2Name(usernamePlayer2);
@@ -49,7 +48,6 @@ public class QuizSetupService {
         userQuiz.setPlayer4Name(usernamePlayer4);
         userQuiz.setCurrentPlayer(usernamePlayer1);
         quizSetupRepository.save(userQuiz);
-        return userQuiz;
     }
 
     /*Set all categories to newUserQuiz without saving to database*/

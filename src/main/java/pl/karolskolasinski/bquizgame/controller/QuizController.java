@@ -86,5 +86,3 @@ public class QuizController {
         return "quiz/quiz-summary";
     }
 }
-
-

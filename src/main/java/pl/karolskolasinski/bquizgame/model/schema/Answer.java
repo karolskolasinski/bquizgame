@@ -30,6 +30,6 @@ public class Answer {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "answer", fetch = FetchType.EAGER)   // <-------- ??
+    @OneToMany(mappedBy = "answer", fetch = FetchType.EAGER)
     private Set<UserAnswer> userAnswers;
 }
