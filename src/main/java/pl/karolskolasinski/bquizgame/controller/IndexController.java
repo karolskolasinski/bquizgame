@@ -21,6 +21,7 @@ public class IndexController {
         this.quizSetupService = quizSetupService;
     }
 
+    /*Dispaly index with statistisc GET*/
     @GetMapping("/")
     public String index(Model model) {
         /*Last week statistics*/
@@ -43,11 +44,13 @@ public class IndexController {
         return "index/index";
     }
 
+    /*Login GET*/
     @GetMapping("/login")
     public String login() {
         return "account/login-form";
     }
 
+    /*Start new quiz GET*/
     @GetMapping("quizSetup/numberofplayers")
     public String play() {
         return "quizsetup/quizsetup-numberofplayers";

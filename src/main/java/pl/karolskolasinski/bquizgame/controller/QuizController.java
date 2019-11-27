@@ -34,15 +34,17 @@ public class QuizController {
         this.quizSetupService = quizSetupService;
     }
 
+    /*Board POST*/
     @PostMapping("/board")
     public String board(Model model, Long newUserQuizId, HttpServletRequest request) {
         UserQuiz userQuiz = quizSetupService.addChoosedCategoriesToNewUserQuiz(newUserQuizId, request);
         model.addAttribute("categories", quizService.categories(newUserQuizId));
-        model.addAttribute("newUserQuiz", quizSetupService.addChoosedCategoriesToNewUserQuiz(newUserQuizId, request));
+        model.addAttribute("newUserQuiz", userQuiz);
         model.addAttribute("currentPlayerPlace", quizService.playerPlace(newUserQuizId, userQuiz.getCurrentPlayer()));
         return "quiz/quiz-board";
     }
 
+    /*Pick question GET*/
     @GetMapping("/pickQuestion/{newUserQuizId}/{difficulty}/{category}")
     public String pickQuestion(Model model, @PathVariable(name = "newUserQuizId") Long newUserQuizId, @PathVariable(name = "difficulty") int difficulty, @PathVariable(name = "category") String category) {
         Question currentQuestion = quizService.pickQuestion(newUserQuizId, difficulty, category);
@@ -55,16 +57,19 @@ public class QuizController {
         return "quiz/quiz-currentquestion";
     }
 
+    /*Question result GET*/
     @GetMapping("/pickQuestionResult/{newUserQuizId}/{answerId}/{currentQuestionId}/{questionAnswerOrder}")
     public String pickQuestionResult(Model model, @PathVariable(name = "newUserQuizId") Long newUserQuizId, @PathVariable(name = "answerId") Long answerId, @PathVariable(name = "currentQuestionId") Long currentQuestionId, @PathVariable(name = "questionAnswerOrder") String questionAnswerOrder) {
+        List<Answer> orderedAnswers = quizService.getOrderedAnswers(questionAnswerOrder);
         model.addAttribute("userAnswer", quizService.setPlayerScoreAndReturnUserAnswer(newUserQuizId, answerId, currentQuestionId));
-        model.addAttribute("orderedQuestionAnswers", quizService.getOrderedAnswers(questionAnswerOrder));
-        model.addAttribute("correct_id", quizService.getCorrectId(quizService.getOrderedAnswers(questionAnswerOrder)));
+        model.addAttribute("orderedQuestionAnswers", orderedAnswers);
+        model.addAttribute("correct_id", quizService.getCorrectId(orderedAnswers));
         model.addAttribute("selected_id", answerId);
         model.addAttribute("currentPlayerPlace", quizService.playerPlace(newUserQuizId, quizSetupService.returnUserQuizById(newUserQuizId).getCurrentPlayer()));
         return "quiz/quiz-currentquestionresult";
     }
 
+    /*Board - score counter GET*/
     @GetMapping("/board/{newUserQuizId}")
     public String scoreCounter(Model model, @PathVariable(name = "newUserQuizId") Long newUserQuizId) {
         model.addAttribute("newUserQuiz", quizService.setNextPlayerAndReturnNewUserQuiz(newUserQuizId));
@@ -74,6 +79,7 @@ public class QuizController {
         return "quiz/quiz-board";
     }
 
+    /*Quiz summary*/
     @GetMapping("/summary/{newUserQuizId}")
     public String summary(Model model, @PathVariable(name = "newUserQuizId") Long newUserQuizId) {
         model.addAttribute("results", quizService.results(newUserQuizId));
