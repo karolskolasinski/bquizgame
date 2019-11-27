@@ -62,25 +62,24 @@ public class AccountController {
     /*Display My profile GET*/
     @GetMapping("/myProfile")
     public String myProfile(Model model, Principal principal) {
-        Optional<Account> accountOptional = accountService.findByUsername(principal.getName());
-        if (accountOptional.isPresent()) {
-            model.addAttribute("account", accountOptional.get());
+        Account account = accountService.findByUsername(principal.getName());
+        if (account.getId() != null) {
+            model.addAttribute("account", account);
             return "account/account-details";
+        } else {
+            return "redirect:/";
         }
-        return "redirect:/";
     }
 
     /*Reset password GET*/
     @GetMapping("/resetPassword/{accountId}")
     public String resetPassword(Model model, Principal principal, @PathVariable(name = "accountId") Long accountId) {
-        Optional<Account> accountOptional = accountService.findById(accountId);
-        if (accountOptional.isPresent()) {
-            if (accountOptional.get().getUsername().equals(principal.getName())) {
-                model.addAttribute("account", accountOptional.get());
-                return "account/account-resetpassword";
-            }
+        Account account = accountService.findById(accountId);
+        if (account.getUsername().equals(principal.getName())) {
+            model.addAttribute("account", account);
+            return "account/account-resetpassword";
         }
-        return "redirect:/account/myProfile";
+        return "redirect:/";
     }
 
     /*Reset password POST*/
@@ -92,14 +91,13 @@ public class AccountController {
 
     @GetMapping("/myStats")
     public String getMyPlayedQuizzes(Model model, Principal principal) {
-        Optional<Account> loggedAccount = accountService.findByUsername(principal.getName());
-        if (loggedAccount.isPresent()) {
-            Account account = loggedAccount.get();
-            model.addAttribute("playedQuizzes", quizSetupService.playedQuizesByAccountId(account.getId()));
-            model.addAttribute("lastQuizDateTime", quizSetupService.lastQuizDateTimeByAccountId(account.getId()));
+        Long accountId = accountService.findByUsername(principal.getName()).getId();
+        if (accountId != null) {
+            model.addAttribute("playedQuizzes", quizSetupService.playedQuizesByAccountId(accountId));
+            model.addAttribute("lastQuizDateTime", quizSetupService.lastQuizDateTimeByAccountId(accountId));
             model.addAttribute("maxScoreByUsername", quizSetupService.maxScoreByUsername(principal.getName()));
             return "account/account-mystats";
         }
-        return "account/account-mystats";
+        return "redirect:/";
     }
 }

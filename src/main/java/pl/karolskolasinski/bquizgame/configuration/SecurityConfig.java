@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/quizSetup/**").permitAll()
                 .antMatchers("/account/**").authenticated()
                 .antMatchers("/editor/**").hasAnyRole("ADMIN", "MODERATOR")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .and()
                     .formLogin()
                         .loginPage("/login")

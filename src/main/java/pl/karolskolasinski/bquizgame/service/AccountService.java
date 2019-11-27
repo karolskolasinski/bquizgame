@@ -81,17 +81,18 @@ public class AccountService {
         }
     }
 
-    /*Find*/
     public List<Account> findAll() {
         return accountRepository.findAll();
     }
 
-    public Optional<Account> findById(Long accountId) {
-        return accountRepository.findById(accountId);
+    public Account findById(Long accountId) {
+        Optional<Account> accountOptional = accountRepository.findById(accountId);
+        return accountOptional.orElseGet(Account::new);
     }
 
-    public Optional<Account> findByUsername(String username) {
-        return accountRepository.findByUsername(username);
+    public Account findByUsername(String username) {
+        Optional<Account> optionalAccount = accountRepository.findByUsername(username);
+        return optionalAccount.orElseGet(Account::new);
     }
 
     public boolean existByEmail(String emial) {

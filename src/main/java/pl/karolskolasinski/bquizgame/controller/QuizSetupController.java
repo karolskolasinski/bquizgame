@@ -46,10 +46,11 @@ public class QuizSetupController {
     public String setUsernames(Model model, Long newUserQuizId, String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {
         if (quizSetupService.duplicates(usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4)) {
             return usernamesDuplicateError(model, newUserQuizId);
+        } else {
+            model.addAttribute("newUserQuiz", quizSetupService.setUsernamesToUserQuizByQuizId(newUserQuizId, usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4)); //todo czy potrzebny ten model?
+            model.addAttribute("newUserQuiz", quizSetupService.setCategoriesToUserQuizByQuizId(newUserQuizId, questionService.returnAllCategories()));
+            return "quizsetup/quizsetup-categories";
         }
-        model.addAttribute("newUserQuiz", quizSetupService.setUsernamesToUserQuizByQuizId(newUserQuizId, usernamePlayer1, usernamePlayer2, usernamePlayer3, usernamePlayer4)); //todo czy potrzebny ten model?
-        model.addAttribute("newUserQuiz", quizSetupService.setCategoriesToUserQuizByQuizId(newUserQuizId, questionService.returnAllCategories()));
-        return "quizsetup/quizsetup-categories";
     }
 
     private String usernamesDuplicateError(Model model, Long newUserQuizId) {
@@ -61,8 +62,7 @@ public class QuizSetupController {
     @GetMapping("/authQuiz")
     public String authenticatedQuiz(Model model, Principal principal, UserQuiz newUserQuiz) {
         quizSetupService.createUserQuizWithGivenNumberOfPlayers((byte) 1, newUserQuiz);
-        Optional<Account> accountByUsername = accountService.findByUsername(principal.getName());
-        accountByUsername.ifPresent(newUserQuiz::setAccount);
+        newUserQuiz.setAccount(accountService.findByUsername(principal.getName()));
         model.addAttribute("newUserQuiz", quizSetupService.setCategoriesToUserQuizByQuizId(newUserQuiz.getId(), questionService.returnAllCategories()));
         model.addAttribute("newUserQuiz", quizSetupService.setUsernamesToUserQuizByQuizId(newUserQuiz.getId(), principal.getName(), null, null, null)); //todo czy potrzebny ten model?
         model.addAttribute("newUserQuiz", quizSetupService.setCategoriesToUserQuizByQuizId(newUserQuiz.getId(), questionService.returnAllCategories()));
