@@ -28,12 +28,15 @@ public class QuestionService {
         return questionRepository.findAllCategories();
     }
 
-    public void bindAnswersWithQuestion(Question question, AnswersContentDto answersContent) {
+    public void bindAnswersWithQuestion(Question question, HttpServletRequest request) {
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        String[] answersContents = parameterMap.get("answersContent");
         Set<Answer> answers = new HashSet<>();
-        Answer answer1 = returnAnswerWithContent(answersContent.getAnswer1Content(), true);
-        Answer answer2 = returnAnswerWithContent(answersContent.getAnswer2Content(), false);
-        Answer answer3 = returnAnswerWithContent(answersContent.getAnswer3Content(), false);
-        Answer answer4 = returnAnswerWithContent(answersContent.getAnswer4Content(), false);
+        Answer answer1 = returnAnswerWithContent(answersContents[0], true);
+        Answer answer2 = returnAnswerWithContent(answersContents[1], false);
+        Answer answer3 = returnAnswerWithContent(answersContents[2], false);
+        Answer answer4 = returnAnswerWithContent(answersContents[3], false);
+
         answers.add(answer1);
         answers.add(answer2);
         answerRepository.save(answer1);
@@ -47,31 +50,22 @@ public class QuestionService {
             answerRepository.save(answer4);
         }
         question.setAnswers(answers);
-        answer1.setQuestion(question);
-        answer2.setQuestion(question);
-        answer3.setQuestion(question);
-        answer4.setQuestion(question);
+        setQuestionToAnswer(question, answer1);
+        setQuestionToAnswer(question, answer2);
+        setQuestionToAnswer(question, answer3);
+        setQuestionToAnswer(question, answer4);
     }
 
     private Answer returnAnswerWithContent(String content, boolean correct) {
         Answer answer = new Answer();
-        answer.setAnswerContent(content);
+        setAnswerWithContent(content, answer);
         answer.setCorrect(correct);
         return answer;
     }
 
     public void setDifficultyAndSave(Question question, HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
-        for (Map.Entry<String, String[]> stringEntry : parameterMap.entrySet()) {
-            if (stringEntry.getKey().equals("0") ||
-                    stringEntry.getKey().equals("1") ||
-                    stringEntry.getKey().equals("2") ||
-                    stringEntry.getKey().equals("3") ||
-                    stringEntry.getKey().equals("4")) {
-                String difficulty = Arrays.toString(stringEntry.getValue());
-                question.setDifficulty(Integer.parseInt(difficulty.substring(1, difficulty.length() - 1)));
-            }
-        }
+        setDifficulty(question,parameterMap);
         questionRepository.save(question);
     }
 
@@ -97,21 +91,87 @@ public class QuestionService {
     }
 
     public AnswersContentDto extractAnswersContent(Question questionById) {
-        Set<Answer> answers = questionById.getAnswers();
-        List<String> answersContents = new ArrayList<>();
-        for (Answer answer : answers) {
-            answersContents.add(answer.getAnswerContent());
-        }
+        List<Answer> answerList = getSortedAnswersList(questionById);
         AnswersContentDto answersContentDto = new AnswersContentDto();
-        answersContentDto.setAnswer1Content(answersContents.get(0));
-        answersContentDto.setAnswer2Content(answersContents.get(1));
-        answersContentDto.setAnswer3Content(answersContents.get(2));
-        answersContentDto.setAnswer4Content(answersContents.get(3));
+        answersContentDto.setAnswer1Content(getAnswer(answerList, 0).getAnswerContent());
+        answersContentDto.setAnswer2Content(getAnswer(answerList, 1).getAnswerContent());
+        if (answerList.size() == 3) {
+            answersContentDto.setAnswer3Content(getAnswer(answerList, 2).getAnswerContent());
+        }
+        if (answerList.size() == 4) {
+            answersContentDto.setAnswer3Content(getAnswer(answerList, 2).getAnswerContent());
+            answersContentDto.setAnswer4Content(getAnswer(answerList, 3).getAnswerContent());
+        }
         return answersContentDto;
+    }
+
+    private List<Answer> getSortedAnswersList(Question questionById) {
+        List<Answer> answerList = new ArrayList<>(questionById.getAnswers());
+        answerList.sort(Comparator.comparing(Answer::getId));
+        return answerList;
     }
 
     public List<ICategoryStatsDto> countCategoriesByDifficulty() {
         return questionRepository.countCategoriesByDifficulty();
+    }
+
+    public void update(Question question, HttpServletRequest request) {
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        updateAnswers(question, parameterMap);
+        updateQuestion(question, parameterMap);
+    }
+
+    private void updateAnswers(Question question, Map<String, String[]> parameterMap) {
+        List<Answer> answerList = getSortedAnswersList(questionRepository.getOne(question.getId()));
+        checkNullableAnswer(answerList, parameterMap.get("answer1Content")[0], question, 1);
+        checkNullableAnswer(answerList, parameterMap.get("answer2Content")[0], question, 2);
+        checkNullableAnswer(answerList, parameterMap.get("answer3Content")[0], question, 3);
+        checkNullableAnswer(answerList, parameterMap.get("answer4Content")[0], question, 4);
+    }
+
+    private void updateQuestion(Question question, Map<String, String[]> parameterMap) {
+        setDifficulty(question, parameterMap);
+        question.setContent(parameterMap.get("content")[0]);
+        questionRepository.save(question);
+    }
+
+    private void setDifficulty(Question question, Map<String, String[]> parameterMap) {
+        for (int i = 0; i <= 4; i++) {
+            if (parameterMap.containsKey("" + i)) {
+                question.setDifficulty(Integer.parseInt(parameterMap.get("" + i)[0]));
+            }
+        }
+    }
+
+    private void checkNullableAnswer(List<Answer> answerList, String answerContent, Question question, int i) {
+        if (!answerContent.trim().isEmpty()) {
+            if (answerList.size() >= i) {
+                Answer answer = getAnswer(answerList, i - 1);
+                setAnswerWithContent(answerContent, answer);
+                answerRepository.save(answer);
+            } else {
+                Answer newAnswer = new Answer();
+                setQuestionToAnswer(question, newAnswer);
+                setAnswerWithContent(answerContent, newAnswer);
+                answerRepository.save(newAnswer);
+            }
+        } else {
+            if (answerList.size() >= i) {
+                answerRepository.delete(getAnswer(answerList, i - 1));
+            }
+        }
+    }
+
+    private void setQuestionToAnswer(Question question, Answer newAnswer) {
+        newAnswer.setQuestion(question);
+    }
+
+    private void setAnswerWithContent(String answerContent, Answer answer) {
+        answer.setAnswerContent(answerContent);
+    }
+
+    private Answer getAnswer(List<Answer> answerList, int i) {
+        return answerList.get(i);
     }
 
 }

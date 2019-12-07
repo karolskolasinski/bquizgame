@@ -96,8 +96,7 @@ public class QuizSetupService {
     /*Shuffling questions, sublist to 4 questions on the list, add them to Quiz questions list*/
     private void shufflingThanSublistingAndAddingQuestionsToList(List<Question> allDifficultyByChoosedCategory, List<Question> questionsByChoosedCategories) {
         Collections.shuffle(allDifficultyByChoosedCategory);
-        allDifficultyByChoosedCategory = allDifficultyByChoosedCategory.subList(0, 1);
-        questionsByChoosedCategories.addAll(allDifficultyByChoosedCategory);
+        questionsByChoosedCategories.addAll(allDifficultyByChoosedCategory.subList(0, 1));
     }
 
     public boolean duplicates(String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {

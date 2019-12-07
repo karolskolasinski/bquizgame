@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.karolskolasinski.bquizgame.model.dto.AnswersContentDto;
 import pl.karolskolasinski.bquizgame.model.dto.SearchQuestionDto;
+import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.service.QuestionService;
 
@@ -25,19 +26,19 @@ public class EditorController {
 
     /*Add new question GET*/
     @GetMapping("/add")
-    public String addNewQuestion(Model model, Question question, AnswersContentDto answersContent) {
+    public String addNewQuestion(Model model, Question question, AnswersContentDto answersContentDto) {
         model.addAttribute("newQuestion", question);
-        model.addAttribute("answersContent", answersContent);
+        model.addAttribute("answersContentDto", answersContentDto);
         model.addAttribute("categories", questionService.returnAllCategories());
         return "editor/editor-add";
     }
 
     /*Add new question POST*/
     @PostMapping("/add")
-    public String addNewQuestion(Question question, AnswersContentDto answersContent, HttpServletRequest request) {
-        questionService.bindAnswersWithQuestion(question, answersContent);
+    public String addNewQuestion(Model model, SearchQuestionDto searchQuestion, Question question, HttpServletRequest request) {
+        questionService.bindAnswersWithQuestion(question, request);
         questionService.setDifficultyAndSave(question, request);
-        return "redirect:" + request.getHeader("referer");
+        return chooseCategoryAndDifficulty(model, searchQuestion);
     }
 
     /*Choose category and difficulty to edit GET*/
@@ -64,10 +65,17 @@ public class EditorController {
     @GetMapping("/edit/{questionId}")
     public String update(Model model, @PathVariable(name = "questionId") Long questionId) {
         Question questionById = questionService.getOneById(questionId);
-        model.addAttribute("answersContent", questionService.extractAnswersContent(questionById));
+        model.addAttribute("answersContentDto", questionService.extractAnswersContent(questionById));
         model.addAttribute("newQuestion", questionById);
         model.addAttribute("categories", questionService.returnAllCategories());
-        return "editor/editor-add";
+        return "editor/editor-edit";
+    }
+
+    /*Update question POST*/
+    @PostMapping("/edit")
+    public String update(Question question, HttpServletRequest request) {
+        questionService.update(question, request);
+        return "redirect:" + request.getHeader("referer");
     }
 
     /*Category statistics GET*/

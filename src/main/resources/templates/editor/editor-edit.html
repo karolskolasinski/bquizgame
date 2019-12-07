@@ -13,14 +13,14 @@
 
 <div class="container">
     <div class="row col-md-12">
-        <h1 class="display-4 mt-4 mb-3 border-top pt-4">Dodaj pytanie</h1>
+        <h1 class="display-4 mt-4 mb-3 border-top pt-4">Edytuj pytanie</h1>
     </div>
 
     <div class="card-deck mb-3">
         <div class="col-md-12">
             <div class="card mb-4 shadow-sm">
                 <div class="card-body text-left">
-                    <form th:action="@{/editor/add}" method="post" th:object="${newQuestion}">
+                    <form th:action="@{/editor/edit}" method="post" th:object="${newQuestion}">
                         <input type="hidden" th:field="*{id}" th:value="*{id}"/>
 
                         <!--Question-->
@@ -79,16 +79,34 @@
                         </div>
 
                         <!--Answers-->
-                        <div class="col-md-12 pb-4" th:each="answerNumber: ${#numbers.sequence(1, 4)}"
-                             th:object="${answersContentDto}">
-                            <label for="answer" class="small">Odpowiedź <span th:text="${answerNumber}"></span>
-                                <span th:if="${answerNumber == 1}" class="alert-success">(poprawna)</span>
-                                <span th:if="${answerNumber > 1}" class="alert-danger">(niepoprawna)</span>
-                            </label>
-                            <input th:if="${answerNumber <= 2}" class="form-control" type="text" id="answer"
-                                   th:field="*{answersContent}" th:required="required">
-                            <input th:if="${answerNumber > 2}" class="form-control" type="text" id="answer"
-                                   th:field="*{answersContent}">
+                        <div class="col-md-12 pb-4">
+                            <label for="answer1" class="small">Odpowiedź 1<span
+                                    class="alert-success">(poprawna)</span>:</label>
+                            <input class="form-control" type="text" id="answer1"
+                                   th:field="${answersContentDto.answer1Content}"
+                                   th:required="required">
+                        </div>
+
+                        <div class="col-md-12 pb-4">
+                            <label for="answer2" class="small">Odpowiedź 2 <span
+                                    class="alert-danger">(niepoprawna)</span>:</label>
+                            <input class="form-control" type="text" id="answer2"
+                                   th:field="${answersContentDto.answer2Content}"
+                                   th:required="required">
+                        </div>
+
+                        <div class="col-md-12 pb-4">
+                            <label for="answer3" class="small">Odpowiedź 3 <span
+                                    class="alert-danger">(niepoprawna)</span>:</label>
+                            <input class="form-control" type="text" id="answer3"
+                                   th:field="${answersContentDto.answer3Content}">
+                        </div>
+
+                        <div class="col-md-12 pb-4">
+                            <label for="answer4" class="small">Odpowiedź 4 <span
+                                    class="alert-danger">(niepoprawna)</span>:</label>
+                            <input class="form-control" type="text" id="answer4"
+                                   th:field="${answersContentDto.answer4Content}">
                         </div>
 
                         <!--Reference-->
@@ -100,7 +118,7 @@
 
                         <!--Button-->
                         <div class="col-md-12 pt-4 text-right">
-                            <button type="submit" class="btn btn-outline-warning">Dodaj</button>
+                            <button type="submit" class="btn btn-outline-warning">Zapisz</button>
                         </div>
                     </form>
 
