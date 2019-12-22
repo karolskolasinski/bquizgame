@@ -78,6 +78,13 @@ public class EditorController {
         return "redirect:" + request.getHeader("referer");
     }
 
+    /*Delete question GET*/
+    @GetMapping("/delete/{questionId}")
+    public String delete(HttpServletRequest request, @PathVariable(name = "questionId") Long questionId) {
+        questionService.deleteQuestion(questionId);
+        return "redirect:" + request.getHeader("referer");
+    }
+
     /*Category statistics GET*/
     @GetMapping("/categoryStats")
     public String getCategoryStats(Model model) {

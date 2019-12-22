@@ -174,4 +174,9 @@ public class QuestionService {
         return answerList.get(i);
     }
 
+    public void deleteQuestion(Long questionId) {
+        Question one = questionRepository.getOne(questionId);
+        one.getAnswers().forEach(answerRepository::delete);
+        questionRepository.delete(one);
+    }
 }
