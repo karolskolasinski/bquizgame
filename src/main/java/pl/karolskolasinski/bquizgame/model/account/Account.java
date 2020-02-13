@@ -3,7 +3,6 @@ package pl.karolskolasinski.bquizgame.model.account;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
 import pl.karolskolasinski.bquizgame.model.userplays.UserQuiz;
 
 import javax.persistence.*;
