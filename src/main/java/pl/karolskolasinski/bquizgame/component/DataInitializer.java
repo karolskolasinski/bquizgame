@@ -5,6 +5,7 @@ import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -81,8 +82,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
-        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
+//        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
+            File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
             BufferedReader reader = new BufferedReader(new FileReader(file));
             tryReadFromFileAndSaveToDatabase(file, reader);
             reader.close();
