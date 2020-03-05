@@ -25,7 +25,6 @@ import java.util.Objects;
 import java.util.Set;
 
 @Component
-@NoArgsConstructor
 public class DataInitializer implements ApplicationListener<ContextRefreshedEvent> {
 
     private AccountRepository accountRepository;
