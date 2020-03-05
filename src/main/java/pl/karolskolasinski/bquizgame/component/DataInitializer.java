@@ -8,16 +8,14 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 import pl.karolskolasinski.bquizgame.model.account.Account;
 import pl.karolskolasinski.bquizgame.model.account.AccountRole;
 import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.repository.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -80,8 +78,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         }
     }
 
-    private void addDefaultQuestions() {
-        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
+    private void addDefaultQuestions() throws FileNotFoundException {
+//        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
+        File file = ResourceUtils.getFile("questions/questions_answers.html");
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             tryReadFromFileAndSaveToDatabase(file, reader);
