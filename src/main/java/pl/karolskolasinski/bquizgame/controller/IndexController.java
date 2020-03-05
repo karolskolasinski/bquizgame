@@ -3,11 +3,13 @@ package pl.karolskolasinski.bquizgame.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.karolskolasinski.bquizgame.component.DataInitializer;
 import pl.karolskolasinski.bquizgame.service.QuizSetupService;
 
+import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.Objects;
 
@@ -26,7 +28,7 @@ public class IndexController {
 
     /*Dispaly index with statistisc GET*/
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model) throws FileNotFoundException {
         /*Last week statistics*/
         model.addAttribute("gamesPlayedLastWeek", quizSetupService.gamesPlayedLastWeek());
         model.addAttribute("percentageOfCorrectAnswersLastWeek", decimalFormat.format(quizSetupService.correctAnswersLastWeek() * 100 / quizSetupService.allAnswersLastWeek()));
@@ -44,7 +46,8 @@ public class IndexController {
         model.addAttribute("percentageOfCorrectAnswersAll", decimalFormat.format(quizSetupService.correctAnswersAll() * 100 / quizSetupService.allAnswersAll()));
         model.addAttribute("bestScoreAll", quizSetupService.bestScoreAll());
 
-        return Objects.requireNonNull(classLoader.getResource("index/index")).getFile();
+        return "index/index";
+//        return Objects.requireNonNull(classLoader.getResource("index/index")).getFile();
     }
 
     /*Login GET*/
