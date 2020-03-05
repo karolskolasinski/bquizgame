@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -33,15 +34,17 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
     private ClassLoader classLoader = this.getClass().getClassLoader();
+    private ResourceLoader resourceLoader;
 
 
     @Autowired
-    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
+    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository, ResourceLoader resourceLoader) {
         this.accountRepository = accountRepository;
         this.accountRoleRepository = accountRoleRepository;
         this.passwordEncoder = passwordEncoder;
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
+        this.resourceLoader = resourceLoader;
     }
 
     @Override
@@ -83,8 +86,10 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     private void addDefaultQuestions() {
 //        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
+//        File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
         try {
-            File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
+            File file = resourceLoader.getResource("classpath:questions/questions_answers.html").getFile();
+            System.err.println("\n\n\n\n\n\n\n\nLOADED???\n\n\n\n\n\n\n\n");
             BufferedReader reader = new BufferedReader(new FileReader(file));
             tryReadFromFileAndSaveToDatabase(file, reader);
             reader.close();
