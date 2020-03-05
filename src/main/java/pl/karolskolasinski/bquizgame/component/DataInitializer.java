@@ -31,7 +31,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private PasswordEncoder passwordEncoder;
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
-    private ClassLoader classLoader = DataInitializer.class.getClassLoader();
+    private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
 
     @Autowired
