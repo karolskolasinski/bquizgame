@@ -19,7 +19,6 @@ public class IndexController {
 
     private final QuizSetupService quizSetupService;
     private DecimalFormat decimalFormat = new DecimalFormat("##.##");
-    private ClassLoader classLoader = IndexController.class.getClassLoader();
 
     @Autowired
     public IndexController(QuizSetupService quizSetupService) {
@@ -28,7 +27,7 @@ public class IndexController {
 
     /*Dispaly index with statistisc GET*/
     @GetMapping("/")
-    public String index(Model model) throws FileNotFoundException {
+    public String index(Model model) {
         /*Last week statistics*/
         model.addAttribute("gamesPlayedLastWeek", quizSetupService.gamesPlayedLastWeek());
         model.addAttribute("percentageOfCorrectAnswersLastWeek", decimalFormat.format(quizSetupService.correctAnswersLastWeek() * 100 / quizSetupService.allAnswersLastWeek()));
@@ -47,7 +46,6 @@ public class IndexController {
         model.addAttribute("bestScoreAll", quizSetupService.bestScoreAll());
 
         return "index/index";
-//        return Objects.requireNonNull(classLoader.getResource("index/index")).getFile();
     }
 
     /*Login GET*/
