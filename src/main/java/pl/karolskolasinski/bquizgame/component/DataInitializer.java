@@ -32,6 +32,8 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
 //    private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+    private ClassLoader classLoader = DataInitializer.class.getClassLoader();
+
 
     @Autowired
     public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
@@ -80,7 +82,6 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
-        ClassLoader classLoader = DataInitializer.class.getClassLoader();
         File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));

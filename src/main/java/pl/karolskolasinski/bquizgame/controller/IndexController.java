@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.karolskolasinski.bquizgame.component.DataInitializer;
 import pl.karolskolasinski.bquizgame.service.QuizSetupService;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 @Controller
 @RequestMapping(path = "/")
@@ -15,6 +17,7 @@ public class IndexController {
 
     private final QuizSetupService quizSetupService;
     private DecimalFormat decimalFormat = new DecimalFormat("##.##");
+    private ClassLoader classLoader = IndexController.class.getClassLoader();
 
     @Autowired
     public IndexController(QuizSetupService quizSetupService) {
@@ -26,22 +29,22 @@ public class IndexController {
     public String index(Model model) {
         /*Last week statistics*/
         model.addAttribute("gamesPlayedLastWeek", quizSetupService.gamesPlayedLastWeek());
-        model.addAttribute("percentageOfCorrectAnswersLastWeek", decimalFormat.format(quizSetupService.correctAnswersLastWeek() *100 / quizSetupService.allAnswersLastWeek()));
+        model.addAttribute("percentageOfCorrectAnswersLastWeek", decimalFormat.format(quizSetupService.correctAnswersLastWeek() * 100 / quizSetupService.allAnswersLastWeek()));
         model.addAttribute("bestScoreLastWeek", quizSetupService.bestScoreLastWeek());
         model.addAttribute("bestUserLastWeek", quizSetupService.bestUserLastWeek());
 
         /*Last month statistics*/
         model.addAttribute("gamesPlayedLastMonth", quizSetupService.gamesPlayedLastMonth());
-        model.addAttribute("percentageOfCorrectAnswersLastMonth", decimalFormat.format(quizSetupService.correctAnswersLastMonth() *100 / quizSetupService.allAnswersLastMonth()));
+        model.addAttribute("percentageOfCorrectAnswersLastMonth", decimalFormat.format(quizSetupService.correctAnswersLastMonth() * 100 / quizSetupService.allAnswersLastMonth()));
         model.addAttribute("bestScoreLastMonth", quizSetupService.bestScoreLastMonth());
         model.addAttribute("bestUserLastMonth", quizSetupService.bestUserLastMonth());
 
         /*Last month statistics*/
         model.addAttribute("gamesPlayedAll", quizSetupService.gamesPlayedAll());
-        model.addAttribute("percentageOfCorrectAnswersAll", decimalFormat.format(quizSetupService.correctAnswersAll() *100 / quizSetupService.allAnswersAll()));
+        model.addAttribute("percentageOfCorrectAnswersAll", decimalFormat.format(quizSetupService.correctAnswersAll() * 100 / quizSetupService.allAnswersAll()));
         model.addAttribute("bestScoreAll", quizSetupService.bestScoreAll());
 
-        return "index/index";
+        return Objects.requireNonNull(classLoader.getResource("index/index")).getFile();
     }
 
     /*Login GET*/
