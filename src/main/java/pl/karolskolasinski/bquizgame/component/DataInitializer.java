@@ -1,5 +1,6 @@
 package pl.karolskolasinski.bquizgame.component;
 
+import lombok.NoArgsConstructor;
 import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -22,6 +23,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Component
+@NoArgsConstructor
 public class DataInitializer implements ApplicationListener<ContextRefreshedEvent> {
 
     private AccountRepository accountRepository;
@@ -29,7 +31,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private PasswordEncoder passwordEncoder;
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
-    private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+//    private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
     @Autowired
     public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
@@ -78,7 +80,8 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
-        File file = new File(classLoader.getResource("questions/questions_answers.html").getFile());
+        ClassLoader classLoader = DataInitializer.class.getClassLoader();
+        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             tryReadFromFileAndSaveToDatabase(file, reader);
