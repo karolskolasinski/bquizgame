@@ -81,8 +81,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
-//        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
-        File file = new File(getClass().getResource("questions/questions_answers.html").getFile());
+        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             tryReadFromFileAndSaveToDatabase(file, reader);
