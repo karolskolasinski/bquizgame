@@ -49,7 +49,11 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addDefaultRole("MODERATOR");
         addDefaultUser("admin", "admin", "admin@admin.com", "ADMIN", "USER");
         addDefaultUser("user", "user", "user@user.com", "USER");
-        addDefaultQuestions();
+        try {
+            addDefaultQuestions();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void addDefaultUser(String username, String password, String email, String... roles) {
