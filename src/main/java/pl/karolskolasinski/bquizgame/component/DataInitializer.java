@@ -20,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -85,7 +86,10 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
-        File file = new File("../../main/resources/questions/questions_answers.html");
+        URL fileUrl = getClass().getResource("questions/questions_answers.html");
+        File file = new File(fileUrl.getFile());
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+//        File file = new File("resources/main/resources/questions/questions_answers.html");
 //        File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
         try {
 //            File file = resourceLoader.getResource("classpath:questions/questions_answers.html").getFile();
