@@ -4,7 +4,6 @@ import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -14,7 +13,10 @@ import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.repository.*;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -27,19 +29,15 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private PasswordEncoder passwordEncoder;
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
-    private ClassLoader classLoader = this.getClass().getClassLoader();
-//    private ResourceLoader resourceLoader;
-
+    private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
     @Autowired
-    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository, ResourceLoader resourceLoader) {
-        System.err.println("\n\n\n\n\n\n\n\nDataInitializer???\n\n\n\n\n\n\n\n");
+    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
         this.accountRepository = accountRepository;
         this.accountRoleRepository = accountRoleRepository;
         this.passwordEncoder = passwordEncoder;
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
-//        this.resourceLoader = resourceLoader;
     }
 
     @Override
@@ -49,11 +47,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addDefaultRole("MODERATOR");
         addDefaultUser("admin", "admin", "admin@admin.com", "ADMIN", "USER");
         addDefaultUser("user", "user", "user@user.com", "USER");
-        try {
-            addDefaultQuestions();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        addDefaultQuestions();
     }
 
     private void addDefaultUser(String username, String password, String email, String... roles) {
@@ -83,28 +77,19 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         }
     }
 
-    private void addDefaultQuestions() throws FileNotFoundException {
-//        File file = new File("/app/src/main/resources/questions/questions_answers.html");
-//        InputStream inputStream = new FileInputStream(file);
-//        InputStream resourceAsStream = DataInitializer.class.getResourceAsStream("questions_answers.html");
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-//        File file = new File("resources/main/resources/questions/questions_answers.html");
-//        File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
-        ClassLoader cl = this.getClass().getClassLoader();
-        InputStream inputStream = cl.getResourceAsStream("app/src/main/resources/questions/questions_answers.html");
+    private void addDefaultQuestions() {
+        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
-//            File file = resourceLoader.getResource("classpath:questions/questions_answers.html").getFile();
-            System.err.println("\n\n\n\n\n\n\n\naddDefaultQuestions???\n\n\n\n\n\n\n\n");
-            BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(inputStream)));
-            tryReadFromFileAndSaveToDatabase(inputStream, reader);
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            tryReadFromFileAndSaveToDatabase(file, reader);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void tryReadFromFileAndSaveToDatabase(InputStream file, BufferedReader reader) throws IOException {
-//        if (file.exists()) {
+    private void tryReadFromFileAndSaveToDatabase(File file, BufferedReader reader) throws IOException {
+        if (file.exists()) {
             while (reader.ready()) {
 
                 /*Creating default questions*/
@@ -135,9 +120,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
                     }
                 }
             }
-//        } else {
-//            System.err.println("file " + file.getName() + " does not exist.");
-//        }
+        } else {
+            System.err.println("file " + file.getName() + " does not exist.");
+        }
     }
 
     private void bindAnswerWithQuestion(BufferedReader reader, Question question, Answer answer) throws IOException {
@@ -145,8 +130,6 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         answer.setQuestion(question);
         try {
             answerRepository.save(answer);
-            System.err.println("\n\n\n\n\n\n\n\nbindAnswerWithQuestion???\n\n\n\n\n\n\n\n");
-
         } catch (TransientPropertyValueException | InvalidDataAccessApiUsageException e) {
             System.err.println("object (Answer) references an unsaved transient instance (Question)");
         }
