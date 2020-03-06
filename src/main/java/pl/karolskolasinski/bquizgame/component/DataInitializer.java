@@ -16,6 +16,7 @@ import pl.karolskolasinski.bquizgame.repository.*;
 
 import java.io.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Component
@@ -78,9 +79,10 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         }
     }
 
-    private void addDefaultQuestions() {
-
-        InputStream resourceAsStream = DataInitializer.class.getResourceAsStream("questions_answers.html");
+    private void addDefaultQuestions() throws FileNotFoundException {
+        File file = new File(Objects.requireNonNull(classLoader.getResource("questions_answers.html")).getFile());
+        InputStream inputStream = new FileInputStream(file);
+//        InputStream resourceAsStream = DataInitializer.class.getResourceAsStream("questions_answers.html");
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 //        File file = new File("resources/main/resources/questions/questions_answers.html");
 //        File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
@@ -88,8 +90,8 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         try {
 //            File file = resourceLoader.getResource("classpath:questions/questions_answers.html").getFile();
             System.err.println("\n\n\n\n\n\n\n\naddDefaultQuestions???\n\n\n\n\n\n\n\n");
-            BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(resourceAsStream)));
-            tryReadFromFileAndSaveToDatabase(resourceAsStream, reader);
+            BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(inputStream)));
+            tryReadFromFileAndSaveToDatabase(inputStream, reader);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
