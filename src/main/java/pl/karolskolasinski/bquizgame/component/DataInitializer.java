@@ -91,7 +91,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 //        File file = new File("resources/main/resources/questions/questions_answers.html");
 //        File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
         ClassLoader cl = this.getClass().getClassLoader();
-        InputStream inputStream = cl.getResourceAsStream("/app/src/main/resources/questions/questions_answers.html");
+        InputStream inputStream = cl.getResourceAsStream("app/src/main/resources/questions/questions_answers.html");
         try {
 //            File file = resourceLoader.getResource("classpath:questions/questions_answers.html").getFile();
             System.err.println("\n\n\n\n\n\n\n\naddDefaultQuestions???\n\n\n\n\n\n\n\n");
