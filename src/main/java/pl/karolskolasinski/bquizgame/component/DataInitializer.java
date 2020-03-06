@@ -16,10 +16,7 @@ import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.repository.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Objects;
@@ -86,24 +83,25 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
-        URL fileUrl = getClass().getResource("questions/questions_answers.html");
-        File file = new File(fileUrl.getFile());
+
+        InputStream resourceAsStream = DataInitializer.class.getResourceAsStream("questions/questions_answers.html");
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 //        File file = new File("resources/main/resources/questions/questions_answers.html");
 //        File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
+
         try {
 //            File file = resourceLoader.getResource("classpath:questions/questions_answers.html").getFile();
             System.err.println("\n\n\n\n\n\n\n\naddDefaultQuestions???\n\n\n\n\n\n\n\n");
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            tryReadFromFileAndSaveToDatabase(file, reader);
+            BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(resourceAsStream)));
+            tryReadFromFileAndSaveToDatabase(resourceAsStream, reader);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void tryReadFromFileAndSaveToDatabase(File file, BufferedReader reader) throws IOException {
-        if (file.exists()) {
+    private void tryReadFromFileAndSaveToDatabase(InputStream file, BufferedReader reader) throws IOException {
+//        if (file.exists()) {
             while (reader.ready()) {
 
                 /*Creating default questions*/
@@ -134,9 +132,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
                     }
                 }
             }
-        } else {
-            System.err.println("file " + file.getName() + " does not exist.");
-        }
+//        } else {
+//            System.err.println("file " + file.getName() + " does not exist.");
+//        }
     }
 
     private void bindAnswerWithQuestion(BufferedReader reader, Question question, Answer answer) throws IOException {
