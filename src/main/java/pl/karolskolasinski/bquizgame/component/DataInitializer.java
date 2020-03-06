@@ -84,7 +84,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() throws FileNotFoundException {
-        File file = new File(Objects.requireNonNull(classLoader.getResource("questions_answers.html")).getFile());
+        File file = new File(Objects.requireNonNull(classLoader.getResource("/app/src/main/resources/questions/questions_answers.html")).getFile());
         InputStream inputStream = new FileInputStream(file);
 //        InputStream resourceAsStream = DataInitializer.class.getResourceAsStream("questions_answers.html");
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
