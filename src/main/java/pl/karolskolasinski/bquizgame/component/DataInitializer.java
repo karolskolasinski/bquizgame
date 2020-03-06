@@ -33,17 +33,18 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
     private ClassLoader classLoader = this.getClass().getClassLoader();
-    private ResourceLoader resourceLoader;
+//    private ResourceLoader resourceLoader;
 
 
     @Autowired
     public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository, ResourceLoader resourceLoader) {
+        System.err.println("\n\n\n\n\n\n\n\nLOADED???\n\n\n\n\n\n\n\n");
         this.accountRepository = accountRepository;
         this.accountRoleRepository = accountRoleRepository;
         this.passwordEncoder = passwordEncoder;
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
-        this.resourceLoader = resourceLoader;
+//        this.resourceLoader = resourceLoader;
     }
 
     @Override
@@ -84,10 +85,10 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
-//        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
+        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
 //        File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
         try {
-            File file = resourceLoader.getResource("classpath:questions/questions_answers.html").getFile();
+//            File file = resourceLoader.getResource("classpath:questions/questions_answers.html").getFile();
             System.err.println("\n\n\n\n\n\n\n\nLOADED???\n\n\n\n\n\n\n\n");
             BufferedReader reader = new BufferedReader(new FileReader(file));
             tryReadFromFileAndSaveToDatabase(file, reader);
