@@ -78,6 +78,12 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n" + new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile()).getAbsolutePath());
+        System.out.println("\n\n\n\n\n\n\n\n\n\n" + new File(Objects.requireNonNull(classLoader.getResource("/questions/questions_answers.html")).getFile()));
+        System.out.println("\n\n\n\n\n\n\n\n\n\n" + new File(Objects.requireNonNull(classLoader.getResource("spring.datasource.username")).getPath()));
+        System.out.println("\n\n\n\n\n\n\n\n\n\n" + new File(Objects.requireNonNull(classLoader.getResource("templates/index/fragments.html")).getPath()));
+
+
         File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
