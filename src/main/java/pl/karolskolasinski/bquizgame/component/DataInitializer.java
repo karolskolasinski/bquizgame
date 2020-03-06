@@ -4,6 +4,8 @@ import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -17,12 +19,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Component
 public class DataInitializer implements ApplicationListener<ContextRefreshedEvent> {
+
+
+    private final
+    ResourceLoader resourceLoader;
 
     private AccountRepository accountRepository;
     private AccountRoleRepository accountRoleRepository;
@@ -32,12 +39,13 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
     @Autowired
-    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
+    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository, ResourceLoader resourceLoader) {
         this.accountRepository = accountRepository;
         this.accountRoleRepository = accountRoleRepository;
         this.passwordEncoder = passwordEncoder;
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
+        this.resourceLoader = resourceLoader;
     }
 
     @Override
@@ -78,8 +86,24 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n" + classLoader.getResource("questions/questions_answers.html"));
-        System.out.println("\n\n\n\n\n\n\n\n\n\n" + classLoader.getResourceAsStream("questions/questions_answers.html"));
+        try {
+            URL url = resourceLoader.getResource("classpath:/app/src/main/resources/questions/questions_answers.html").getURL();
+            URL url2 = resourceLoader.getResource("classpath:resources/main/resources/questions/questions_answers.html").getURL();
+            URL url3 = resourceLoader.getResource("classpath:app/src/main/resources/questions/questions_answers.html").getURL();
+            URL url4 = resourceLoader.getResource("questions/questions_answers.html").getURL();
+            URL url5 = resourceLoader.getResource("/questions/questions_answers.html").getURL();
+            Resource resource = resourceLoader.getResource("/questions/questions_answers.html");
+            String filename = resourceLoader.getResource("/questions/questions_answers.html").getFilename();
+            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url2);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url3);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url4);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url5);
+            System.out.println("\n\n\n\n\n\n\n\n\n\n" + resource.getDescription());
+            System.out.println("\n\n\n\n\n\n\n\n\n\n" + filename);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
