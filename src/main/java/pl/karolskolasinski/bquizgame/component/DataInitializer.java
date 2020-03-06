@@ -1,11 +1,9 @@
 package pl.karolskolasinski.bquizgame.component;
 
-import lombok.NoArgsConstructor;
 import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,9 +15,7 @@ import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.repository.*;
 
 import java.io.*;
-import java.net.URL;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Component
@@ -84,7 +80,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     private void addDefaultQuestions() {
 
-        InputStream resourceAsStream = DataInitializer.class.getResourceAsStream("questions/questions_answers.html");
+        InputStream resourceAsStream = DataInitializer.class.getResourceAsStream("questions_answers.html");
         System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 //        File file = new File("resources/main/resources/questions/questions_answers.html");
 //        File file = new ClassPathResource("questions/questions_answers.html", this.getClass().getClassLoader()).getFile();
