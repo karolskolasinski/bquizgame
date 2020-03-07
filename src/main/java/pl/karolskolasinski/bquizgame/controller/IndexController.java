@@ -3,15 +3,11 @@ package pl.karolskolasinski.bquizgame.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.karolskolasinski.bquizgame.component.DataInitializer;
 import pl.karolskolasinski.bquizgame.service.QuizSetupService;
 
-import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
-import java.util.Objects;
 
 @Controller
 @RequestMapping(path = "/")
