@@ -1,0 +1,3290 @@
+[
+  {
+    "id": 1,
+    "answer_content": "złożonych",
+    "correct": 1,
+    "question_id": 1
+  },
+  {
+    "id": 2,
+    "answer_content": "prostych",
+    "correct": 0,
+    "question_id": 1
+  },
+  {
+    "id": 3,
+    "answer_content": "promieniotwórczych",
+    "correct": 0,
+    "question_id": 1
+  },
+  {
+    "id": 4,
+    "answer_content": "fosforyzujących",
+    "correct": 0,
+    "question_id": 1
+  },
+  {
+    "id": 5,
+    "answer_content": "4",
+    "correct": 1,
+    "question_id": 2
+  },
+  {
+    "id": 6,
+    "answer_content": "6",
+    "correct": 0,
+    "question_id": 2
+  },
+  {
+    "id": 7,
+    "answer_content": "2",
+    "correct": 0,
+    "question_id": 2
+  },
+  {
+    "id": 8,
+    "answer_content": "8",
+    "correct": 0,
+    "question_id": 2
+  },
+  {
+    "id": 9,
+    "answer_content": "łysnia",
+    "correct": 1,
+    "question_id": 3
+  },
+  {
+    "id": 10,
+    "answer_content": "melonik",
+    "correct": 0,
+    "question_id": 3
+  },
+  {
+    "id": 11,
+    "answer_content": "laseczka",
+    "correct": 0,
+    "question_id": 3
+  },
+  {
+    "id": 12,
+    "answer_content": "wąsik",
+    "correct": 0,
+    "question_id": 3
+  },
+  {
+    "id": 13,
+    "answer_content": "mianownik",
+    "correct": 1,
+    "question_id": 4
+  },
+  {
+    "id": 14,
+    "answer_content": "biernik",
+    "correct": 0,
+    "question_id": 4
+  },
+  {
+    "id": 15,
+    "answer_content": "wołacz",
+    "correct": 0,
+    "question_id": 4
+  },
+  {
+    "id": 16,
+    "answer_content": "celownik",
+    "correct": 0,
+    "question_id": 4
+  },
+  {
+    "id": 17,
+    "answer_content": "zmienia kolor na czerwony",
+    "correct": 1,
+    "question_id": 5
+  },
+  {
+    "id": 18,
+    "answer_content": "zmienia kolor na zielony",
+    "correct": 0,
+    "question_id": 5
+  },
+  {
+    "id": 19,
+    "answer_content": "zmienia kolor na żółty",
+    "correct": 0,
+    "question_id": 5
+  },
+  {
+    "id": 20,
+    "answer_content": "trwale się odbarwia",
+    "correct": 0,
+    "question_id": 5
+  },
+  {
+    "id": 21,
+    "answer_content": "Woda",
+    "correct": 1,
+    "question_id": 6
+  },
+  {
+    "id": 22,
+    "answer_content": "Chloroform",
+    "correct": 0,
+    "question_id": 6
+  },
+  {
+    "id": 23,
+    "answer_content": "Benzen",
+    "correct": 0,
+    "question_id": 6
+  },
+  {
+    "id": 24,
+    "answer_content": "Ksylen",
+    "correct": 0,
+    "question_id": 6
+  },
+  {
+    "id": 25,
+    "answer_content": "tlenku węgla (CO) i wodoru (H2)",
+    "correct": 1,
+    "question_id": 7
+  },
+  {
+    "id": 26,
+    "answer_content": "tlenu (O2) i wodoru (H2)",
+    "correct": 0,
+    "question_id": 7
+  },
+  {
+    "id": 27,
+    "answer_content": "metanu (CH4) i wody (H2O)",
+    "correct": 0,
+    "question_id": 7
+  },
+  {
+    "id": 28,
+    "answer_content": "dwutlenku węgla (CO2) i wodoru (H2)",
+    "correct": 0,
+    "question_id": 7
+  },
+  {
+    "id": 29,
+    "answer_content": "cząstkom złota",
+    "correct": 1,
+    "question_id": 8
+  },
+  {
+    "id": 30,
+    "answer_content": "związkom manganu",
+    "correct": 0,
+    "question_id": 8
+  },
+  {
+    "id": 31,
+    "answer_content": "związkom kobaltu",
+    "correct": 0,
+    "question_id": 8
+  },
+  {
+    "id": 32,
+    "answer_content": "cząstkom chromu",
+    "correct": 0,
+    "question_id": 8
+  },
+  {
+    "id": 33,
+    "answer_content": "zasadą",
+    "correct": 1,
+    "question_id": 9
+  },
+  {
+    "id": 34,
+    "answer_content": "kwasem",
+    "correct": 0,
+    "question_id": 9
+  },
+  {
+    "id": 35,
+    "answer_content": "izotopem",
+    "correct": 0,
+    "question_id": 9
+  },
+  {
+    "id": 36,
+    "answer_content": "mieszaniną",
+    "correct": 0,
+    "question_id": 9
+  },
+  {
+    "id": 37,
+    "answer_content": "Fermentacja wina",
+    "correct": 1,
+    "question_id": 10
+  },
+  {
+    "id": 38,
+    "answer_content": "Słodzenie herbaty",
+    "correct": 0,
+    "question_id": 10
+  },
+  {
+    "id": 39,
+    "answer_content": "Wybuch bomby wodorowej",
+    "correct": 0,
+    "question_id": 10
+  },
+  {
+    "id": 40,
+    "answer_content": "Topienie się śniegu",
+    "correct": 0,
+    "question_id": 10
+  },
+  {
+    "id": 41,
+    "answer_content": "topnieniu",
+    "correct": 1,
+    "question_id": 11
+  },
+  {
+    "id": 42,
+    "answer_content": "polimeryzacji",
+    "correct": 0,
+    "question_id": 11
+  },
+  {
+    "id": 43,
+    "answer_content": "rozpuszczaniu",
+    "correct": 0,
+    "question_id": 11
+  },
+  {
+    "id": 44,
+    "answer_content": "sublimacji",
+    "correct": 0,
+    "question_id": 11
+  },
+  {
+    "id": 45,
+    "answer_content": "fosforu",
+    "correct": 1,
+    "question_id": 12
+  },
+  {
+    "id": 46,
+    "answer_content": "chloru",
+    "correct": 0,
+    "question_id": 12
+  },
+  {
+    "id": 47,
+    "answer_content": "potasu",
+    "correct": 0,
+    "question_id": 12
+  },
+  {
+    "id": 48,
+    "answer_content": "polonu",
+    "correct": 0,
+    "question_id": 12
+  },
+  {
+    "id": 49,
+    "answer_content": "żelaza",
+    "correct": 1,
+    "question_id": 13
+  },
+  {
+    "id": 50,
+    "answer_content": "azotu",
+    "correct": 0,
+    "question_id": 13
+  },
+  {
+    "id": 51,
+    "answer_content": "krzemu",
+    "correct": 0,
+    "question_id": 13
+  },
+  {
+    "id": 52,
+    "answer_content": "potasu",
+    "correct": 0,
+    "question_id": 13
+  },
+  {
+    "id": 53,
+    "answer_content": "srebrzysty metal",
+    "correct": 1,
+    "question_id": 14
+  },
+  {
+    "id": 54,
+    "answer_content": "zielonkawy gaz",
+    "correct": 0,
+    "question_id": 14
+  },
+  {
+    "id": 55,
+    "answer_content": "gęsta, brązowa ciecz",
+    "correct": 0,
+    "question_id": 14
+  },
+  {
+    "id": 56,
+    "answer_content": "kobalt nie występuje w temperaturze pokojowej",
+    "correct": 0,
+    "question_id": 14
+  },
+  {
+    "id": 57,
+    "answer_content": "chlorku sodu",
+    "correct": 1,
+    "question_id": 15
+  },
+  {
+    "id": 58,
+    "answer_content": "chlorku potasu",
+    "correct": 0,
+    "question_id": 15
+  },
+  {
+    "id": 59,
+    "answer_content": "chloranu amonu",
+    "correct": 0,
+    "question_id": 15
+  },
+  {
+    "id": 60,
+    "answer_content": "bezwodnika potasowego",
+    "correct": 0,
+    "question_id": 15
+  },
+  {
+    "id": 61,
+    "answer_content": "żółto",
+    "correct": 1,
+    "question_id": 16
+  },
+  {
+    "id": 62,
+    "answer_content": "zielono",
+    "correct": 0,
+    "question_id": 16
+  },
+  {
+    "id": 63,
+    "answer_content": "czerwono",
+    "correct": 0,
+    "question_id": 16
+  },
+  {
+    "id": 64,
+    "answer_content": "niebiesko",
+    "correct": 0,
+    "question_id": 16
+  },
+  {
+    "id": 65,
+    "answer_content": "wiązanie kowalencyjne",
+    "correct": 1,
+    "question_id": 17
+  },
+  {
+    "id": 66,
+    "answer_content": "wiązanie wodorowe",
+    "correct": 0,
+    "question_id": 17
+  },
+  {
+    "id": 67,
+    "answer_content": "wiązanie peptydowe",
+    "correct": 0,
+    "question_id": 17
+  },
+  {
+    "id": 68,
+    "answer_content": "wiązanie van der Waalsa",
+    "correct": 0,
+    "question_id": 17
+  },
+  {
+    "id": 69,
+    "answer_content": "liczby atomowej",
+    "correct": 1,
+    "question_id": 18
+  },
+  {
+    "id": 70,
+    "answer_content": "liczby masowej",
+    "correct": 0,
+    "question_id": 18
+  },
+  {
+    "id": 71,
+    "answer_content": "daty odkrycia",
+    "correct": 0,
+    "question_id": 18
+  },
+  {
+    "id": 72,
+    "answer_content": "stanu skupienia",
+    "correct": 0,
+    "question_id": 18
+  },
+  {
+    "id": 73,
+    "answer_content": "Au",
+    "correct": 1,
+    "question_id": 19
+  },
+  {
+    "id": 74,
+    "answer_content": "Ag",
+    "correct": 0,
+    "question_id": 19
+  },
+  {
+    "id": 75,
+    "answer_content": "Cu",
+    "correct": 0,
+    "question_id": 19
+  },
+  {
+    "id": 76,
+    "answer_content": "Ca",
+    "correct": 0,
+    "question_id": 19
+  },
+  {
+    "id": 77,
+    "answer_content": "Hg",
+    "correct": 1,
+    "question_id": 20
+  },
+  {
+    "id": 78,
+    "answer_content": "Ag",
+    "correct": 0,
+    "question_id": 20
+  },
+  {
+    "id": 79,
+    "answer_content": "Pb",
+    "correct": 0,
+    "question_id": 20
+  },
+  {
+    "id": 80,
+    "answer_content": "Rt",
+    "correct": 0,
+    "question_id": 20
+  },
+  {
+    "id": 81,
+    "answer_content": "tlenek węgla",
+    "correct": 1,
+    "question_id": 21
+  },
+  {
+    "id": 82,
+    "answer_content": "dwutlenek węgla",
+    "correct": 0,
+    "question_id": 21
+  },
+  {
+    "id": 83,
+    "answer_content": "metan",
+    "correct": 0,
+    "question_id": 21
+  },
+  {
+    "id": 84,
+    "answer_content": "dwutlenek chromu",
+    "correct": 0,
+    "question_id": 21
+  },
+  {
+    "id": 85,
+    "answer_content": "węgiel",
+    "correct": 1,
+    "question_id": 22
+  },
+  {
+    "id": 86,
+    "answer_content": "chrom",
+    "correct": 0,
+    "question_id": 22
+  },
+  {
+    "id": 87,
+    "answer_content": "chlor",
+    "correct": 0,
+    "question_id": 22
+  },
+  {
+    "id": 88,
+    "answer_content": "cynk",
+    "correct": 0,
+    "question_id": 22
+  },
+  {
+    "id": 89,
+    "answer_content": "Sacharoza",
+    "correct": 1,
+    "question_id": 23
+  },
+  {
+    "id": 90,
+    "answer_content": "Laktoza",
+    "correct": 0,
+    "question_id": 23
+  },
+  {
+    "id": 91,
+    "answer_content": "Mimoza",
+    "correct": 0,
+    "question_id": 23
+  },
+  {
+    "id": 92,
+    "answer_content": "Doskoza",
+    "correct": 0,
+    "question_id": 23
+  },
+  {
+    "id": 93,
+    "answer_content": "Chlorkiem sodu",
+    "correct": 1,
+    "question_id": 24
+  },
+  {
+    "id": 94,
+    "answer_content": "Chlorkiem glinu",
+    "correct": 0,
+    "question_id": 24
+  },
+  {
+    "id": 95,
+    "answer_content": "Chlorkiem wapnia",
+    "correct": 0,
+    "question_id": 24
+  },
+  {
+    "id": 96,
+    "answer_content": "Chlorkiem srebra",
+    "correct": 0,
+    "question_id": 24
+  },
+  {
+    "id": 97,
+    "answer_content": "Alkoholowej",
+    "correct": 1,
+    "question_id": 25
+  },
+  {
+    "id": 98,
+    "answer_content": "Masłowej",
+    "correct": 0,
+    "question_id": 25
+  },
+  {
+    "id": 99,
+    "answer_content": "Octowej",
+    "correct": 0,
+    "question_id": 25
+  },
+  {
+    "id": 100,
+    "answer_content": "Mlekowej",
+    "correct": 0,
+    "question_id": 25
+  },
+  {
+    "id": 101,
+    "answer_content": "Jest substancją silnie żrącą",
+    "correct": 1,
+    "question_id": 26
+  },
+  {
+    "id": 102,
+    "answer_content": "Stanowi 60-70% masy człowieka",
+    "correct": 0,
+    "question_id": 26
+  },
+  {
+    "id": 103,
+    "answer_content": "Jest powszechnym środkiem gaśniczym",
+    "correct": 0,
+    "question_id": 26
+  },
+  {
+    "id": 104,
+    "answer_content": "Ma budowę polarną",
+    "correct": 0,
+    "question_id": 26
+  },
+  {
+    "id": 105,
+    "answer_content": "Nie rozpuszcza tłuszczy",
+    "correct": 1,
+    "question_id": 27
+  },
+  {
+    "id": 106,
+    "answer_content": "Łatwo miesza się z wodą",
+    "correct": 0,
+    "question_id": 27
+  },
+  {
+    "id": 107,
+    "answer_content": "Jest używana w produkcji kosmetyków",
+    "correct": 0,
+    "question_id": 27
+  },
+  {
+    "id": 108,
+    "answer_content": "Jest używana w produkcji materiałów wybuchowych",
+    "correct": 0,
+    "question_id": 27
+  },
+  {
+    "id": 109,
+    "answer_content": "Emulgatory",
+    "correct": 1,
+    "question_id": 28
+  },
+  {
+    "id": 110,
+    "answer_content": "Żele",
+    "correct": 0,
+    "question_id": 28
+  },
+  {
+    "id": 111,
+    "answer_content": "Zole",
+    "correct": 0,
+    "question_id": 28
+  },
+  {
+    "id": 112,
+    "answer_content": "Liozole",
+    "correct": 0,
+    "question_id": 28
+  },
+  {
+    "id": 113,
+    "answer_content": "Gaśnica",
+    "correct": 1,
+    "question_id": 29
+  },
+  {
+    "id": 114,
+    "answer_content": "Reflektor",
+    "correct": 0,
+    "question_id": 29
+  },
+  {
+    "id": 115,
+    "answer_content": "Żelazko parowe",
+    "correct": 0,
+    "question_id": 29
+  },
+  {
+    "id": 116,
+    "answer_content": "Maszyna dymna",
+    "correct": 0,
+    "question_id": 29
+  },
+  {
+    "id": 117,
+    "answer_content": "Kiszeniem",
+    "correct": 1,
+    "question_id": 30
+  },
+  {
+    "id": 118,
+    "answer_content": "Flambirowaniem",
+    "correct": 0,
+    "question_id": 30
+  },
+  {
+    "id": 119,
+    "answer_content": "Liofilizacją",
+    "correct": 0,
+    "question_id": 30
+  },
+  {
+    "id": 120,
+    "answer_content": "Marynowaniem",
+    "correct": 0,
+    "question_id": 30
+  },
+  {
+    "id": 121,
+    "answer_content": "Jest substancją nieszkodliwą dla ludzkiego organizmu",
+    "correct": 1,
+    "question_id": 31
+  },
+  {
+    "id": 122,
+    "answer_content": "Spala się bladoniebieskim płomieniem",
+    "correct": 0,
+    "question_id": 31
+  },
+  {
+    "id": 123,
+    "answer_content": "W czystej postaci jest bezbarwną cieczą",
+    "correct": 0,
+    "question_id": 31
+  },
+  {
+    "id": 124,
+    "answer_content": "Miesza się z wodą w każdej proporcji",
+    "correct": 0,
+    "question_id": 31
+  },
+  {
+    "id": 125,
+    "answer_content": "Aspiryny",
+    "correct": 1,
+    "question_id": 32
+  },
+  {
+    "id": 126,
+    "answer_content": "Wazeliny",
+    "correct": 0,
+    "question_id": 32
+  },
+  {
+    "id": 127,
+    "answer_content": "Atramentu",
+    "correct": 0,
+    "question_id": 32
+  },
+  {
+    "id": 128,
+    "answer_content": "Żelatyny",
+    "correct": 0,
+    "question_id": 32
+  },
+  {
+    "id": 129,
+    "answer_content": "Parafiny",
+    "correct": 1,
+    "question_id": 33
+  },
+  {
+    "id": 130,
+    "answer_content": "Bakelitu",
+    "correct": 0,
+    "question_id": 33
+  },
+  {
+    "id": 131,
+    "answer_content": "Silikonu",
+    "correct": 0,
+    "question_id": 33
+  },
+  {
+    "id": 132,
+    "answer_content": "Epidianu",
+    "correct": 0,
+    "question_id": 33
+  },
+  {
+    "id": 133,
+    "answer_content": "1772",
+    "correct": 1,
+    "question_id": 34
+  },
+  {
+    "id": 134,
+    "answer_content": "1727",
+    "correct": 0,
+    "question_id": 34
+  },
+  {
+    "id": 135,
+    "answer_content": "1777",
+    "correct": 0,
+    "question_id": 34
+  },
+  {
+    "id": 136,
+    "answer_content": "1791",
+    "correct": 0,
+    "question_id": 34
+  },
+  {
+    "id": 137,
+    "answer_content": "1999",
+    "correct": 1,
+    "question_id": 35
+  },
+  {
+    "id": 138,
+    "answer_content": "1990",
+    "correct": 0,
+    "question_id": 35
+  },
+  {
+    "id": 139,
+    "answer_content": "1997",
+    "correct": 0,
+    "question_id": 35
+  },
+  {
+    "id": 140,
+    "answer_content": "2000",
+    "correct": 0,
+    "question_id": 35
+  },
+  {
+    "id": 141,
+    "answer_content": "1 maja 2004",
+    "correct": 1,
+    "question_id": 36
+  },
+  {
+    "id": 142,
+    "answer_content": "1 stycznia 2000",
+    "correct": 0,
+    "question_id": 36
+  },
+  {
+    "id": 143,
+    "answer_content": "1 lipca 2005",
+    "correct": 0,
+    "question_id": 36
+  },
+  {
+    "id": 144,
+    "answer_content": "11 listopada 2005",
+    "correct": 0,
+    "question_id": 36
+  },
+  {
+    "id": 145,
+    "answer_content": "Dywizjon 303",
+    "correct": 1,
+    "question_id": 37
+  },
+  {
+    "id": 146,
+    "answer_content": "Dywizjon 300",
+    "correct": 0,
+    "question_id": 37
+  },
+  {
+    "id": 147,
+    "answer_content": "Dywizjon 301",
+    "correct": 0,
+    "question_id": 37
+  },
+  {
+    "id": 148,
+    "answer_content": "Dywizjon 302",
+    "correct": 0,
+    "question_id": 37
+  },
+  {
+    "id": 149,
+    "answer_content": "1797",
+    "correct": 1,
+    "question_id": 38
+  },
+  {
+    "id": 150,
+    "answer_content": "1781",
+    "correct": 0,
+    "question_id": 38
+  },
+  {
+    "id": 151,
+    "answer_content": "1805",
+    "correct": 0,
+    "question_id": 38
+  },
+  {
+    "id": 152,
+    "answer_content": "1776",
+    "correct": 0,
+    "question_id": 38
+  },
+  {
+    "id": 153,
+    "answer_content": "22 lipca 1983",
+    "correct": 1,
+    "question_id": 39
+  },
+  {
+    "id": 154,
+    "answer_content": "5 października 1983",
+    "correct": 0,
+    "question_id": 39
+  },
+  {
+    "id": 155,
+    "answer_content": "5 kwietnia 1989",
+    "correct": 0,
+    "question_id": 39
+  },
+  {
+    "id": 156,
+    "answer_content": "1 sierpnia 1989",
+    "correct": 0,
+    "question_id": 39
+  },
+  {
+    "id": 157,
+    "answer_content": "upałem",
+    "correct": 1,
+    "question_id": 40
+  },
+  {
+    "id": 158,
+    "answer_content": "zamiecią śnieżną",
+    "correct": 0,
+    "question_id": 40
+  },
+  {
+    "id": 159,
+    "answer_content": "epidemią choroby",
+    "correct": 0,
+    "question_id": 40
+  },
+  {
+    "id": 160,
+    "answer_content": "zgonem",
+    "correct": 0,
+    "question_id": 40
+  },
+  {
+    "id": 161,
+    "answer_content": "Gertruda Mieszkówna",
+    "correct": 1,
+    "question_id": 41
+  },
+  {
+    "id": 162,
+    "answer_content": "Wincenty Kadłubek",
+    "correct": 0,
+    "question_id": 41
+  },
+  {
+    "id": 163,
+    "answer_content": "Andrzej Grzymała",
+    "correct": 0,
+    "question_id": 41
+  },
+  {
+    "id": 164,
+    "answer_content": "Wincenty z Kielczy",
+    "correct": 0,
+    "question_id": 41
+  },
+  {
+    "id": 165,
+    "answer_content": "Nigdy",
+    "correct": 1,
+    "question_id": 42
+  },
+  {
+    "id": 166,
+    "answer_content": "w XIV wieku",
+    "correct": 0,
+    "question_id": 42
+  },
+  {
+    "id": 167,
+    "answer_content": "w XV wieku",
+    "correct": 0,
+    "question_id": 42
+  },
+  {
+    "id": 168,
+    "answer_content": "w XVI wieku",
+    "correct": 0,
+    "question_id": 42
+  },
+  {
+    "id": 169,
+    "answer_content": "Wielki",
+    "correct": 1,
+    "question_id": 43
+  },
+  {
+    "id": 170,
+    "answer_content": "Pobożny",
+    "correct": 0,
+    "question_id": 43
+  },
+  {
+    "id": 171,
+    "answer_content": "Stary",
+    "correct": 0,
+    "question_id": 43
+  },
+  {
+    "id": 172,
+    "answer_content": "nie posiadał on przydomka",
+    "correct": 0,
+    "question_id": 43
+  },
+  {
+    "id": 173,
+    "answer_content": "30 czyli 2 mendle",
+    "correct": 1,
+    "question_id": 44
+  },
+  {
+    "id": 174,
+    "answer_content": "100 jak dzisiaj",
+    "correct": 0,
+    "question_id": 44
+  },
+  {
+    "id": 175,
+    "answer_content": "60 czyli kopę",
+    "correct": 0,
+    "question_id": 44
+  },
+  {
+    "id": 176,
+    "answer_content": "12 czyli tuzin",
+    "correct": 0,
+    "question_id": 44
+  },
+  {
+    "id": 177,
+    "answer_content": "Mikołaj I Romanow",
+    "correct": 1,
+    "question_id": 45
+  },
+  {
+    "id": 178,
+    "answer_content": "Stanisław August Poniatowski",
+    "correct": 0,
+    "question_id": 45
+  },
+  {
+    "id": 179,
+    "answer_content": "Aleksander I Romanow",
+    "correct": 0,
+    "question_id": 45
+  },
+  {
+    "id": 180,
+    "answer_content": "Zygmunt II August",
+    "correct": 0,
+    "question_id": 45
+  },
+  {
+    "id": 181,
+    "answer_content": "10",
+    "correct": 1,
+    "question_id": 46
+  },
+  {
+    "id": 182,
+    "answer_content": "2",
+    "correct": 0,
+    "question_id": 46
+  },
+  {
+    "id": 183,
+    "answer_content": "6",
+    "correct": 0,
+    "question_id": 46
+  },
+  {
+    "id": 184,
+    "answer_content": "13",
+    "correct": 0,
+    "question_id": 46
+  },
+  {
+    "id": 185,
+    "answer_content": "wygnany król Szwecji",
+    "correct": 1,
+    "question_id": 47
+  },
+  {
+    "id": 186,
+    "answer_content": "syn księcia pomorskiego",
+    "correct": 0,
+    "question_id": 47
+  },
+  {
+    "id": 187,
+    "answer_content": "zbuntowany komtur krzyżacki",
+    "correct": 0,
+    "question_id": 47
+  },
+  {
+    "id": 188,
+    "answer_content": "najmłodszy brat Jagiełły",
+    "correct": 0,
+    "question_id": 47
+  },
+  {
+    "id": 189,
+    "answer_content": "1918",
+    "correct": 1,
+    "question_id": 48
+  },
+  {
+    "id": 190,
+    "answer_content": "1917",
+    "correct": 0,
+    "question_id": 48
+  },
+  {
+    "id": 191,
+    "answer_content": "1818",
+    "correct": 0,
+    "question_id": 48
+  },
+  {
+    "id": 192,
+    "answer_content": "1819",
+    "correct": 0,
+    "question_id": 48
+  },
+  {
+    "id": 193,
+    "answer_content": "Gniezno",
+    "correct": 1,
+    "question_id": 49
+  },
+  {
+    "id": 194,
+    "answer_content": "Warszawa",
+    "correct": 0,
+    "question_id": 49
+  },
+  {
+    "id": 195,
+    "answer_content": "Kraków",
+    "correct": 0,
+    "question_id": 49
+  },
+  {
+    "id": 196,
+    "answer_content": "Poznań",
+    "correct": 0,
+    "question_id": 49
+  },
+  {
+    "id": 197,
+    "answer_content": "W 1795 przez Rosję, Prusy i Austrię.",
+    "correct": 1,
+    "question_id": 50
+  },
+  {
+    "id": 198,
+    "answer_content": "W 1772 przez Rosję, Prusy i Austrię.",
+    "correct": 0,
+    "question_id": 50
+  },
+  {
+    "id": 199,
+    "answer_content": "W 1772 przez Prusy, Litwę i Austrię.",
+    "correct": 0,
+    "question_id": 50
+  },
+  {
+    "id": 200,
+    "answer_content": "W 1793 przez Prusy, Rosję.",
+    "correct": 0,
+    "question_id": 50
+  },
+  {
+    "id": 201,
+    "answer_content": "\"Pieśń Legionów Polskich we Włoszech\"",
+    "correct": 1,
+    "question_id": 51
+  },
+  {
+    "id": 202,
+    "answer_content": "\"Pieśń Dąbrowskiego\"",
+    "correct": 0,
+    "question_id": 51
+  },
+  {
+    "id": 203,
+    "answer_content": "\"Pieśń żołnierska\"",
+    "correct": 0,
+    "question_id": 51
+  },
+  {
+    "id": 204,
+    "answer_content": "\"Pieśń Legionistów Polskich\"",
+    "correct": 0,
+    "question_id": 51
+  },
+  {
+    "id": 205,
+    "answer_content": "autor nie jest znany",
+    "correct": 1,
+    "question_id": 52
+  },
+  {
+    "id": 206,
+    "answer_content": "Michał Kleofas Ogiński",
+    "correct": 0,
+    "question_id": 52
+  },
+  {
+    "id": 207,
+    "answer_content": "Józef Wybicki",
+    "correct": 0,
+    "question_id": 52
+  },
+  {
+    "id": 208,
+    "answer_content": "Fryderyk Chopin",
+    "correct": 0,
+    "question_id": 52
+  },
+  {
+    "id": 209,
+    "answer_content": "29.09.1747",
+    "correct": 1,
+    "question_id": 53
+  },
+  {
+    "id": 210,
+    "answer_content": "20.07.1743",
+    "correct": 0,
+    "question_id": 53
+  },
+  {
+    "id": 211,
+    "answer_content": "20.07.1745",
+    "correct": 0,
+    "question_id": 53
+  },
+  {
+    "id": 212,
+    "answer_content": "29.09.1750",
+    "correct": 0,
+    "question_id": 53
+  },
+  {
+    "id": 213,
+    "answer_content": "politykiem",
+    "correct": 1,
+    "question_id": 54
+  },
+  {
+    "id": 214,
+    "answer_content": "generałem",
+    "correct": 0,
+    "question_id": 54
+  },
+  {
+    "id": 215,
+    "answer_content": "księdzem",
+    "correct": 0,
+    "question_id": 54
+  },
+  {
+    "id": 216,
+    "answer_content": "artystą",
+    "correct": 0,
+    "question_id": 54
+  },
+  {
+    "id": 217,
+    "answer_content": "Sześć i refren",
+    "correct": 1,
+    "question_id": 55
+  },
+  {
+    "id": 218,
+    "answer_content": "Cztery i refren",
+    "correct": 0,
+    "question_id": 55
+  },
+  {
+    "id": 219,
+    "answer_content": "Pięć i refren",
+    "correct": 0,
+    "question_id": 55
+  },
+  {
+    "id": 220,
+    "answer_content": "Siedem i refren",
+    "correct": 0,
+    "question_id": 55
+  },
+  {
+    "id": 221,
+    "answer_content": "Karola X Gustawa",
+    "correct": 1,
+    "question_id": 56
+  },
+  {
+    "id": 222,
+    "answer_content": "Karola XI",
+    "correct": 0,
+    "question_id": 56
+  },
+  {
+    "id": 223,
+    "answer_content": "Krystyny Wazówny",
+    "correct": 0,
+    "question_id": 56
+  },
+  {
+    "id": 224,
+    "answer_content": "Gustawa II Adolfa",
+    "correct": 0,
+    "question_id": 56
+  },
+  {
+    "id": 225,
+    "answer_content": "Tadeusz Kościuszko",
+    "correct": 1,
+    "question_id": 57
+  },
+  {
+    "id": 226,
+    "answer_content": "Kazimierz Pułaski",
+    "correct": 0,
+    "question_id": 57
+  },
+  {
+    "id": 227,
+    "answer_content": "Stanisław Żółkiewski",
+    "correct": 0,
+    "question_id": 57
+  },
+  {
+    "id": 228,
+    "answer_content": "Jan III Sobieski",
+    "correct": 0,
+    "question_id": 57
+  },
+  {
+    "id": 229,
+    "answer_content": "\"Kiedy my żyjemy\"",
+    "correct": 1,
+    "question_id": 58
+  },
+  {
+    "id": 230,
+    "answer_content": "\"Póki my żyjemy\"",
+    "correct": 0,
+    "question_id": 58
+  },
+  {
+    "id": 231,
+    "answer_content": "\"Dopóki my żyjemy\"",
+    "correct": 0,
+    "question_id": 58
+  },
+  {
+    "id": 232,
+    "answer_content": "\"Jeśli my żyjemy\"",
+    "correct": 0,
+    "question_id": 58
+  },
+  {
+    "id": 233,
+    "answer_content": "\"Słuchaj jeno, pono nasi biją w tarabany\"",
+    "correct": 1,
+    "question_id": 59
+  },
+  {
+    "id": 234,
+    "answer_content": "\"Słuchaj że no, pono nasi biją w tarabany\"",
+    "correct": 0,
+    "question_id": 59
+  },
+  {
+    "id": 235,
+    "answer_content": "\"Słuchaj jeno, bo to nasi biją w tarabany\"",
+    "correct": 0,
+    "question_id": 59
+  },
+  {
+    "id": 236,
+    "answer_content": "\"Słuchaj, gdyż to nasi biją w tarabany\"",
+    "correct": 0,
+    "question_id": 59
+  },
+  {
+    "id": 237,
+    "answer_content": "Wisła i Warta",
+    "correct": 1,
+    "question_id": 60
+  },
+  {
+    "id": 238,
+    "answer_content": "Wisła i Odra",
+    "correct": 0,
+    "question_id": 60
+  },
+  {
+    "id": 239,
+    "answer_content": "Warta i Odra",
+    "correct": 0,
+    "question_id": 60
+  },
+  {
+    "id": 240,
+    "answer_content": "Odra i Bug",
+    "correct": 0,
+    "question_id": 60
+  },
+  {
+    "id": 241,
+    "answer_content": "w Będominie",
+    "correct": 1,
+    "question_id": 61
+  },
+  {
+    "id": 242,
+    "answer_content": "w Warszawie",
+    "correct": 0,
+    "question_id": 61
+  },
+  {
+    "id": 243,
+    "answer_content": "w Poznaniu",
+    "correct": 0,
+    "question_id": 61
+  },
+  {
+    "id": 244,
+    "answer_content": "w Radomiu",
+    "correct": 0,
+    "question_id": 61
+  },
+  {
+    "id": 245,
+    "answer_content": "1655",
+    "correct": 1,
+    "question_id": 62
+  },
+  {
+    "id": 246,
+    "answer_content": "1665",
+    "correct": 0,
+    "question_id": 62
+  },
+  {
+    "id": 247,
+    "answer_content": "1566",
+    "correct": 0,
+    "question_id": 62
+  },
+  {
+    "id": 248,
+    "answer_content": "1565",
+    "correct": 0,
+    "question_id": 62
+  },
+  {
+    "id": 249,
+    "answer_content": "1683",
+    "correct": 1,
+    "question_id": 63
+  },
+  {
+    "id": 250,
+    "answer_content": "1863",
+    "correct": 0,
+    "question_id": 63
+  },
+  {
+    "id": 251,
+    "answer_content": "1638",
+    "correct": 0,
+    "question_id": 63
+  },
+  {
+    "id": 252,
+    "answer_content": "1883",
+    "correct": 0,
+    "question_id": 63
+  },
+  {
+    "id": 253,
+    "answer_content": "19 stycznia 1945",
+    "correct": 1,
+    "question_id": 64
+  },
+  {
+    "id": 254,
+    "answer_content": "18 stycznia 1944",
+    "correct": 0,
+    "question_id": 64
+  },
+  {
+    "id": 255,
+    "answer_content": "20 stycznia 1946",
+    "correct": 0,
+    "question_id": 64
+  },
+  {
+    "id": 256,
+    "answer_content": "15 stycznia 1949",
+    "correct": 0,
+    "question_id": 64
+  },
+  {
+    "id": 257,
+    "answer_content": "1793",
+    "correct": 1,
+    "question_id": 65
+  },
+  {
+    "id": 258,
+    "answer_content": "1914",
+    "correct": 0,
+    "question_id": 65
+  },
+  {
+    "id": 259,
+    "answer_content": "1863",
+    "correct": 0,
+    "question_id": 65
+  },
+  {
+    "id": 260,
+    "answer_content": "1916",
+    "correct": 0,
+    "question_id": 65
+  },
+  {
+    "id": 261,
+    "answer_content": "beznoga jaszczurka",
+    "correct": 1,
+    "question_id": 66
+  },
+  {
+    "id": 262,
+    "answer_content": "żyjący w Polsce wąż",
+    "correct": 0,
+    "question_id": 66
+  },
+  {
+    "id": 263,
+    "answer_content": "słodkowodna mątwa",
+    "correct": 0,
+    "question_id": 66
+  },
+  {
+    "id": 264,
+    "answer_content": "larwa żmii",
+    "correct": 0,
+    "question_id": 66
+  },
+  {
+    "id": 265,
+    "answer_content": "symbiozy",
+    "correct": 1,
+    "question_id": 67
+  },
+  {
+    "id": 266,
+    "answer_content": "konwergencji",
+    "correct": 0,
+    "question_id": 67
+  },
+  {
+    "id": 267,
+    "answer_content": "apoptozy",
+    "correct": 0,
+    "question_id": 67
+  },
+  {
+    "id": 268,
+    "answer_content": "dystrofii",
+    "correct": 0,
+    "question_id": 67
+  },
+  {
+    "id": 269,
+    "answer_content": "wytwarzanie energii",
+    "correct": 1,
+    "question_id": 68
+  },
+  {
+    "id": 270,
+    "answer_content": "transport DNA",
+    "correct": 0,
+    "question_id": 68
+  },
+  {
+    "id": 271,
+    "answer_content": "ochronę przed wirusami",
+    "correct": 0,
+    "question_id": 68
+  },
+  {
+    "id": 272,
+    "answer_content": "utrzymanie sztywności błony komórkowej",
+    "correct": 0,
+    "question_id": 68
+  },
+  {
+    "id": 273,
+    "answer_content": "podobieństwo wilka workowatego i szakala złocistego",
+    "correct": 1,
+    "question_id": 69
+  },
+  {
+    "id": 274,
+    "answer_content": "gruczoł jadowy skorpiona",
+    "correct": 0,
+    "question_id": 69
+  },
+  {
+    "id": 275,
+    "answer_content": "współpraca błazenka i ukwiału",
+    "correct": 0,
+    "question_id": 69
+  },
+  {
+    "id": 276,
+    "answer_content": "budowa skrzydła kolibra",
+    "correct": 0,
+    "question_id": 69
+  },
+  {
+    "id": 277,
+    "answer_content": "utrzymanie równowagi i koordynacja ruchów",
+    "correct": 1,
+    "question_id": 70
+  },
+  {
+    "id": 278,
+    "answer_content": "przetwarzanie impulsów wzrokowych",
+    "correct": 0,
+    "question_id": 70
+  },
+  {
+    "id": 279,
+    "answer_content": "zachowywanie wspomnień długotrwałych",
+    "correct": 0,
+    "question_id": 70
+  },
+  {
+    "id": 280,
+    "answer_content": "wytwarzanie impulsów koordynujących działanie półkul",
+    "correct": 0,
+    "question_id": 70
+  },
+  {
+    "id": 281,
+    "answer_content": "adenozyna, guaranina, tryptofan",
+    "correct": 1,
+    "question_id": 71
+  },
+  {
+    "id": 282,
+    "answer_content": "alanina, glicyna, histydyna, seryna",
+    "correct": 0,
+    "question_id": 71
+  },
+  {
+    "id": 283,
+    "answer_content": "adenina, guanina, cytozyna, tymina",
+    "correct": 0,
+    "question_id": 71
+  },
+  {
+    "id": 284,
+    "answer_content": "DNA tworzą aminokwasy, nie zasady",
+    "correct": 0,
+    "question_id": 71
+  },
+  {
+    "id": 285,
+    "answer_content": "ssak",
+    "correct": 1,
+    "question_id": 72
+  },
+  {
+    "id": 286,
+    "answer_content": "torbacz",
+    "correct": 0,
+    "question_id": 72
+  },
+  {
+    "id": 287,
+    "answer_content": "waleń",
+    "correct": 0,
+    "question_id": 72
+  },
+  {
+    "id": 288,
+    "answer_content": "obleniec",
+    "correct": 0,
+    "question_id": 72
+  },
+  {
+    "id": 289,
+    "answer_content": "woda i dwutlenek węgla pod wpływem światła zamieniają się w glukozę i tlen",
+    "correct": 1,
+    "question_id": 73
+  },
+  {
+    "id": 290,
+    "answer_content": "tlen i węgiel zamieniane są pod wpływem światła w tlenek węgla i wodę",
+    "correct": 0,
+    "question_id": 73
+  },
+  {
+    "id": 291,
+    "answer_content": "tlen i węgiel zamieniane są pod wpływem światła w dwutlenek węgla i wodę",
+    "correct": 0,
+    "question_id": 73
+  },
+  {
+    "id": 292,
+    "answer_content": "woda i tlen absorbowane są przez bakterie symbiotyczne roślin zielonych",
+    "correct": 0,
+    "question_id": 73
+  },
+  {
+    "id": 293,
+    "answer_content": "wydala nadmiar wody za pomocą wodniczek tętniących",
+    "correct": 1,
+    "question_id": 74
+  },
+  {
+    "id": 294,
+    "answer_content": "ma liczne chloroplasty o zróżnicowanym kształcie",
+    "correct": 0,
+    "question_id": 74
+  },
+  {
+    "id": 295,
+    "answer_content": "porusza się za pomocą długiej wici",
+    "correct": 0,
+    "question_id": 74
+  },
+  {
+    "id": 296,
+    "answer_content": "ma twardą ścianę komórkową z otworem światłoczułym",
+    "correct": 0,
+    "question_id": 74
+  },
+  {
+    "id": 297,
+    "answer_content": "skrzelom",
+    "correct": 1,
+    "question_id": 75
+  },
+  {
+    "id": 298,
+    "answer_content": "tchawkom",
+    "correct": 0,
+    "question_id": 75
+  },
+  {
+    "id": 299,
+    "answer_content": "oskrzelom",
+    "correct": 0,
+    "question_id": 75
+  },
+  {
+    "id": 300,
+    "answer_content": "chłonkom",
+    "correct": 0,
+    "question_id": 75
+  },
+  {
+    "id": 301,
+    "answer_content": "Komórka bakterii",
+    "correct": 1,
+    "question_id": 76
+  },
+  {
+    "id": 302,
+    "answer_content": "Komórka zwierzęca",
+    "correct": 0,
+    "question_id": 76
+  },
+  {
+    "id": 303,
+    "answer_content": "Komórka roślinna",
+    "correct": 0,
+    "question_id": 76
+  },
+  {
+    "id": 304,
+    "answer_content": "Komórka grzyba",
+    "correct": 0,
+    "question_id": 76
+  },
+  {
+    "id": 305,
+    "answer_content": "Kość ciemieniowa",
+    "correct": 1,
+    "question_id": 77
+  },
+  {
+    "id": 306,
+    "answer_content": "Kość czołowa",
+    "correct": 0,
+    "question_id": 77
+  },
+  {
+    "id": 307,
+    "answer_content": "Kość klinowa",
+    "correct": 0,
+    "question_id": 77
+  },
+  {
+    "id": 308,
+    "answer_content": "Kość potyliczna",
+    "correct": 0,
+    "question_id": 77
+  },
+  {
+    "id": 309,
+    "answer_content": "Jest to skolioza.",
+    "correct": 1,
+    "question_id": 78
+  },
+  {
+    "id": 310,
+    "answer_content": "Jest to nadmierna kifoza.",
+    "correct": 0,
+    "question_id": 78
+  },
+  {
+    "id": 311,
+    "answer_content": "Jest to nadmierna lordoza.",
+    "correct": 0,
+    "question_id": 78
+  },
+  {
+    "id": 312,
+    "answer_content": "Plecy okrągło-wklęsłe.",
+    "correct": 0,
+    "question_id": 78
+  },
+  {
+    "id": 313,
+    "answer_content": "Trąbocyty (płytki krwi)",
+    "correct": 1,
+    "question_id": 79
+  },
+  {
+    "id": 314,
+    "answer_content": "Erytrocyty (krwinki czerwone)",
+    "correct": 0,
+    "question_id": 79
+  },
+  {
+    "id": 315,
+    "answer_content": "Leukocyty (krwinki białe)",
+    "correct": 0,
+    "question_id": 79
+  },
+  {
+    "id": 316,
+    "answer_content": "Hemoglobina (białko)",
+    "correct": 0,
+    "question_id": 79
+  },
+  {
+    "id": 317,
+    "answer_content": "Poprzecznie prążkowanej",
+    "correct": 1,
+    "question_id": 80
+  },
+  {
+    "id": 318,
+    "answer_content": "Gładkiej",
+    "correct": 0,
+    "question_id": 80
+  },
+  {
+    "id": 319,
+    "answer_content": "Łącznej",
+    "correct": 0,
+    "question_id": 80
+  },
+  {
+    "id": 320,
+    "answer_content": "Pionowo prążkowanej",
+    "correct": 0,
+    "question_id": 80
+  },
+  {
+    "id": 321,
+    "answer_content": "Mocznik",
+    "correct": 1,
+    "question_id": 81
+  },
+  {
+    "id": 322,
+    "answer_content": "Białko",
+    "correct": 0,
+    "question_id": 81
+  },
+  {
+    "id": 323,
+    "answer_content": "Sok trzustkowy",
+    "correct": 0,
+    "question_id": 81
+  },
+  {
+    "id": 324,
+    "answer_content": "Cukry",
+    "correct": 0,
+    "question_id": 81
+  },
+  {
+    "id": 325,
+    "answer_content": "Glukagon",
+    "correct": 1,
+    "question_id": 82
+  },
+  {
+    "id": 326,
+    "answer_content": "Insulina",
+    "correct": 0,
+    "question_id": 82
+  },
+  {
+    "id": 327,
+    "answer_content": "Tyroksyna",
+    "correct": 0,
+    "question_id": 82
+  },
+  {
+    "id": 328,
+    "answer_content": "Testosteron",
+    "correct": 0,
+    "question_id": 82
+  },
+  {
+    "id": 329,
+    "answer_content": "Płat potyliczny",
+    "correct": 1,
+    "question_id": 83
+  },
+  {
+    "id": 330,
+    "answer_content": "Płat czołowy",
+    "correct": 0,
+    "question_id": 83
+  },
+  {
+    "id": 331,
+    "answer_content": "Płat skroniowy",
+    "correct": 0,
+    "question_id": 83
+  },
+  {
+    "id": 332,
+    "answer_content": "Płat ciemieniowy",
+    "correct": 0,
+    "question_id": 83
+  },
+  {
+    "id": 333,
+    "answer_content": "W oku",
+    "correct": 1,
+    "question_id": 84
+  },
+  {
+    "id": 334,
+    "answer_content": "W uszach",
+    "correct": 0,
+    "question_id": 84
+  },
+  {
+    "id": 335,
+    "answer_content": "Na języku",
+    "correct": 0,
+    "question_id": 84
+  },
+  {
+    "id": 336,
+    "answer_content": "W nosie",
+    "correct": 0,
+    "question_id": 84
+  },
+  {
+    "id": 337,
+    "answer_content": "Zaćma",
+    "correct": 1,
+    "question_id": 85
+  },
+  {
+    "id": 338,
+    "answer_content": "Jaskra",
+    "correct": 0,
+    "question_id": 85
+  },
+  {
+    "id": 339,
+    "answer_content": "Jęczmień",
+    "correct": 0,
+    "question_id": 85
+  },
+  {
+    "id": 340,
+    "answer_content": "Zapalenie spojówek",
+    "correct": 0,
+    "question_id": 85
+  },
+  {
+    "id": 341,
+    "answer_content": "Tak, ale tylko w filmach niemieckich",
+    "correct": 1,
+    "question_id": 86
+  },
+  {
+    "id": 342,
+    "answer_content": "Nigdy",
+    "correct": 0,
+    "question_id": 86
+  },
+  {
+    "id": 343,
+    "answer_content": "Tak, ale tylko w filmach amerykańskich",
+    "correct": 0,
+    "question_id": 86
+  },
+  {
+    "id": 344,
+    "answer_content": "Tak, ale tylko w filmach polskich, zanim zaczęła światową karierę",
+    "correct": 0,
+    "question_id": 86
+  },
+  {
+    "id": 345,
+    "answer_content": "\"Pan Tadeusz\"",
+    "correct": 1,
+    "question_id": 87
+  },
+  {
+    "id": 346,
+    "answer_content": "Pokrewieństwo - są daleką rodziną",
+    "correct": 0,
+    "question_id": 87
+  },
+  {
+    "id": 347,
+    "answer_content": "Poglądy polityczne",
+    "correct": 0,
+    "question_id": 87
+  },
+  {
+    "id": 348,
+    "answer_content": "Wegetarianizm",
+    "correct": 0,
+    "question_id": 87
+  },
+  {
+    "id": 349,
+    "answer_content": "Polskiej",
+    "correct": 1,
+    "question_id": 88
+  },
+  {
+    "id": 350,
+    "answer_content": "Czeskiej",
+    "correct": 0,
+    "question_id": 88
+  },
+  {
+    "id": 351,
+    "answer_content": "Brazylijskiej",
+    "correct": 0,
+    "question_id": 88
+  },
+  {
+    "id": 352,
+    "answer_content": "Niemieckiej",
+    "correct": 0,
+    "question_id": 88
+  },
+  {
+    "id": 353,
+    "answer_content": "Jidysz",
+    "correct": 1,
+    "question_id": 89
+  },
+  {
+    "id": 354,
+    "answer_content": "Angielskim",
+    "correct": 0,
+    "question_id": 89
+  },
+  {
+    "id": 355,
+    "answer_content": "Polskim",
+    "correct": 0,
+    "question_id": 89
+  },
+  {
+    "id": 356,
+    "answer_content": "Rosyjskim",
+    "correct": 0,
+    "question_id": 89
+  },
+  {
+    "id": 357,
+    "answer_content": "\"Ziemia obiecana\"",
+    "correct": 1,
+    "question_id": 90
+  },
+  {
+    "id": 358,
+    "answer_content": "\"Dzięcioł\"",
+    "correct": 0,
+    "question_id": 90
+  },
+  {
+    "id": 359,
+    "answer_content": "\"Lekarstwo na miłość\"",
+    "correct": 0,
+    "question_id": 90
+  },
+  {
+    "id": 360,
+    "answer_content": "\"Podwójne życie Weroniki\"",
+    "correct": 0,
+    "question_id": 90
+  },
+  {
+    "id": 361,
+    "answer_content": "\"Przeminęło z wiatrem\"",
+    "correct": 1,
+    "question_id": 91
+  },
+  {
+    "id": 362,
+    "answer_content": "\"Obywatel Kane\"",
+    "correct": 0,
+    "question_id": 91
+  },
+  {
+    "id": 363,
+    "answer_content": "\"Casablanca\"",
+    "correct": 0,
+    "question_id": 91
+  },
+  {
+    "id": 364,
+    "answer_content": "\"Wielki Gatsby\"",
+    "correct": 0,
+    "question_id": 91
+  },
+  {
+    "id": 365,
+    "answer_content": "W Odessie",
+    "correct": 1,
+    "question_id": 92
+  },
+  {
+    "id": 366,
+    "answer_content": "W Sankt Petersburgu",
+    "correct": 0,
+    "question_id": 92
+  },
+  {
+    "id": 367,
+    "answer_content": "W Moskwie",
+    "correct": 0,
+    "question_id": 92
+  },
+  {
+    "id": 368,
+    "answer_content": "We Władywostoku",
+    "correct": 0,
+    "question_id": 92
+  },
+  {
+    "id": 369,
+    "answer_content": "Są to inicjały znanych aktorek (Brigitte Bardot, Claudia Cardinale, Marilyn Monroe)",
+    "correct": 1,
+    "question_id": 93
+  },
+  {
+    "id": 370,
+    "answer_content": "To oznaczenia różnych grup wiekowych, dla których przeznaczone są filmy",
+    "correct": 0,
+    "question_id": 93
+  },
+  {
+    "id": 371,
+    "answer_content": "W ten sposób komisje kolaudacyjne oceniają jakość filmu przed dopuszczeniem go na ekrany",
+    "correct": 0,
+    "question_id": 93
+  },
+  {
+    "id": 372,
+    "answer_content": "Są to oznaczenia rzędów w bardzo dużych salach kinowych",
+    "correct": 0,
+    "question_id": 93
+  },
+  {
+    "id": 373,
+    "answer_content": "Los Angeles",
+    "correct": 1,
+    "question_id": 94
+  },
+  {
+    "id": 374,
+    "answer_content": "Nowego Jorku",
+    "correct": 0,
+    "question_id": 94
+  },
+  {
+    "id": 375,
+    "answer_content": "Las Vegas",
+    "correct": 0,
+    "question_id": 94
+  },
+  {
+    "id": 376,
+    "answer_content": "San Francisco",
+    "correct": 0,
+    "question_id": 94
+  },
+  {
+    "id": 377,
+    "answer_content": "We Francji",
+    "correct": 1,
+    "question_id": 95
+  },
+  {
+    "id": 378,
+    "answer_content": "W Rosji",
+    "correct": 0,
+    "question_id": 95
+  },
+  {
+    "id": 379,
+    "answer_content": "W Stanach Zjednoczonych",
+    "correct": 0,
+    "question_id": 95
+  },
+  {
+    "id": 380,
+    "answer_content": "W Polsce",
+    "correct": 0,
+    "question_id": 95
+  },
+  {
+    "id": 381,
+    "answer_content": "\"Apollo 13\"",
+    "correct": 1,
+    "question_id": 96
+  },
+  {
+    "id": 382,
+    "answer_content": "\"2001: Odyseja kosmiczna\"",
+    "correct": 0,
+    "question_id": 96
+  },
+  {
+    "id": 383,
+    "answer_content": "\"Interstellar\"",
+    "correct": 0,
+    "question_id": 96
+  },
+  {
+    "id": 384,
+    "answer_content": "\"Marsjanin\"",
+    "correct": 0,
+    "question_id": 96
+  },
+  {
+    "id": 385,
+    "answer_content": "\"Człowiek z blizną\"",
+    "correct": 1,
+    "question_id": 97
+  },
+  {
+    "id": 386,
+    "answer_content": "\"Ziarno prawdy\"",
+    "correct": 0,
+    "question_id": 97
+  },
+  {
+    "id": 387,
+    "answer_content": "\"Kłamca, kłamca\"",
+    "correct": 0,
+    "question_id": 97
+  },
+  {
+    "id": 388,
+    "answer_content": "\"Ojciec chrzestny\"",
+    "correct": 0,
+    "question_id": 97
+  },
+  {
+    "id": 389,
+    "answer_content": "\"Titanic\"",
+    "correct": 1,
+    "question_id": 98
+  },
+  {
+    "id": 390,
+    "answer_content": "\"Kariera Nikosia Dyzmy\"",
+    "correct": 0,
+    "question_id": 98
+  },
+  {
+    "id": 391,
+    "answer_content": "\"Ostatni król Szkocji\"",
+    "correct": 0,
+    "question_id": 98
+  },
+  {
+    "id": 392,
+    "answer_content": "\"Slumdog\"",
+    "correct": 0,
+    "question_id": 98
+  },
+  {
+    "id": 393,
+    "answer_content": "\"Gwiezdne wojny\"",
+    "correct": 1,
+    "question_id": 99
+  },
+  {
+    "id": 394,
+    "answer_content": "\"Pod Mocnym Aniołem\"",
+    "correct": 0,
+    "question_id": 99
+  },
+  {
+    "id": 395,
+    "answer_content": "\"Transporter: Nowa moc\"",
+    "correct": 0,
+    "question_id": 99
+  },
+  {
+    "id": 396,
+    "answer_content": "\"Odyseja kosmiczna\"",
+    "correct": 0,
+    "question_id": 99
+  },
+  {
+    "id": 397,
+    "answer_content": "\"Czas Apokalipsy\"",
+    "correct": 1,
+    "question_id": 100
+  },
+  {
+    "id": 398,
+    "answer_content": "\"Psy\"",
+    "correct": 0,
+    "question_id": 100
+  },
+  {
+    "id": 399,
+    "answer_content": "\"Szeregowiec Ryan\"",
+    "correct": 0,
+    "question_id": 100
+  },
+  {
+    "id": 400,
+    "answer_content": "\"Szyfry wojny\"",
+    "correct": 0,
+    "question_id": 100
+  },
+  {
+    "id": 401,
+    "answer_content": "\"Casablanca\"",
+    "correct": 1,
+    "question_id": 101
+  },
+  {
+    "id": 402,
+    "answer_content": "\"Przeminęło z wiatrem\"",
+    "correct": 0,
+    "question_id": 101
+  },
+  {
+    "id": 403,
+    "answer_content": "\"Duma i uprzedzenie\"",
+    "correct": 0,
+    "question_id": 101
+  },
+  {
+    "id": 404,
+    "answer_content": "\"Pamiętnik\"",
+    "correct": 0,
+    "question_id": 101
+  },
+  {
+    "id": 405,
+    "answer_content": "\"Forrest Gump\"",
+    "correct": 1,
+    "question_id": 102
+  },
+  {
+    "id": 406,
+    "answer_content": "\"Charlie i fabryka czekolady\"",
+    "correct": 0,
+    "question_id": 102
+  },
+  {
+    "id": 407,
+    "answer_content": "\"Leon zawodowiec\"",
+    "correct": 0,
+    "question_id": 102
+  },
+  {
+    "id": 408,
+    "answer_content": "\"Zielona mila\"",
+    "correct": 0,
+    "question_id": 102
+  },
+  {
+    "id": 409,
+    "answer_content": "\"Kingsajz\"",
+    "correct": 1,
+    "question_id": 103
+  },
+  {
+    "id": 410,
+    "answer_content": "\"Brunet wieczorową porą\"",
+    "correct": 0,
+    "question_id": 103
+  },
+  {
+    "id": 411,
+    "answer_content": "\"Miś\"",
+    "correct": 0,
+    "question_id": 103
+  },
+  {
+    "id": 412,
+    "answer_content": "\"Nic śmiesznego\"",
+    "correct": 0,
+    "question_id": 103
+  },
+  {
+    "id": 413,
+    "answer_content": "\"Terminator 2\"",
+    "correct": 1,
+    "question_id": 104
+  },
+  {
+    "id": 414,
+    "answer_content": "\"Robocop\"",
+    "correct": 0,
+    "question_id": 104
+  },
+  {
+    "id": 415,
+    "answer_content": "\"Taksówkarz\"",
+    "correct": 0,
+    "question_id": 104
+  },
+  {
+    "id": 416,
+    "answer_content": "\"Predator\"",
+    "correct": 0,
+    "question_id": 104
+  },
+  {
+    "id": 417,
+    "answer_content": "\"Przeminęło z wiatrem\"",
+    "correct": 1,
+    "question_id": 105
+  },
+  {
+    "id": 418,
+    "answer_content": "\"Wichrowe wzgórza\"",
+    "correct": 0,
+    "question_id": 105
+  },
+  {
+    "id": 419,
+    "answer_content": "\"Kiedy Harry poznał Sally\"",
+    "correct": 0,
+    "question_id": 105
+  },
+  {
+    "id": 420,
+    "answer_content": "\"Pamiętnik\"",
+    "correct": 0,
+    "question_id": 105
+  },
+  {
+    "id": 421,
+    "answer_content": "\"Miś\"",
+    "correct": 1,
+    "question_id": 106
+  },
+  {
+    "id": 422,
+    "answer_content": "\"Brunet wieczorową porą\"",
+    "correct": 0,
+    "question_id": 106
+  },
+  {
+    "id": 423,
+    "answer_content": "\"Zmiennicy\"",
+    "correct": 0,
+    "question_id": 106
+  },
+  {
+    "id": 424,
+    "answer_content": "\"Alternatywy 4\"",
+    "correct": 0,
+    "question_id": 106
+  },
+  {
+    "id": 425,
+    "answer_content": "żmij",
+    "correct": 1,
+    "question_id": 107
+  },
+  {
+    "id": 426,
+    "answer_content": "żmiji",
+    "correct": 0,
+    "question_id": 107
+  },
+  {
+    "id": 427,
+    "answer_content": "żmii",
+    "correct": 0,
+    "question_id": 107
+  },
+  {
+    "id": 428,
+    "answer_content": "żmi",
+    "correct": 0,
+    "question_id": 107
+  },
+  {
+    "id": 429,
+    "answer_content": "wybuchnęła lub wybuchła, użycie zależy od kontekstu",
+    "correct": 1,
+    "question_id": 108
+  },
+  {
+    "id": 430,
+    "answer_content": "wybuchnęła",
+    "correct": 0,
+    "question_id": 108
+  },
+  {
+    "id": 431,
+    "answer_content": "wybuchła",
+    "correct": 0,
+    "question_id": 108
+  },
+  {
+    "id": 432,
+    "answer_content": "żadna z odpowiedzi nie jest poprawna",
+    "correct": 0,
+    "question_id": 108
+  },
+  {
+    "id": 433,
+    "answer_content": "z Adamem Latą",
+    "correct": 1,
+    "question_id": 109
+  },
+  {
+    "id": 434,
+    "answer_content": "z Adamem Lato",
+    "correct": 0,
+    "question_id": 109
+  },
+  {
+    "id": 435,
+    "answer_content": "z Adamem Latem",
+    "correct": 0,
+    "question_id": 109
+  },
+  {
+    "id": 436,
+    "answer_content": "z Adamem Latę",
+    "correct": 0,
+    "question_id": 109
+  },
+  {
+    "id": 437,
+    "answer_content": "rew",
+    "correct": 1,
+    "question_id": 110
+  },
+  {
+    "id": 438,
+    "answer_content": "rwew",
+    "correct": 0,
+    "question_id": 110
+  },
+  {
+    "id": 439,
+    "answer_content": "rwów",
+    "correct": 0,
+    "question_id": 110
+  },
+  {
+    "id": 440,
+    "answer_content": "rwy",
+    "correct": 0,
+    "question_id": 110
+  },
+  {
+    "id": 441,
+    "answer_content": "M. pług - D. pługa",
+    "correct": 1,
+    "question_id": 111
+  },
+  {
+    "id": 442,
+    "answer_content": "M. pług - D. pługu",
+    "correct": 0,
+    "question_id": 111
+  },
+  {
+    "id": 443,
+    "answer_content": "M. pług - B. pługi",
+    "correct": 0,
+    "question_id": 111
+  },
+  {
+    "id": 444,
+    "answer_content": "M. pług - B. pługu",
+    "correct": 0,
+    "question_id": 111
+  },
+  {
+    "id": 445,
+    "answer_content": "przysuski",
+    "correct": 1,
+    "question_id": 112
+  },
+  {
+    "id": 446,
+    "answer_content": "przysuchowski",
+    "correct": 0,
+    "question_id": 112
+  },
+  {
+    "id": 447,
+    "answer_content": "przysuchowszczyński",
+    "correct": 0,
+    "question_id": 112
+  },
+  {
+    "id": 448,
+    "answer_content": "przysuchański",
+    "correct": 0,
+    "question_id": 112
+  },
+  {
+    "id": 449,
+    "answer_content": "Wierzby iwy",
+    "correct": 1,
+    "question_id": 113
+  },
+  {
+    "id": 450,
+    "answer_content": "Wierzbie iwa",
+    "correct": 0,
+    "question_id": 113
+  },
+  {
+    "id": 451,
+    "answer_content": "Wierzby iwa",
+    "correct": 0,
+    "question_id": 113
+  },
+  {
+    "id": 452,
+    "answer_content": "Wierzbie iwie",
+    "correct": 0,
+    "question_id": 113
+  },
+  {
+    "id": 453,
+    "answer_content": "Jedlinie-Zdrój",
+    "correct": 1,
+    "question_id": 114
+  },
+  {
+    "id": 454,
+    "answer_content": "Jedliną-Zdrojem",
+    "correct": 0,
+    "question_id": 114
+  },
+  {
+    "id": 455,
+    "answer_content": "Jedlinie-Zdroju",
+    "correct": 0,
+    "question_id": 114
+  },
+  {
+    "id": 456,
+    "answer_content": "Jedlina-Zdrój",
+    "correct": 0,
+    "question_id": 114
+  },
+  {
+    "id": 457,
+    "answer_content": "taxi, kakadu, tabu, atelier",
+    "correct": 1,
+    "question_id": 115
+  },
+  {
+    "id": 458,
+    "answer_content": "logo, radio, kiwi, atelier",
+    "correct": 0,
+    "question_id": 115
+  },
+  {
+    "id": 459,
+    "answer_content": "studio, taxi, kiwi, bikini",
+    "correct": 0,
+    "question_id": 115
+  },
+  {
+    "id": 460,
+    "answer_content": "kamikaze, tabu, menu, lasso",
+    "correct": 0,
+    "question_id": 115
+  },
+  {
+    "id": 461,
+    "answer_content": "dżdżysty",
+    "correct": 1,
+    "question_id": 116
+  },
+  {
+    "id": 462,
+    "answer_content": "dżczysty",
+    "correct": 0,
+    "question_id": 116
+  },
+  {
+    "id": 463,
+    "answer_content": "dżdzysty",
+    "correct": 0,
+    "question_id": 116
+  },
+  {
+    "id": 464,
+    "answer_content": "dzdżysty",
+    "correct": 0,
+    "question_id": 116
+  },
+  {
+    "id": 465,
+    "answer_content": "wyrazy pokrewne",
+    "correct": 1,
+    "question_id": 117
+  },
+  {
+    "id": 466,
+    "answer_content": "synonimy",
+    "correct": 0,
+    "question_id": 117
+  },
+  {
+    "id": 467,
+    "answer_content": "antonimy",
+    "correct": 0,
+    "question_id": 117
+  },
+  {
+    "id": 468,
+    "answer_content": "homonimy",
+    "correct": 0,
+    "question_id": 117
+  },
+  {
+    "id": 469,
+    "answer_content": "brednie",
+    "correct": 1,
+    "question_id": 118
+  },
+  {
+    "id": 470,
+    "answer_content": "wyszukane słowa",
+    "correct": 0,
+    "question_id": 118
+  },
+  {
+    "id": 471,
+    "answer_content": "mądrości",
+    "correct": 0,
+    "question_id": 118
+  },
+  {
+    "id": 472,
+    "answer_content": "typ rosyjskich rękawiczek",
+    "correct": 0,
+    "question_id": 118
+  },
+  {
+    "id": 473,
+    "answer_content": "czasownik",
+    "correct": 1,
+    "question_id": 119
+  },
+  {
+    "id": 474,
+    "answer_content": "orzeczenie",
+    "correct": 0,
+    "question_id": 119
+  },
+  {
+    "id": 475,
+    "answer_content": "przymiotnik",
+    "correct": 0,
+    "question_id": 119
+  },
+  {
+    "id": 476,
+    "answer_content": "przydawka",
+    "correct": 0,
+    "question_id": 119
+  },
+  {
+    "id": 477,
+    "answer_content": "1999",
+    "correct": 1,
+    "question_id": 120
+  },
+  {
+    "id": 478,
+    "answer_content": "2000",
+    "correct": 0,
+    "question_id": 120
+  },
+  {
+    "id": 479,
+    "answer_content": "2010",
+    "correct": 0,
+    "question_id": 120
+  },
+  {
+    "id": 480,
+    "answer_content": "2001",
+    "correct": 0,
+    "question_id": 120
+  },
+  {
+    "id": 481,
+    "answer_content": "Lech Wałęsa",
+    "correct": 1,
+    "question_id": 121
+  },
+  {
+    "id": 482,
+    "answer_content": "Tadeusz Mazowiecki",
+    "correct": 0,
+    "question_id": 121
+  },
+  {
+    "id": 483,
+    "answer_content": "Aleksander Kwaśniewski",
+    "correct": 0,
+    "question_id": 121
+  },
+  {
+    "id": 484,
+    "answer_content": "Bronisław Komorowski",
+    "correct": 0,
+    "question_id": 121
+  },
+  {
+    "id": 485,
+    "answer_content": "na policjantów",
+    "correct": 1,
+    "question_id": 122
+  },
+  {
+    "id": 486,
+    "answer_content": "na kobiety lekkich obyczajów",
+    "correct": 0,
+    "question_id": 122
+  },
+  {
+    "id": 487,
+    "answer_content": "na osobę w okularach",
+    "correct": 0,
+    "question_id": 122
+  },
+  {
+    "id": 488,
+    "answer_content": "na złodzei",
+    "correct": 0,
+    "question_id": 122
+  },
+  {
+    "id": 489,
+    "answer_content": "motyl",
+    "correct": 1,
+    "question_id": 123
+  },
+  {
+    "id": 490,
+    "answer_content": "szmata do podłogi",
+    "correct": 0,
+    "question_id": 123
+  },
+  {
+    "id": 491,
+    "answer_content": "sklep z używanymi ubraniami",
+    "correct": 0,
+    "question_id": 123
+  },
+  {
+    "id": 492,
+    "answer_content": "kapelusz",
+    "correct": 0,
+    "question_id": 123
+  },
+  {
+    "id": 493,
+    "answer_content": "kanapka z dwóch kromek chleba",
+    "correct": 1,
+    "question_id": 124
+  },
+  {
+    "id": 494,
+    "answer_content": "wieko, pokrywa",
+    "correct": 0,
+    "question_id": 124
+  },
+  {
+    "id": 495,
+    "answer_content": "potocznie pośladki",
+    "correct": 0,
+    "question_id": 124
+  },
+  {
+    "id": 496,
+    "answer_content": "nóż",
+    "correct": 0,
+    "question_id": 124
+  },
+  {
+    "id": 497,
+    "answer_content": "dają do zjedzenia dzieciom",
+    "correct": 1,
+    "question_id": 125
+  },
+  {
+    "id": 498,
+    "answer_content": "dają do zjedzenia psu lub kotu",
+    "correct": 0,
+    "question_id": 125
+  },
+  {
+    "id": 499,
+    "answer_content": "zakładają na siebie w zimie",
+    "correct": 0,
+    "question_id": 125
+  },
+  {
+    "id": 500,
+    "answer_content": "przykrywają się nią w nocy",
+    "correct": 0,
+    "question_id": 125
+  },
+  {
+    "id": 501,
+    "answer_content": "w Poznaniu",
+    "correct": 1,
+    "question_id": 126
+  },
+  {
+    "id": 502,
+    "answer_content": "na Śląsku",
+    "correct": 0,
+    "question_id": 126
+  },
+  {
+    "id": 503,
+    "answer_content": "w Szczecinie",
+    "correct": 0,
+    "question_id": 126
+  },
+  {
+    "id": 504,
+    "answer_content": "w Warszawie",
+    "correct": 0,
+    "question_id": 126
+  },
+  {
+    "id": 505,
+    "answer_content": "tramwaj",
+    "correct": 1,
+    "question_id": 127
+  },
+  {
+    "id": 506,
+    "answer_content": "dzwon",
+    "correct": 0,
+    "question_id": 127
+  },
+  {
+    "id": 507,
+    "answer_content": "osoba leniwa",
+    "correct": 0,
+    "question_id": 127
+  },
+  {
+    "id": 508,
+    "answer_content": "sznurek",
+    "correct": 0,
+    "question_id": 127
+  },
+  {
+    "id": 509,
+    "answer_content": "zajezdnię tramwajową",
+    "correct": 1,
+    "question_id": 128
+  },
+  {
+    "id": 510,
+    "answer_content": "końcówkę chleba",
+    "correct": 0,
+    "question_id": 128
+  },
+  {
+    "id": 511,
+    "answer_content": "raport podsumowujący",
+    "correct": 0,
+    "question_id": 128
+  },
+  {
+    "id": 512,
+    "answer_content": "weekend",
+    "correct": 0,
+    "question_id": 128
+  },
+  {
+    "id": 513,
+    "answer_content": "bilet okresowy",
+    "correct": 1,
+    "question_id": 129
+  },
+  {
+    "id": 514,
+    "answer_content": "policyjne koguty",
+    "correct": 0,
+    "question_id": 129
+  },
+  {
+    "id": 515,
+    "answer_content": "lampę błyskową",
+    "correct": 0,
+    "question_id": 129
+  },
+  {
+    "id": 516,
+    "answer_content": "lustro",
+    "correct": 0,
+    "question_id": 129
+  },
+  {
+    "id": 517,
+    "answer_content": "Podlasie",
+    "correct": 1,
+    "question_id": 130
+  },
+  {
+    "id": 518,
+    "answer_content": "Wielkopolska",
+    "correct": 0,
+    "question_id": 130
+  },
+  {
+    "id": 519,
+    "answer_content": "Śląsk",
+    "correct": 0,
+    "question_id": 130
+  },
+  {
+    "id": 520,
+    "answer_content": "Kaszuby",
+    "correct": 0,
+    "question_id": 130
+  },
+  {
+    "id": 521,
+    "answer_content": "jednorazowej torbie foliowej",
+    "correct": 1,
+    "question_id": 131
+  },
+  {
+    "id": 522,
+    "answer_content": "ulotce",
+    "correct": 0,
+    "question_id": 131
+  },
+  {
+    "id": 523,
+    "answer_content": "lekkiej kurtce",
+    "correct": 0,
+    "question_id": 131
+  },
+  {
+    "id": 524,
+    "answer_content": "kradzieży",
+    "correct": 0,
+    "question_id": 131
+  },
+  {
+    "id": 525,
+    "answer_content": "opowiadanie różnych historii",
+    "correct": 1,
+    "question_id": 132
+  },
+  {
+    "id": 526,
+    "answer_content": "grę na instrumencie",
+    "correct": 0,
+    "question_id": 132
+  },
+  {
+    "id": 527,
+    "answer_content": "obgotowywanie mięsa",
+    "correct": 0,
+    "question_id": 132
+  },
+  {
+    "id": 528,
+    "answer_content": "uprawianie ogrodu",
+    "correct": 0,
+    "question_id": 132
+  },
+  {
+    "id": 529,
+    "answer_content": "szlafrok",
+    "correct": 1,
+    "question_id": 133
+  },
+  {
+    "id": 530,
+    "answer_content": "szafka przy łóżku",
+    "correct": 0,
+    "question_id": 133
+  },
+  {
+    "id": 531,
+    "answer_content": "kołysanka",
+    "correct": 0,
+    "question_id": 133
+  },
+  {
+    "id": 532,
+    "answer_content": "świeczka",
+    "correct": 0,
+    "question_id": 133
+  },
+  {
+    "id": 533,
+    "answer_content": "ocean",
+    "correct": 1,
+    "question_id": 134
+  },
+  {
+    "id": 534,
+    "answer_content": "podróżnik",
+    "correct": 0,
+    "question_id": 134
+  },
+  {
+    "id": 535,
+    "answer_content": "globus",
+    "correct": 0,
+    "question_id": 134
+  },
+  {
+    "id": 536,
+    "answer_content": "snop siana",
+    "correct": 0,
+    "question_id": 134
+  },
+  {
+    "id": 537,
+    "answer_content": "człowieka spokojnego",
+    "correct": 1,
+    "question_id": 135
+  },
+  {
+    "id": 538,
+    "answer_content": "księgowego",
+    "correct": 0,
+    "question_id": 135
+  },
+  {
+    "id": 539,
+    "answer_content": "matematyka",
+    "correct": 0,
+    "question_id": 135
+  },
+  {
+    "id": 540,
+    "answer_content": "przedsiębiorcę",
+    "correct": 0,
+    "question_id": 135
+  },
+  {
+    "id": 541,
+    "answer_content": "ogrodzenie",
+    "correct": 1,
+    "question_id": 136
+  },
+  {
+    "id": 542,
+    "answer_content": "smród",
+    "correct": 0,
+    "question_id": 136
+  },
+  {
+    "id": 543,
+    "answer_content": "rysia",
+    "correct": 0,
+    "question_id": 136
+  },
+  {
+    "id": 544,
+    "answer_content": "randkę",
+    "correct": 0,
+    "question_id": 136
+  },
+  {
+    "id": 545,
+    "answer_content": "woreczek do przechowywania pieniędzy",
+    "correct": 1,
+    "question_id": 137
+  },
+  {
+    "id": 546,
+    "answer_content": "narzędzie do młócenia zboża",
+    "correct": 0,
+    "question_id": 137
+  },
+  {
+    "id": 547,
+    "answer_content": "czerpak do nabierania wody",
+    "correct": 0,
+    "question_id": 137
+  },
+  {
+    "id": 548,
+    "answer_content": "sznury do wywieszania prania",
+    "correct": 0,
+    "question_id": 137
+  }
+]
