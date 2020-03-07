@@ -86,29 +86,25 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     private void addDefaultQuestions() throws IOException {
         InputStream resource = new ClassPathResource("questions/questions_answers.html").getInputStream();
-
-        try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(resource))) {
-            String que = reader.lines()
-                    .collect(Collectors.joining("\n"));
-
-            System.out.println(que);
-        }
-
-        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
-
+//
+//        try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource))) {
+//            String que = reader.lines()
+//                    .collect(Collectors.joining("\n"));
+//
+//            System.out.println(que);
+//        }
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            tryReadFromFileAndSaveToDatabase(file, reader);
+            BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(resource)));
+            tryReadFromFileAndSaveToDatabase(resource, reader);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void tryReadFromFileAndSaveToDatabase(File file, BufferedReader reader) throws IOException {
-        if (file.exists()) {
+    private void tryReadFromFileAndSaveToDatabase(InputStream file, BufferedReader reader) throws IOException {
+//        if (file.) {
             while (reader.ready()) {
 
                 /*Creating default questions*/
@@ -139,9 +135,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
                     }
                 }
             }
-        } else {
-            System.err.println("file " + file.getName() + " does not exist.");
-        }
+//        } else {
+//            System.err.println("file " + file.getName() + " does not exist.");
+//        }
     }
 
     private void bindAnswerWithQuestion(BufferedReader reader, Question question, Answer answer) throws IOException {
