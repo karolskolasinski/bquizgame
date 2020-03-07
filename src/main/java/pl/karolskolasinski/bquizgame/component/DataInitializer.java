@@ -95,7 +95,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 //        }
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(resource)));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(resource));
             tryReadFromFileAndSaveToDatabase(resource, reader);
             reader.close();
         } catch (IOException e) {
