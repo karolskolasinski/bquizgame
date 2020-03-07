@@ -4,7 +4,7 @@ import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.core.io.Resource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,23 +13,19 @@ import pl.karolskolasinski.bquizgame.model.account.Account;
 import pl.karolskolasinski.bquizgame.model.account.AccountRole;
 import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
-import pl.karolskolasinski.bquizgame.repository.*;
+import pl.karolskolasinski.bquizgame.repository.AccountRepository;
+import pl.karolskolasinski.bquizgame.repository.AccountRoleRepository;
+import pl.karolskolasinski.bquizgame.repository.AnswerRepository;
+import pl.karolskolasinski.bquizgame.repository.QuestionRepository;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
+import java.io.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 public class DataInitializer implements ApplicationListener<ContextRefreshedEvent> {
-
-
-    private final
-    ResourceLoader resourceLoader;
 
     private AccountRepository accountRepository;
     private AccountRoleRepository accountRoleRepository;
@@ -39,13 +35,12 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
     @Autowired
-    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository, ResourceLoader resourceLoader) {
+    public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
         this.accountRepository = accountRepository;
         this.accountRoleRepository = accountRoleRepository;
         this.passwordEncoder = passwordEncoder;
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
-        this.resourceLoader = resourceLoader;
     }
 
     @Override
@@ -55,7 +50,11 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addDefaultRole("MODERATOR");
         addDefaultUser("admin", "admin", "admin@admin.com", "ADMIN", "USER");
         addDefaultUser("user", "user", "user@user.com", "USER");
-        addDefaultQuestions();
+        try {
+            addDefaultQuestions();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void addDefaultUser(String username, String password, String email, String... roles) {
@@ -85,27 +84,20 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         }
     }
 
-    private void addDefaultQuestions() {
-        try {
-            URL url = resourceLoader.getResource("classpath:/app/src/main/resources/questions/questions_answers.html").getURL();
-            URL url2 = resourceLoader.getResource("classpath:resources/main/resources/questions/questions_answers.html").getURL();
-            URL url3 = resourceLoader.getResource("classpath:app/src/main/resources/questions/questions_answers.html").getURL();
-            URL url4 = resourceLoader.getResource("questions/questions_answers.html").getURL();
-            URL url5 = resourceLoader.getResource("/questions/questions_answers.html").getURL();
-            Resource resource = resourceLoader.getResource("/questions/questions_answers.html");
-            String filename = resourceLoader.getResource("/questions/questions_answers.html").getFilename();
-            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url);
-            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url2);
-            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url3);
-            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url4);
-            System.out.println("\n\n\n\n\n\n\n\n\n\n" + url5);
-            System.out.println("\n\n\n\n\n\n\n\n\n\n" + resource.getDescription());
-            System.out.println("\n\n\n\n\n\n\n\n\n\n" + filename);
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void addDefaultQuestions() throws IOException {
+        InputStream resource = new ClassPathResource("questions/questions_answers.html").getInputStream();
+
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(resource))) {
+            String que = reader.lines()
+                    .collect(Collectors.joining("\n"));
+
+            System.out.println(que);
         }
 
         File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
+
+
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             tryReadFromFileAndSaveToDatabase(file, reader);
