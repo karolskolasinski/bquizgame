@@ -25,7 +25,7 @@
 
             <!--Option [1 player]-->
             <form th:if="${newUserQuiz.numberOfPlayers == 1}" th:action="@{/quizSetup/setCategories}" method="post"
-                  th:object="${newUserQuiz}">
+                  th:object="${newUserQuiz}" accept-charset="UTF-8">
                 <input type="hidden" th:name="newUserQuizId" th:value="${newUserQuiz.getId()}">
                 <div class="row card-body text-center">
                     <div class="col-sm-3 p-0">
@@ -74,7 +74,7 @@
 
             <!--Option [2 players]-->
             <form th:if="${newUserQuiz.numberOfPlayers == 2}" th:action="@{/quizSetup/setCategories}" method="post"
-                  th:object="${newUserQuiz}">
+                  th:object="${newUserQuiz}" accept-charset="UTF-8">
                 <input type="hidden" th:name="newUserQuizId" th:value="${newUserQuiz.getId()}">
                 <div class="row card-body text-center">
                     <div class="col-sm-3 p-0">
@@ -124,7 +124,7 @@
 
             <!--Option [3 players]-->
             <form th:if="${newUserQuiz.numberOfPlayers == 3}" th:action="@{/quizSetup/setCategories}" method="post"
-                  th:object="${newUserQuiz}">
+                  th:object="${newUserQuiz}" accept-charset="UTF-8">
                 <input type="hidden" th:name="newUserQuizId" th:value="${newUserQuiz.getId()}">
                 <div class="row card-body text-center">
                     <div class="col-sm-3 p-0">
@@ -174,7 +174,7 @@
 
             <!--Option [4 players]-->
             <form th:if="${newUserQuiz.numberOfPlayers == 4}" th:action="@{/quizSetup/setCategories}" method="post"
-                  th:object="${newUserQuiz}">
+                  th:object="${newUserQuiz}" accept-charset="UTF-8">
                 <input type="hidden" th:name="newUserQuizId" th:value="${newUserQuiz.getId()}">
                 <div class="row card-body text-center">
                     <div class="col-sm-3 p-0">

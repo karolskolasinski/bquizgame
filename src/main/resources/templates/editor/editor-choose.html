@@ -20,7 +20,7 @@
         <div class="col-md-6">
             <div class="card mb-4 shadow-sm">
                 <div class="card-body text-left">
-                    <form th:action="@{/editor/choose}" method="post">
+                    <form th:action="@{/editor/choose}" method="post" accept-charset="UTF-8">
 
                         <label class="small pt-4">Kategoria:</label>
                         <select class="form-control" th:field="*{searchQuestion.categories}">
