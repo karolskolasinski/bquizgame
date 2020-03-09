@@ -10,6 +10,9 @@ import pl.karolskolasinski.bquizgame.repository.AnswerRepository;
 import pl.karolskolasinski.bquizgame.repository.QuestionRepository;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Service
@@ -65,7 +68,7 @@ public class QuestionService {
 
     public void setDifficultyAndSave(Question question, HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
-        setDifficulty(question,parameterMap);
+        setDifficulty(question, parameterMap);
         questionRepository.save(question);
     }
 
@@ -131,7 +134,8 @@ public class QuestionService {
 
     private void updateQuestion(Question question, Map<String, String[]> parameterMap) {
         setDifficulty(question, parameterMap);
-        question.setContent(parameterMap.get("content")[0]);
+        String content = URLEncoder.encode(parameterMap.get("content")[0], StandardCharsets.UTF_8);
+        question.setContent(content);
         questionRepository.save(question);
     }
 
