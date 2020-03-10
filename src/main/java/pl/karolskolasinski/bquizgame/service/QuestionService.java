@@ -134,12 +134,8 @@ public class QuestionService {
 
     private void updateQuestion(Question question, Map<String, String[]> parameterMap) {
         setDifficulty(question, parameterMap);
-        try {
-            String content = URLEncoder.encode(parameterMap.get("content")[0], "UTF-8");
-            question.setContent(content);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        question.setContent(parameterMap.get("content")[0]);
+        questionRepository.setUTF8();
         questionRepository.save(question);
     }
 
