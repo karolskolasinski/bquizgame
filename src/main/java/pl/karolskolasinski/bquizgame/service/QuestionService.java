@@ -1,6 +1,7 @@
 package pl.karolskolasinski.bquizgame.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import pl.karolskolasinski.bquizgame.model.dto.AnswersContentDto;
 import pl.karolskolasinski.bquizgame.model.dto.ICategoryStatsDto;
@@ -10,9 +11,6 @@ import pl.karolskolasinski.bquizgame.repository.AnswerRepository;
 import pl.karolskolasinski.bquizgame.repository.QuestionRepository;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Service
@@ -135,7 +133,6 @@ public class QuestionService {
     private void updateQuestion(Question question, Map<String, String[]> parameterMap) {
         setDifficulty(question, parameterMap);
         question.setContent(parameterMap.get("content")[0]);
-        questionRepository.setUTF8();
         questionRepository.save(question);
     }
 

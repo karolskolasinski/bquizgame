@@ -33,6 +33,4 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     @Query(value = "SELECT heroku_cb7f22ae822d1c1.question.category AS category, heroku_cb7f22ae822d1c1.question.difficulty AS difficulty, count(*) AS count FROM heroku_cb7f22ae822d1c1.question GROUP BY heroku_cb7f22ae822d1c1.question.difficulty, heroku_cb7f22ae822d1c1.question.category ORDER BY heroku_cb7f22ae822d1c1.question.category, heroku_cb7f22ae822d1c1.question.difficulty", nativeQuery = true)
     List<ICategoryStatsDto> countCategoriesByDifficulty();
 
-    @Query(value = "SET NAMES 'utf8mb4'", nativeQuery = true)
-    void setUTF8();
 }
