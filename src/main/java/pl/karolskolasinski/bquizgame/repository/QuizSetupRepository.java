@@ -15,19 +15,19 @@ import java.util.Set;
 public interface QuizSetupRepository extends JpaRepository<UserQuiz, Long> {
 
     /*LAST WEEK STATISTICS*/
-    @Query(value = "SELECT count(*), CONVERT(USING utf8) FROM heroku_cb7f22ae822d1c1.user_quiz uq WHERE uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY)", nativeQuery = true)
+    @Query(value = "SELECT count(*) FROM heroku_cb7f22ae822d1c1.user_quiz uq WHERE uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY)", nativeQuery = true)
     int gamesPlayedLastWeek();
 
-    @Query(value = "SELECT count(*), CONVERT(USING utf8) FROM heroku_cb7f22ae822d1c1.user_answer ua JOIN heroku_cb7f22ae822d1c1.answer a ON ua.answer_id = a.id JOIN heroku_cb7f22ae822d1c1.user_quiz uq ON ua.user_quiz_id = uq.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY)", nativeQuery = true)
+    @Query(value = "SELECT count(*) FROM heroku_cb7f22ae822d1c1.user_answer ua JOIN heroku_cb7f22ae822d1c1.answer a ON ua.answer_id = a.id JOIN heroku_cb7f22ae822d1c1.user_quiz uq ON ua.user_quiz_id = uq.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY)", nativeQuery = true)
     double correctAnswersLastWeek();
 
-    @Query(value = "SELECT count(*), CONVERT(USING utf8) FROM heroku_cb7f22ae822d1c1.user_answer ua JOIN heroku_cb7f22ae822d1c1.user_quiz uq ON ua.user_quiz_id = uq.id WHERE uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY)", nativeQuery = true)
+    @Query(value = "SELECT count(*) FROM heroku_cb7f22ae822d1c1.user_answer ua JOIN heroku_cb7f22ae822d1c1.user_quiz uq ON ua.user_quiz_id = uq.id WHERE uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY)", nativeQuery = true)
     double allAnswersLastWeek();
 
-    @Query(value = "SELECT max(difficulty), CONVERT(USING utf8) FROM (SELECT sum(difficulty) AS difficulty FROM heroku_cb7f22ae822d1c1.user_answer ua JOIN heroku_cb7f22ae822d1c1.question q ON ua.question_id = q.id JOIN heroku_cb7f22ae822d1c1.answer a ON ua.answer_id = a.id JOIN heroku_cb7f22ae822d1c1.user_quiz uq ON ua.user_quiz_id = uq.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY) GROUP BY ua.user_quiz_id) AS max_week", nativeQuery = true)
+    @Query(value = "SELECT max(difficulty) FROM (SELECT sum(difficulty) AS difficulty FROM heroku_cb7f22ae822d1c1.user_answer ua JOIN heroku_cb7f22ae822d1c1.question q ON ua.question_id = q.id JOIN heroku_cb7f22ae822d1c1.answer a ON ua.answer_id = a.id JOIN heroku_cb7f22ae822d1c1.user_quiz uq ON ua.user_quiz_id = uq.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY) GROUP BY ua.user_quiz_id) AS max_week", nativeQuery = true)
     Optional<Integer> bestScoreLastWeek();
 
-    @Query(value = "SELECT u, CONVERT(USING utf8) FROM (SELECT max(difficulty), u FROM (SELECT sum(difficulty) AS difficulty, username AS u FROM heroku_cb7f22ae822d1c1.user_answer ua JOIN heroku_cb7f22ae822d1c1.question q ON ua.question_id = q.id JOIN heroku_cb7f22ae822d1c1.answer a ON ua.answer_id = a.id JOIN heroku_cb7f22ae822d1c1.user_quiz uq ON ua.user_quiz_id = uq.id JOIN heroku_cb7f22ae822d1c1.account ac on uq.account_id = ac.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY) GROUP BY ua.user_quiz_id ORDER BY difficulty DESC) AS max_week) as d_u", nativeQuery = true)
+    @Query(value = "SELECT u FROM (SELECT max(difficulty), u FROM (SELECT sum(difficulty) AS difficulty, username AS u FROM heroku_cb7f22ae822d1c1.user_answer ua JOIN heroku_cb7f22ae822d1c1.question q ON ua.question_id = q.id JOIN heroku_cb7f22ae822d1c1.answer a ON ua.answer_id = a.id JOIN heroku_cb7f22ae822d1c1.user_quiz uq ON ua.user_quiz_id = uq.id JOIN heroku_cb7f22ae822d1c1.account ac on uq.account_id = ac.id WHERE a.correct = 1 AND uq.quiz_start_date_time >= (CURDATE() - INTERVAL 7 DAY) GROUP BY ua.user_quiz_id ORDER BY difficulty DESC) AS max_week) as d_u", nativeQuery = true)
     String bestUserLastWeek();
 
 
