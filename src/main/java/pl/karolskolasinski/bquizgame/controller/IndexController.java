@@ -26,7 +26,9 @@ public class IndexController {
     public String index(Model model) {
         /*Last week statistics*/
         model.addAttribute("gamesPlayedLastWeek", quizSetupService.gamesPlayedLastWeek());
-        model.addAttribute("percentageOfCorrectAnswersLastWeek", decimalFormat.format(quizSetupService.correctAnswersLastWeek() * 100 / quizSetupService.allAnswersLastWeek()));
+        String format = decimalFormat.format(quizSetupService.correctAnswersLastWeek() * 100 / quizSetupService.allAnswersLastWeek());
+        model.addAttribute("percentageOfCorrectAnswersLastWeek", format);
+        System.out.println(format);
         model.addAttribute("bestScoreLastWeek", quizSetupService.bestScoreLastWeek());
         model.addAttribute("bestUserLastWeek", quizSetupService.bestUserLastWeek());
 
