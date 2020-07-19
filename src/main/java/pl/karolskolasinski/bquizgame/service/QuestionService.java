@@ -65,23 +65,23 @@ public class QuestionService {
 
     public void setDifficultyAndSave(Question question, HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
-        setDifficulty(question,parameterMap);
+        setDifficulty(question, parameterMap);
         questionRepository.save(question);
     }
 
     public List<Question> getAllByCategory(String catgory) {
-        return questionRepository.findAllByChoosedCategory(catgory);
+        return questionRepository.findAllByChosenCategory(catgory);
     }
 
     public List<Question> getAllByCategoryAndDifficulty(String catgory, int difficulty) {
         if (difficulty == 1) {
-            return questionRepository.findAllDifficulty1ByChoosedCategory(catgory);
+            return questionRepository.findAllDifficulty1ByChosenCategory(catgory);
         } else if (difficulty == 2) {
-            return questionRepository.findAllDifficulty2ByChoosedCategory(catgory);
+            return questionRepository.findAllDifficulty2ByChosenCategory(catgory);
         } else if (difficulty == 3) {
-            return questionRepository.findAllDifficulty3ByChoosedCategory(catgory);
+            return questionRepository.findAllDifficulty3ByChosenCategory(catgory);
         } else {
-            return questionRepository.findAllDifficulty4ByChoosedCategory(catgory);
+            return questionRepository.findAllDifficulty4ByChosenCategory(catgory);
         }
     }
 

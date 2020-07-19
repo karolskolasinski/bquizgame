@@ -1,0 +1,961 @@
+[
+  {
+    "id": 1,
+    "category": "Chemia",
+    "content": "Wodę zaliczamy do substancji chemicznych:",
+    "difficulty": 2,
+    "reference": "Większość substancji w przyrodzie jest zbudowana z atomów różnych pierwiastków połączonych w grupy zwane cząsteczkami. Jeśli cząsteczki składają się z atomów co najmniej dwóch różnych pierwiastków, to powstaje substancja złożona. Znamy obecnie tysiące takich substancji, a uczeni wciąż tworzą i odkrywają nowe. Substancjami złożonymi są na przykład woda, sól kuchenna, cukier i ocet. <a class=\"underlined underlined--thick text-dark\" target=\"_blank\" href=\"https://epodreczniki.pl/a/substancje-proste-i-zlozone/D13106dJV\">źródło</a>"
+  },
+  {
+    "id": 2,
+    "category": "Biologia",
+    "content": "Z ilu rodzajów nukleotydów zbudowane jest DNA?",
+    "difficulty": 3,
+    "reference": "<a class=\"underlined underlined--thick text-dark\" target=\"_blank\" href=\"https://pl.wikipedia.org/wiki/Kwas_deoksyrybonukleinowy\">źródło</a>"
+  },
+  {
+    "id": 3,
+    "category": "Kino",
+    "content": "Co nie jest charakterystyczne dla aktorskiego wizerunku Charliego Chaplina?",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 4,
+    "category": "Język polski",
+    "content": "Który z przypadków deklinacji odpowiada na pytania: \"kto?\" i \"co?\"?",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 5,
+    "category": "Chemia",
+    "content": "Papierek lakmusowy pod wpływem kwasu:",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 6,
+    "category": "Chemia",
+    "content": "Wskaż rozpuszczalnik nieorganiczny",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 7,
+    "category": "Chemia",
+    "content": "Z czego głównie składa się gaz syntezowy (gaz wodny)?",
+    "difficulty": 4,
+    "reference": "Gaz syntezowy (gaz wodny) – palny gaz powstający podczas reakcji węgla, gazu ziemnego lub lekkich węglowodorów z parą wodną w obecności odpowiednich katalizatorów. Jest to mieszanina tlenku węgla (CO) i wodoru (H2), może zawierać znaczne ilości azotu. Gaz syntezowy jest stosowany jako surowiec do wielu syntez chemicznych (na przykład do otrzymywania metanolu i etanolu). Ponadto z gazu syntezowego otrzymuje się syntinę (benzynę syntetyczną)."
+  },
+  {
+    "id": 8,
+    "category": "Chemia",
+    "content": "Czemu zawdzięcza swoją barwę szkło rubinowe?",
+    "difficulty": 4,
+    "reference": "Szkło rubinowe wytwarzane jest poprzez dodanie chlorku złota do stopionego szkła. Chlorek złota jest przygotowywany przez rozpuszczenie złota w wodzie królewskiej. Najstarszym znanym wyrobem z czerwonego szkła jest puchar Likurga, datowany na IV w. n.e., zawierający zarówno cząstki złota, jak i srebra."
+  },
+  {
+    "id": 9,
+    "category": "Chemia",
+    "content": "Substancja mająca pH równe 9 jest:",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 10,
+    "category": "Chemia",
+    "content": "Który z tych procesów jest przede wszystkim reakcją chemiczną?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 11,
+    "category": "Chemia",
+    "content": "Podczas lutowania cyna ulega:",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 12,
+    "category": "Chemia",
+    "content": "P to symbol chemiczny:",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 13,
+    "category": "Chemia",
+    "content": "Ziemia składa się w największym procencie z atomów:",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 14,
+    "category": "Chemia",
+    "content": "Kobalt to w temperaturze pokojowej:",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 15,
+    "category": "Chemia",
+    "content": "Sól kuchenna składa się przede wszystkim z:",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 16,
+    "category": "Chemia",
+    "content": "Sód barwi płomień na:",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 17,
+    "category": "Chemia",
+    "content": "W cząsteczce wody najsilniejszym wiązaniem jest:",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 18,
+    "category": "Chemia",
+    "content": "W układzie okresowym pierwiastki uporządkowane są według:",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 19,
+    "category": "Chemia",
+    "content": "Złoto ma symbol:",
+    "difficulty": 1,
+    "reference": "Złoto to Au. Od łacińskiego \"aurum\"."
+  },
+  {
+    "id": 20,
+    "category": "Chemia",
+    "content": "Rtęć - znana z dawnych termometrów - to:",
+    "difficulty": 1,
+    "reference": "Rtęć to Hg. Od łacińskiego \"hydrargyrum\"."
+  },
+  {
+    "id": 21,
+    "category": "Chemia",
+    "content": "CO - co to jest?",
+    "difficulty": 2,
+    "reference": "CO to wzór tlenku węgla, potocznie zwanego czadem - toksycznego, bezwonnego gazu, który jest śmiertelnym zagrożeniem w mieszkaniach wyposażonych w piecyki gazowe. Dwutlenek węgla to CO2."
+  },
+  {
+    "id": 22,
+    "category": "Chemia",
+    "content": "Symbol C to:",
+    "difficulty": 1,
+    "reference": "Oczywiście, C to węgiel. Z łacińskiego \"carboneum\"."
+  },
+  {
+    "id": 23,
+    "category": "Chemia",
+    "content": "Głównym składnikiem (>99,5%) cukru spożywczego jest...",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 24,
+    "category": "Chemia",
+    "content": "Czym posolisz jajko na śniadanie?",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 25,
+    "category": "Chemia",
+    "content": "Ciasto drożdżowe służące do wypieku chleba poddawane jest procesowi fermentacji...",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 26,
+    "category": "Chemia",
+    "content": "Które zdanie na temat monotlenku diwodoru jest fałszywe?",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 27,
+    "category": "Chemia",
+    "content": "Które zdanie na temat gliceryny jest fałszywe?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 28,
+    "category": "Chemia",
+    "content": "Substancje, które umożliwiają połączenie się wody i oleju to...",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 29,
+    "category": "Chemia",
+    "content": "Urządzeniem działającym na zasadzie aerozolu jest...",
+    "difficulty": 3,
+    "reference": "Urządzenia działające na zasadzie aerozolu spotkać można w wielu dziedzinach życia. Przykładem jest gaśnica, która z dużą intensywnością wyrzuca cząsteczki gaszącego środka chemicznego, unoszące się w specjalnym, niepalnym gazie - tworzące razem aerozol gaśniczy."
+  },
+  {
+    "id": 30,
+    "category": "Chemia",
+    "content": "Jeśli poddamy żywność działaniu fermentacji mlekowej, to mamy do czynienia z...",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 31,
+    "category": "Chemia",
+    "content": "Które zdanie na temat metanolu jest fałszywe?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 32,
+    "category": "Chemia",
+    "content": "Jednym z zastosowań kwasu salicylowego jest produkcja kwasu acetylosalicylowego czyli...",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 33,
+    "category": "Chemia",
+    "content": "Kiedyś świece najczęściej były woskowe lub łojowe. Dzisiaj najczęściej produkuje się je z...",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 34,
+    "category": "Historia Polski",
+    "content": "W którym roku miał miejsce I rozbiór Polski?",
+    "difficulty": 4,
+    "reference": "Podpisanie traktatu rozbiorowego nastąpiło 5 sierpnia 1772 roku w Petersburgu. Rozbioru i podziału ziem terytorium I Rzeczypospolitej dokonały Prusy, Imperium Habsburgów i Imperium Rosyjskie. Kolejne rozbiory miały miejsca w latach 1793 i 1795."
+  },
+  {
+    "id": 35,
+    "category": "Historia Polski",
+    "content": "W którym roku Polska przystąpiła do NATO?",
+    "difficulty": 2,
+    "reference": "1999 to rok przystąpienia Polski do NATO."
+  },
+  {
+    "id": 36,
+    "category": "Historia Polski",
+    "content": "W którym roku Polska weszła do Unii Europejskiej?",
+    "difficulty": 1,
+    "reference": "Polska stała się członkiem UE 1 maja 2004 roku."
+  },
+  {
+    "id": 37,
+    "category": "Historia Polski",
+    "content": "Który polski dywizjon lotniczy zestrzelił podczas Bitwy o Anglię najwięcej maszyn Luftwaffe?",
+    "difficulty": 1,
+    "reference": "Dywizjon 303 był najlepszą jednostką lotniczą, biorącą udział w bitwie o Anglię - zgłosił zestrzelenie 126 maszyn Luftwaffe."
+  },
+  {
+    "id": 38,
+    "category": "Historia Polski",
+    "content": "W którym roku powstał \"Mazurek Dąbrowskiego\"?",
+    "difficulty": 4,
+    "reference": "Mazurek Dąbrowskiego powstał w lipcu 1797 roku."
+  },
+  {
+    "id": 39,
+    "category": "Historia Polski",
+    "content": "Stan wojenny został przez władze PRL ogłoszony 13 grudnia 1981 roku. Kiedy się zakończył?",
+    "difficulty": 3,
+    "reference": "Stan wojenny w Polsce zniesiono 22 lipca 1983 roku."
+  },
+  {
+    "id": 40,
+    "category": "Historia Polski",
+    "content": "Czym była w dawnej Polsce \"śreżoga\"?",
+    "difficulty": 3,
+    "reference": "Śreżoga to upał, żar."
+  },
+  {
+    "id": 41,
+    "category": "Historia Polski",
+    "content": "Kto jest pierwszym (najstarszym) znanym z imienia polskim pisarzem?",
+    "difficulty": 4,
+    "reference": "Gertruda Mieszkówna (1025-1108) - córka Mieszka II, króla Polski. Autorka modlitw łacińskich zapisanych prozą poetycką w tzw. Kodeksie Gertrudy (zwanym też Kodeksem Egberta). Modlitewnik nie jest w całości jej autorstwa - został wykonany w drugiej połowie X wieku, później doszyto do niego kilka stron, na których pisała Gertruda. Manuskrypt obecnie przechowywane jest w Museo Archeologico Nazionale w Cividale del Friuli we Włoszech. Widoczna na górze ilustracja pochodzi właśnie z Kodeksu Gertrudy."
+  },
+  {
+    "id": 42,
+    "category": "Historia Polski",
+    "content": "Kiedy Polska posiadała dostęp do Morza Czarnego?",
+    "difficulty": 4,
+    "reference": "Polska nigdy nie miała dostępu do Morza Czarnego, posiadała jedynie lenno w postaci Hospodarstwa Mołdawskiego, które za czasów Władysława Jagiełły uznało zwierzchnictwo Polski."
+  },
+  {
+    "id": 43,
+    "category": "Historia Polski",
+    "content": "Jaki przydomek nosił władca Pomorza Gdańskiego Świętopełk II?",
+    "difficulty": 4,
+    "reference": "Świętopełk II Wielki był księciem Pomorza Gdańskiego w latach 1227-1266. Prawdopodobnie z jego zlecenia zabito Leszka Białego podczas zbrodni gąsawskiej."
+  },
+  {
+    "id": 44,
+    "category": "Historia Polski",
+    "content": "Na ile groszy dzielił się złoty przez większość swej historii?",
+    "difficulty": 4,
+    "reference": "Pierwotna uchwała sejmowa z 1496 roku ustalała kurs złotego na 30 groszy. Został on podtrzymany przez reformę walutową Stanisława Augusta i przetrwał do 1841, gdy mennica warszawska zaprzestała jego bicia. Reforma Grabskiego z 1924 roku wprowadziła decymowanego złotego."
+  },
+  {
+    "id": 45,
+    "category": "Historia Polski",
+    "content": "Jak nazywał się ostatni koronowany król Polski?",
+    "difficulty": 4,
+    "reference": "W latach 1815–1830 Królestwo Polskie pozostawało w unii personalnej z Imperium Rosyjskim, zaś cesarze Rosji nosili tytuł króla Polski i byli zobowiązani do koronacji w Warszawie. Mikołaja zdetronizował polski sejm w 1831 roku, lecz cesarze rosyjski używali tego tytułu aż do 1917 roku."
+  },
+  {
+    "id": 46,
+    "category": "Historia Polski",
+    "content": "Ilu królów Polski zostało obdarowanych mieczem poświęcanym, inaczej mieczem papieskim?",
+    "difficulty": 4,
+    "reference": "Miecz poświęcany, miecz papieski był ceremonialnym mieczem posyłanym przez papieża wraz z ozdobnym kapeluszem z aksamitu i pasem rycerskim władcom, wodzom i arystokratom katolickim, którzy w szczególny sposób zasłużyli się chrześcijaństwu lub dla polityki biskupa Rzymu. Z dziesięciu mieczy papieskich darowanych polskim królom, zachowały się 3: miecz Stefana Batorego i miecz Jana III Sobieskiego - przechowywane na Wawelu oraz miecz Władysława IV Wazy - przechowywany na zamku Skokloster w Szwecji."
+  },
+  {
+    "id": 47,
+    "category": "Historia Polski",
+    "content": "Między 1457 a 1460 Puck był osobnym państwem. Kto był jego władcą?",
+    "difficulty": 4,
+    "reference": "Król Szwecji i Norwegii, Karol VIII Bonde miał trudne rządy. Dwukrotnie musiał oddawać tron. Wygnany schronił się w Polsce. Zadłużony u niego król Polski, Kazimierz Jagiellończyk oddał mu we władanie ziemię pucką do czasu spłaty długu. Karol wrócił na tron Szwecji z pomocą niemieckich i polskich najemników."
+  },
+  {
+    "id": 48,
+    "category": "Historia Polski",
+    "content": "W którym roku Polska odzyskała niepodległość?",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 49,
+    "category": "Historia Polski",
+    "content": "Pierwsza stolica Polski to:",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 50,
+    "category": "Historia Polski",
+    "content": "W którym roku i przez jakie kraje nastąpił III rozbiór Polski?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 51,
+    "category": "Historia Polski",
+    "content": "Jak nazywała się pieśń, która później stała się \"Mazurkiem Dąbrowskiego\"?",
+    "difficulty": 2,
+    "reference": "Mazurek Dąbrowskiego powstał w lipcu 1797 roku."
+  },
+  {
+    "id": 52,
+    "category": "Historia Polski",
+    "content": "Kto jest autorem melodii \"Mazurka Dąbrowskiego\"?",
+    "difficulty": 2,
+    "reference": "Początkowo uważano, że autorem melodii jest Michał Kleofas Ogiński, jednak materiały archiwalne temu zaprzeczyły. Dziś autorzy śpiewników i prac naukowych najczęściej podają określenie \"melodia ludowa\"."
+  },
+  {
+    "id": 53,
+    "category": "Historia Polski",
+    "content": "W którym roku urodził się Józef Wybicki?",
+    "difficulty": 4,
+    "reference": "Józef Wybicki urodził się 29 września 1747 roku. Zmarł 10 marca 1822 r. w Manieczkach."
+  },
+  {
+    "id": 54,
+    "category": "Historia Polski",
+    "content": "Kim był Jan Henryk Dąbrowski, którego nazwisko pojawia się w nazwie polskiego hymnu?",
+    "difficulty": 1,
+    "reference": "Jan Henryk Dąbrowski był polskim generałem, twórcą Legionów Polskich we Włoszech i m.in. uczestnikiem insurekcji kościuszkowskiej oraz inicjatorem powstania wielkopolskiego w 1806 roku."
+  },
+  {
+    "id": 55,
+    "category": "Historia Polski",
+    "content": "Ile zwrotek ma oryginalna wersja hymnu Polski, którą stworzył Józef Wybicki?",
+    "difficulty": 3,
+    "reference": "Oficjalna wersja hymnu Polski ma cztery zwrotki plus refren. Natomiast pieśń według rękopisu Józefa Wybickiego miała sześć zwrotek i refren."
+  },
+  {
+    "id": 56,
+    "category": "Historia Polski",
+    "content": "W jednej ze zwrotek polskiego hymnu wspomniany jest Stefan Czarniecki. Znany jest m.in. z prowadzenia wojny partyzanckiej przeciw wojskom...",
+    "difficulty": 4,
+    "reference": "Prawidłowa odpowiedź to Karol X Gustaw, który był królem Szwecji w latach 1654-1660. Był on władcą podczas potopu szwedzkiego."
+  },
+  {
+    "id": 57,
+    "category": "Historia Polski",
+    "content": "W oryginalnej wersji polskiego hymnu oprócz Czarnieckiego i Dąbrowskiego autor nawiązuje do jeszcze jednego wybitnego polskiego wojskowego. Kto nim jest?",
+    "difficulty": 2,
+    "reference": "\"Na to wszystkich jedne głosy: »Dosyć tej niewoli, mamy Racławickie Kosy, Kościuszkę, Bóg pozwoli«\" - tak brzmi ostatnia zwrotka w rękopisie Józefa Wybickiego."
+  },
+  {
+    "id": 58,
+    "category": "Historia Polski",
+    "content": "Jak brzmi drugi wers pierwszej zwrotki hymnu polskiego?",
+    "difficulty": 1,
+    "reference": "Częstym błędem jest śpiewanie \"póki my żyjemy\". Jednak zarówno w rękopisie Józefa Wybickiego, jak i w oficjalnej wersji hymnu są słowa \"kiedy my żyjemy\"."
+  },
+  {
+    "id": 59,
+    "category": "Historia Polski",
+    "content": "Jak brzmią ostatnie wersy ostatniej zwrotki polskiego hymnu?",
+    "difficulty": 2,
+    "reference": "Oczywiście poprawna odpowiedź to \"słuchaj jeno, pono nasi biją w tarabany\""
+  },
+  {
+    "id": 60,
+    "category": "Historia Polski",
+    "content": "Jakie rzeki wymienione są w polskim hymnie?",
+    "difficulty": 2,
+    "reference": "Prawidłowa odpowiedź to Wisła i Warta, które wymienione są w drugiej zwrotce."
+  },
+  {
+    "id": 61,
+    "category": "Historia Polski",
+    "content": "Gdzie mieści się Muzeum Hymnu Narodowego?",
+    "difficulty": 3,
+    "reference": "Muzeum Hymnu Narodowego mieści się w Będominie. Dokładnie w dworze szlacheckim, który w latach 1740-1785 należał do rodziny Wybickich i właśnie w nim urodził się Józef Wybicki."
+  },
+  {
+    "id": 62,
+    "category": "Historia Polski",
+    "content": "Potop Szwedzki rozpoczął się w roku...",
+    "difficulty": 3,
+    "reference": "Najazd Szwecji na Rzeczpospolitą, czyli Potop Szwedzki, rozpoczął się w 1655 roku, w czasie II wojny północnej (1655–1660). Zakończył go pokój w Oliwie zawarty w 1660 roku."
+  },
+  {
+    "id": 63,
+    "category": "Historia Polski",
+    "content": "Bitwa pod Wiedniem, pod dowództwem Jana III Sobieskiego, miała miejsce w roku...",
+    "difficulty": 4,
+    "reference": "Bitwa pod Wiedniem, inaczej nazywana Odsieczą Wiedeńską, to bitwa stoczona 12 września 1683 pod Wiedniem między wojskami polsko-austriacko-niemieckimi pod dowództwem króla Jana III Sobieskiego a armią Imperium Osmańskiego pod wodzą wezyra Kara Mustafy."
+  },
+  {
+    "id": 64,
+    "category": "Historia Polski",
+    "content": "Kiedy nastąpiło rozwiązanie Armii Krajowej?",
+    "difficulty": 4,
+    "reference": "Rozwiązanie Armii Krajowej nastąpiło 19 stycznia 1945 roku. Wtedy to ostatni jej komendant gen. Leopold Okulicki ps. \"Niedźwiadek\" wydał rozkaz zwalniający żołnierzy z przysięgi i nakazujący im pozostanie w konspiracji."
+  },
+  {
+    "id": 65,
+    "category": "Historia Polski",
+    "content": "Konstytucja 3 Maja była pierwszą w Europie i drugą na świecie spisaną konstytucją. Weszła w życie 3 maja 1791 roku - do którego roku obowiązywała?",
+    "difficulty": 4,
+    "reference": "Konstytucja 3 Maja obowiązywała przez 14 miesięcy. Do jej obalenia przyczyniła się zawiązana w maju 1792 roku konfederacja targowicka. 23 listopada 1793 roku sejm grodzieński uchylił wszystkie jej postanowienia."
+  },
+  {
+    "id": 66,
+    "category": "Biologia",
+    "content": "Padalec to:",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 67,
+    "category": "Biologia",
+    "content": "Istnienie w ludzkim układzie pokarmowym flory bakteryjnej to przykład:",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 68,
+    "category": "Biologia",
+    "content": "Mitochondria odpowiadają w komórce za:",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 69,
+    "category": "Biologia",
+    "content": "Przykładem konwergencji jest:",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 70,
+    "category": "Biologia",
+    "content": "Rolą móżdżku jest przede wszystkim:",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 71,
+    "category": "Biologia",
+    "content": "Zasady tworzące DNA to:",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 72,
+    "category": "Biologia",
+    "content": "Dziobak to:",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 73,
+    "category": "Biologia",
+    "content": "W uproszczeniu fotosynteza to szereg reakcji, w których:",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 74,
+    "category": "Biologia",
+    "content": "Pantofelek:",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 75,
+    "category": "Biologia",
+    "content": "Owady oddychają dzięki:",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 76,
+    "category": "Biologia",
+    "content": "Która komórka nie posiada jądra komórkowego?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 77,
+    "category": "Biologia",
+    "content": "Która kość czaszki jest kością parzystą?",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 78,
+    "category": "Biologia",
+    "content": "Kiedy kręgosłup jest nierównomiernie obciążany, jedno ramię znajduję się wyżej od drugiego. Jaka to wada postawy?",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 79,
+    "category": "Biologia",
+    "content": "Który ze składników krwi odpowiada za jej krzepnięcie?",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 80,
+    "category": "Biologia",
+    "content": "Serce zbudowane jest z tkanki:",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 81,
+    "category": "Biologia",
+    "content": "Jaki związek wydalają nerki?",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 82,
+    "category": "Biologia",
+    "content": "Który hormon podnosi poziom glukozy (cukru) we krwi?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 83,
+    "category": "Biologia",
+    "content": "Który płat mózgu odpowiada za widzenie i rozumienie słów?",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 84,
+    "category": "Biologia",
+    "content": "Czopki i pręciki znajdują się:",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 85,
+    "category": "Biologia",
+    "content": "Przymglone, nieostre widzenie i zaburzona ocena odległości przedmiotów. Jaka to choroba oczu?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 86,
+    "category": "Kino",
+    "content": "Czy gwiazda kina niemego, Pola Negri, śpiewała w filmach piosenki?",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 87,
+    "category": "Kino",
+    "content": "Co łączy Adama Mickiewicza, Andrzeja Wajdę, Wojciecha Kilara i Grażynę Szapołowską?",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 88,
+    "category": "Kino",
+    "content": "Gwiazdą kinematografii w którym kraju była Ina Benita?",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 89,
+    "category": "Kino",
+    "content": "W jakim języku mówią bohaterowie najczęściej wyświetlanego na świecie (wg Księgi Guinessa) filmu - \"Dybuk\"?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 90,
+    "category": "Kino",
+    "content": "W którym filmie Kalina Jędrusik zastąpiła niedysponowaną Violettę Villas?",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 91,
+    "category": "Kino",
+    "content": "Który z filmów fabularnych został jako pierwszy zrealizowany w całości na kolorowej taśmie?",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 92,
+    "category": "Kino",
+    "content": "W którym mieście znajdują się słynne schody, znane z klasycznego filmu Sergiusza Eisensteina \"Pancernik Potiomkin\"?",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 93,
+    "category": "Kino",
+    "content": "Co dla fanów filmu oznaczają następujące skróty: BB, CC, MM?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 94,
+    "category": "Kino",
+    "content": "Dzielnicą którego miasta jest Hollywood?",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 95,
+    "category": "Kino",
+    "content": "W którym kraju odbyły się historyczne, pierwsze pokazy filmów \"Wjazd pociągu na stację\" i \"Robotnice wychodzące z fabryki\"?",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 96,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Houston, mamy problem\"?",
+    "difficulty": 1,
+    "reference": "Oczywiście, chodzi o film \"Apollo 13\""
+  },
+  {
+    "id": 97,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Zawsze mówię prawdę. Nawet kiedy kłamię\"?",
+    "difficulty": 2,
+    "reference": "To cytat z filmu \"Człowiek z blizną\""
+  },
+  {
+    "id": 98,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Jestem królem świata\"?",
+    "difficulty": 3,
+    "reference": "To cytat ze słynnej sceny z filmu \"Titanic\""
+  },
+  {
+    "id": 99,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Niech Moc będzie z tobą\"?",
+    "difficulty": 1,
+    "reference": "To słynny cytat z filmu \"Gwiezdne wojny\""
+  },
+  {
+    "id": 100,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Kocham zapach napalmu o poranku\"?",
+    "difficulty": 2,
+    "reference": "To cytat z filmu \"Czas Apokalipsy\""
+  },
+  {
+    "id": 101,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Zagraj to jeszcze raz, Sam\"?",
+    "difficulty": 3,
+    "reference": "To cytat z filmu \"Casablanca\""
+  },
+  {
+    "id": 102,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Życie jest jak pudełko czekoladek. Nigdy nie wiesz, co ci się trafi\"?",
+    "difficulty": 3,
+    "reference": "To cytat z filmu \"Forrest Gump\""
+  },
+  {
+    "id": 103,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Wiktorio, nie kop pana, bo się spocisz.\"?",
+    "difficulty": 3,
+    "reference": "To cytat z filmu \"Kingsajz\""
+  },
+  {
+    "id": 104,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Hasta la vista, baby!\"?",
+    "difficulty": 1,
+    "reference": "To cytat z filmu \"Terminator 2\""
+  },
+  {
+    "id": 105,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Bo przecież... Jutro też jest dzień!\"?",
+    "difficulty": 4,
+    "reference": "To cytat z filmu \"Przeminęło z wiatrem\""
+  },
+  {
+    "id": 106,
+    "category": "Kino",
+    "content": "Z jakiego filmu pochodzi ten cytat: \"Z twarzy podobny zupełnie do nikogo\"?",
+    "difficulty": 1,
+    "reference": "To cytat z filmu \"Miś\""
+  },
+  {
+    "id": 107,
+    "category": "Język polski",
+    "content": "Jak brzmi rzeczownik 'żmija' w celowniku w liczbie pojedynczej?",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 108,
+    "category": "Język polski",
+    "content": "Jaka jest poprawna forma czasownika 'wybuchnąć' w rodzaju żeńskim w czasie przeszłym?",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 109,
+    "category": "Język polski",
+    "content": "Jak odmienia się nazwiska zakończone na -o? Jaka będzie poprawna forma nazwiska Lato w zdaniu: Dziś w południe mam spotkanie z...",
+    "difficulty": 2,
+    "reference": ""
+  },
+  {
+    "id": 110,
+    "category": "Język polski",
+    "content": "Jak brzmi dopełniacz liczby mnogiej rzeczownika 'rwa'?",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 111,
+    "category": "Język polski",
+    "content": "Wybierz poprawną odmianę rzeczownika 'pług'.",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 112,
+    "category": "Język polski",
+    "content": "W województwie mazowieckim znajduje się miasto powiatowe Przysucha. Jak nazywa się powiat?",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 113,
+    "category": "Język polski",
+    "content": "Jak brzmi dopełniacz liczby pojedynczej nazwy gatunku wierzby - wierzba iwa?",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 114,
+    "category": "Język polski",
+    "content": "Jedlina-Zdrój - jaka jest poprawna forma miejscownika tej nazwy własnej?",
+    "difficulty": 3,
+    "reference": ""
+  },
+  {
+    "id": 115,
+    "category": "Język polski",
+    "content": "Wybierz ten podpunkt, w którym znajdują się tylko rzeczowniki nieodmienne:",
+    "difficulty": 4,
+    "reference": ""
+  },
+  {
+    "id": 116,
+    "category": "Język polski",
+    "content": "Wybierz poprawną pisownię",
+    "difficulty": 1,
+    "reference": ""
+  },
+  {
+    "id": 117,
+    "category": "Język polski",
+    "content": "Wyrazy \"kot\" i \"kotek\" to:",
+    "difficulty": 2,
+    "reference": "\"Kot\" i \"kotek\" to wyrazy pokrewne, czyli takie, które zostały utworzone od wspólnego wyrazu podstawowego - mają wspólny rdzeń. Wszystkie te słowa są sobie bliskie znaczeniowo."
+  },
+  {
+    "id": 118,
+    "category": "Język polski",
+    "content": "Co oznacza archaizm \"ambaje\"?",
+    "difficulty": 3,
+    "reference": "Ambaje to brednie, niedorzeczności, mrzonki, androny..."
+  },
+  {
+    "id": 119,
+    "category": "Język polski",
+    "content": "\"Smakuje\" - co to za część mowy?",
+    "difficulty": 1,
+    "reference": "Oczywiście, jest to czasownik."
+  },
+  {
+    "id": 120,
+    "category": "Język polski",
+    "content": "W którym roku został ustanowiony Międzynarodowy Dzień Języka Ojczystego?",
+    "difficulty": 4,
+    "reference": "Międzynarodowy Dzień Języka Ojczystego został ustanowiony przez UNESCO 17 listopada 1999 roku."
+  },
+  {
+    "id": 121,
+    "category": "Język polski",
+    "content": "Kto jest autorem słów: \"Jestem za, a nawet przeciw\"?",
+    "difficulty": 1,
+    "reference": "Autorem słów, które na stałe weszły do języka polskiego, jest Lech Wałęsa. Oznaczają one ambiwalentny stosunek do danej sprawy."
+  },
+  {
+    "id": 122,
+    "category": "Język polski",
+    "content": "Na kogo w Poznaniu potocznie mówi się \"szkieły\"?",
+    "difficulty": 3,
+    "reference": "Autorem słów, które na stałe weszły do języka polskiego, jest Lech Wałęsa. Oznaczają one ambiwalentny stosunek do danej sprawy."
+  },
+  {
+    "id": 123,
+    "category": "Język polski",
+    "content": "Szmaterlok to po śląsku:",
+    "difficulty": 2,
+    "reference": "Szmaterlok to motyl."
+  },
+  {
+    "id": 124,
+    "category": "Język polski",
+    "content": "Co po śląsku znaczy \"klapsznita\"?",
+    "difficulty": 3,
+    "reference": "Klapsznita to kanapka, złożona z dwóch sznit."
+  },
+  {
+    "id": 125,
+    "category": "Język polski",
+    "content": "Co z \"pańską skórką\" robią warszawiacy?",
+    "difficulty": 4,
+    "reference": "Pańska skórka to rodzaj cukierka."
+  },
+  {
+    "id": 126,
+    "category": "Język polski",
+    "content": "Gdzie na kopytka, tudzież kluski leniwe, krojone na ukos mówi się \"szagówki\"?",
+    "difficulty": 4,
+    "reference": "Szagówki to kopytka krojone na ukos, czyli \"na szagę\". Tak mówią m.in. w Poznaniu."
+  },
+  {
+    "id": 127,
+    "category": "Język polski",
+    "content": "Co to jest \"bimba\"?",
+    "difficulty": 1,
+    "reference": "W Poznaniu tramwaj określany bywa słowem \"bimba\"."
+  },
+  {
+    "id": 128,
+    "category": "Język polski",
+    "content": "Co oznacza \"krańcówka\", używana w Łodzi?",
+    "difficulty": 2,
+    "reference": "W Łodzi funkcjonuje słowo krańcówka, określające zajezdnię/petlę tramwajową."
+  },
+  {
+    "id": 129,
+    "category": "Język polski",
+    "content": "Co oznacza \"migawka\", używana w Łodzi?",
+    "difficulty": 3,
+    "reference": "W Łodzi migawka to bilet okresowy."
+  },
+  {
+    "id": 130,
+    "category": "Język polski",
+    "content": "W której części Polski można usłyszeć: \"Powiem dla ciebie, że nawet ją lubię\"?",
+    "difficulty": 1,
+    "reference": "To często spotykana konstrukcja zdania w okolicach Białegostoku. \"Powiem dla ciebie\", \"dam dla ciebie\"..."
+  },
+  {
+    "id": 131,
+    "category": "Język polski",
+    "content": "W Częstochowie \"zrywka\" mówi się o:",
+    "difficulty": 3,
+    "reference": "Zrywka to po prostu jednorazowa torba foliowa. Przynajmniej w Częstochowie."
+  },
+  {
+    "id": 132,
+    "category": "Język polski",
+    "content": "Co oznacza staropolskie \"gędzenie\"?",
+    "difficulty": 1,
+    "reference": "Gędzeniem dawniej określano granie. Od gędźby - czyli muzyki. Ta z kolei pochodziła od ludowego instrumentu - gęśli"
+  },
+  {
+    "id": 133,
+    "category": "Język polski",
+    "content": "Używa się tego do dziś. Dawniej nazywano to \"noclik\". A dziś powiemy:",
+    "difficulty": 3,
+    "reference": "Noclik to szlafrok."
+  },
+  {
+    "id": 134,
+    "category": "Język polski",
+    "content": "Co dawniej znaczyło \"otoczyświat\"?",
+    "difficulty": 3,
+    "reference": "Otoczyświat to dawniej ocean."
+  },
+  {
+    "id": 135,
+    "category": "Język polski",
+    "content": "Kogo nazwalibyśmy dawniej \"rachmanem\"?",
+    "difficulty": 4,
+    "reference": "Rachman to człowiek cichy, spokojny"
+  },
+  {
+    "id": 136,
+    "category": "Język polski",
+    "content": "Co nazywano dawniej \"parkotem\"?",
+    "difficulty": 4,
+    "reference": "Parkot to smród, odór"
+  },
+  {
+    "id": 137,
+    "category": "Język polski",
+    "content": "W dawnych czasach dość powszechnie używano \"wacków\". Co to było?",
+    "difficulty": 4,
+    "reference": "Wacek to kieszonkowy woreczek do przechowywania pieniędzy"
+  }
+]

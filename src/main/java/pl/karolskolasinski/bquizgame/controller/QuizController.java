@@ -37,7 +37,7 @@ public class QuizController {
     /*Board POST*/
     @PostMapping("/board")
     public String board(Model model, Long newUserQuizId, HttpServletRequest request) {
-        UserQuiz userQuiz = quizSetupService.addChoosedCategoriesToNewUserQuiz(newUserQuizId, request);
+        UserQuiz userQuiz = quizSetupService.addchosenCategoriesToNewUserQuiz(newUserQuizId, request);
         model.addAttribute("categories", quizService.categories(newUserQuizId));
         model.addAttribute("newUserQuiz", userQuiz);
         model.addAttribute("currentPlayerPlace", quizService.playerPlace(newUserQuizId, userQuiz.getCurrentPlayer()));

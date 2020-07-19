@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
+    <th:block th:replace="index/fragments :: meta" th:remove="tag"/>
     <title>BQuizGame</title>
-    <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
+    <th:block th:replace="index/fragments :: link-styles" th:remove="tag"/>
     <link rel="stylesheet" th:href="@{/css/custom-switch.css}"/>
 </head>
 <body>
-<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
+<th:block th:replace="index/fragments :: navigator" th:remove="tag"/>
 
 <div class="container text-center">
     <h1 class="display-4 mt-4 mb-3 border-top pt-4">Wybierz 4 kategorie</h1>
@@ -18,17 +18,19 @@
         <div class="card mb-3 shadow-sm">
             <div class="row card-body">
 
-                <form th:action="@{/quiz/board}" method="post" id="sectionForm" style="display: contents;">
+                <form th:action="@{/quiz/board}" method="post" id="sectionForm" style="display: contents;"
+                      accept-charset="UTF-8">
                     <div th:each="category : ${newUserQuiz.getCategories().split(',')}">
                         <input type="hidden" th:name="newUserQuizId" th:value="${newUserQuiz.getId()}">
 
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" th:name="${category}"
-                                       th:id="${category}">
-                                <label class="custom-control-label btn btn-lg btn-outline-warning mt-3 mb-4 text-dark" th:for="${category}">
-                                    <span class="custom-switch-position" th:text="${category}"></span>
-                                </label>
-                            </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" th:name="${category}"
+                                   th:id="${category}">
+                            <label class="custom-control-label btn btn-lg btn-outline-warning mt-3 mb-4 text-dark"
+                                   th:for="${category}">
+                                <span class="custom-switch-position" th:text="${category}"></span>
+                            </label>
+                        </div>
 
                     </div>
                     <div class="col-md-12 pt-4 pr-lg-5 text-right">
@@ -40,8 +42,8 @@
         </div>
     </div>
 
-    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
-    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
+    <th:block th:replace="index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="index/fragments :: scripts" th:remove="tag"/>
     <script type="text/javascript" th:src="@{/js/checkbox-checker.js}"></script>
     <script type="text/javascript" th:src="@{/js/refresh-blocker.js}"></script>
 </div>
