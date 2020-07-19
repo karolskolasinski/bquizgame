@@ -1,6 +1,6 @@
 **bquizgame**
 
-demo: http://bquizgame-demo.herokuapp.com/
+demo: http://bquizgame-herokuapp.com/
 
 a web service created using Java Spring Boot, Security, Thymeleaf, mySQL, Tomcat, Bootstrap
 

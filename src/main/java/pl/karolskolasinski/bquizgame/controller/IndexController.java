@@ -14,29 +14,29 @@ import java.text.DecimalFormat;
 public class IndexController {
 
     private final QuizSetupService quizSetupService;
-    private DecimalFormat decimalFormat = new DecimalFormat("##.##");
+    private final DecimalFormat decimalFormat = new DecimalFormat("##.##");
 
     @Autowired
     public IndexController(QuizSetupService quizSetupService) {
         this.quizSetupService = quizSetupService;
     }
 
-    /*Dispaly index with statistisc GET*/
+
     @GetMapping("/")
     public String index(Model model) {
-        /*Last week statistics*/
+        // last week statistics
         model.addAttribute("gamesPlayedLastWeek", quizSetupService.gamesPlayedLastWeek());
         model.addAttribute("percentageOfCorrectAnswersLastWeek", decimalFormat.format(quizSetupService.correctAnswersLastWeek() * 100 / quizSetupService.allAnswersLastWeek()));
         model.addAttribute("bestScoreLastWeek", quizSetupService.bestScoreLastWeek());
         model.addAttribute("bestUserLastWeek", quizSetupService.bestUserLastWeek());
 
-        /*Last month statistics*/
+        // last month statistics
         model.addAttribute("gamesPlayedLastMonth", quizSetupService.gamesPlayedLastMonth());
         model.addAttribute("percentageOfCorrectAnswersLastMonth", decimalFormat.format(quizSetupService.correctAnswersLastMonth() * 100 / quizSetupService.allAnswersLastMonth()));
         model.addAttribute("bestScoreLastMonth", quizSetupService.bestScoreLastMonth());
         model.addAttribute("bestUserLastMonth", quizSetupService.bestUserLastMonth());
 
-        /*Last month statistics*/
+        // last month statistics
         model.addAttribute("gamesPlayedAll", quizSetupService.gamesPlayedAll());
         model.addAttribute("percentageOfCorrectAnswersAll", decimalFormat.format(quizSetupService.correctAnswersAll() * 100 / quizSetupService.allAnswersAll()));
         model.addAttribute("bestScoreAll", quizSetupService.bestScoreAll());
@@ -44,13 +44,13 @@ public class IndexController {
         return "index/index";
     }
 
-    /*Login GET*/
+
     @GetMapping("/login")
     public String login() {
         return "account/login-form";
     }
 
-    /*Start new quiz GET*/
+    // start new quiz
     @GetMapping("quizSetup/numberofplayers")
     public String play() {
         return "quizsetup/quizsetup-numberofplayers";

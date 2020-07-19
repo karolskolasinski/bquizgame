@@ -57,31 +57,31 @@ public class QuizSetupService {
         return userQuiz;
     }
 
-    /*Add choosed category to newUserQuiz with saving to database*/
-    public UserQuiz addChoosedCategoriesToNewUserQuiz(Long newUserQuizId, HttpServletRequest request) {
+    /*Add chosen category to newUserQuiz with saving to database*/
+    public UserQuiz addchosenCategoriesToNewUserQuiz(Long newUserQuizId, HttpServletRequest request) {
         Optional<UserQuiz> userQuizOptional = quizSetupRepository.findById(newUserQuizId);
         if (userQuizOptional.isPresent()) {
             UserQuiz newUserQuiz = userQuizOptional.get();
 
             /*Initialize variables (collections)*/
-            Set<String> choosedCategories = new HashSet<>();
-            List<Question> questionsByChoosedCategories = new ArrayList<>();
-            Map<String, String[]> choosedCategoriesParameters = request.getParameterMap();
+            Set<String> chosenCategories = new HashSet<>();
+            List<Question> questionsBychosenCategories = new ArrayList<>();
+            Map<String, String[]> chosenCategoriesParameters = request.getParameterMap();
 
             /*Filling collections*/
-            for (String choosedCategory : choosedCategoriesParameters.keySet()) {
-                if (choosedCategoriesParameters.get(choosedCategory)[0].equals("on")) {
-                    choosedCategories.add(choosedCategory);   //todo -----> findByName(choosedCategory).ifPresent(ChoosedCategories::add);
-                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty1ByChoosedCategory(choosedCategory), questionsByChoosedCategories);
-                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty2ByChoosedCategory(choosedCategory), questionsByChoosedCategories);
-                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty3ByChoosedCategory(choosedCategory), questionsByChoosedCategories);
-                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty4ByChoosedCategory(choosedCategory), questionsByChoosedCategories);
+            for (String chosenCategory : chosenCategoriesParameters.keySet()) {
+                if (chosenCategoriesParameters.get(chosenCategory)[0].equals("on")) {
+                    chosenCategories.add(chosenCategory);   //todo -----> findByName(chosenCategory).ifPresent(chosenCategories::add);
+                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty1ByChosenCategory(chosenCategory), questionsBychosenCategories);
+                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty2ByChosenCategory(chosenCategory), questionsBychosenCategories);
+                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty3ByChosenCategory(chosenCategory), questionsBychosenCategories);
+                    shufflingThanSublistingAndAddingQuestionsToList(questionRepository.findAllDifficulty4ByChosenCategory(chosenCategory), questionsBychosenCategories);
                 }
             }
 
             /*Binding and saving Quiz+UserQuiz*/
-            newUserQuiz.setCategories(String.join(",", choosedCategories));
-            Set<Question> fourQuestionsFromEachCategoryToAddToQuiz = new HashSet<>(questionsByChoosedCategories);
+            newUserQuiz.setCategories(String.join(",", chosenCategories));
+            Set<Question> fourQuestionsFromEachCategoryToAddToQuiz = new HashSet<>(questionsBychosenCategories);
             Quiz quiz = new Quiz();
             quizRepository.save(quiz);
             quiz.setQuestionSet(fourQuestionsFromEachCategoryToAddToQuiz);
@@ -94,9 +94,9 @@ public class QuizSetupService {
     }
 
     /*Shuffling questions, sublist to 4 questions on the list, add them to Quiz questions list*/
-    private void shufflingThanSublistingAndAddingQuestionsToList(List<Question> allDifficultyByChoosedCategory, List<Question> questionsByChoosedCategories) {
-        Collections.shuffle(allDifficultyByChoosedCategory);
-        questionsByChoosedCategories.addAll(allDifficultyByChoosedCategory.subList(0, 1));
+    private void shufflingThanSublistingAndAddingQuestionsToList(List<Question> allDifficultyBychosenCategory, List<Question> questionsBychosenCategories) {
+        Collections.shuffle(allDifficultyBychosenCategory);
+        questionsBychosenCategories.addAll(allDifficultyBychosenCategory.subList(0, 1));
     }
 
     public boolean duplicates(String usernamePlayer1, String usernamePlayer2, String usernamePlayer3, String usernamePlayer4) {

@@ -78,6 +78,13 @@
             <artifactId>font-awesome</artifactId>
             <version>5.11.2</version>
         </dependency>
+        <!-- https://search.maven.org/artifact/com.h2database/h2/1.4.200/jar -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+            <version>1.4.200</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
