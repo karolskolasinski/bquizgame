@@ -12,4 +12,5 @@ public class CategoryStatsDto {
     private String category;
     private Integer difficulty;
     private Integer count;
+
 }

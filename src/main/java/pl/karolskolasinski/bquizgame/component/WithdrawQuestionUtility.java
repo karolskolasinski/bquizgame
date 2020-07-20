@@ -12,6 +12,8 @@ public class WithdrawQuestionUtility {
         if (withrdawnQuestions == null) {
             return false;
         }
+
         return withrdawnQuestions.stream().anyMatch(question -> question.getId().equals(id));
     }
+
 }

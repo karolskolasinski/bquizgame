@@ -24,6 +24,7 @@ public class QuizService {
     private final QuestionRepository questionRepository;
     private final UserAnswerRepository userAnswerRepository;
 
+
     @Autowired
     public QuizService(QuizRepository quizRepository, QuizSetupRepository quizSetupRepository, AnswerRepository answerRepository, QuestionRepository questionRepository, UserAnswerRepository userAnswerRepository) {
         this.quizRepository = quizRepository;
@@ -33,33 +34,43 @@ public class QuizService {
         this.userAnswerRepository = userAnswerRepository;
     }
 
+
     public List<String> categories(Long newUserQuizId) {
         Set<Question> questionSet = quizSetupRepository.getOne(newUserQuizId).getQuiz().getQuestionSet();
+
         return questionSet.stream().map(Question::getCategory).distinct().sorted().collect(Collectors.toList());
     }
 
+
     public Question pickQuestion(Long newUserQuizId, int difficulty, String category) {
         Optional<UserQuiz> userQuizOptional = quizSetupRepository.findById(newUserQuizId);
+
         if (userQuizOptional.isPresent()) {
             Long id = userQuizOptional.get().getQuiz().getId();
             Optional<Quiz> quizOptional = quizRepository.findById(id);
+
             if (quizOptional.isPresent()) {
                 Quiz quiz = quizOptional.get();
                 Set<Question> questionSet = quiz.getQuestionSet();
+
                 for (Question question : questionSet) {
                     if (question.getDifficulty() == difficulty && question.getCategory().equals(category)) {
                         return question;
                     }
                 }
             }
+
             return new Question();
         }
+
         return new Question();
     }
+
 
     public List<Answer> questionAnswersSetToList(Question question) {
         List<Answer> answers = new ArrayList<>(question.getAnswers());
         Collections.shuffle(answers);
+
         return answers;
     }
 
@@ -71,14 +82,18 @@ public class QuizService {
         userAnswer.setQuestion(questionRepository.getOne(currentQuestionId));
         userAnswerRepository.save(userAnswer);
         playerScore(newUserQuiz, userAnswer);
+
         return userAnswer;
     }
+
 
     public StringBuilder questionAnswersOrder(List<Answer> questionAnswerList) {
         StringBuilder questionAnswerOrder = new StringBuilder();
         questionAnswerList.forEach(answer -> questionAnswerOrder.append(answer.getId()).append(","));
+
         return questionAnswerOrder;
     }
+
 
     public List<Answer> getOrderedAnswers(String questionAnswerOrder) {
         List<Answer> orderedAnswers = new ArrayList<>();
@@ -86,6 +101,7 @@ public class QuizService {
         orderedAnswers.add(answerRepository.getOne(Long.valueOf(questionAnswerOrder.split(",")[1])));
         orderedAnswers.add(answerRepository.getOne(Long.valueOf(questionAnswerOrder.split(",")[2])));
         orderedAnswers.add(answerRepository.getOne(Long.valueOf(questionAnswerOrder.split(",")[3])));
+
         return orderedAnswers;
     }
 
@@ -93,10 +109,11 @@ public class QuizService {
         return orderedAnswers.stream().filter(Answer::isCorrect).findFirst().get().getId();
     }
 
-    /*Count current player score*/
+
     public UserQuiz setNextPlayerAndReturnNewUserQuiz(Long newUserQuizId) {
         UserQuiz newUserQuiz = quizSetupRepository.getOne(newUserQuizId);
         playerQueue(newUserQuiz);
+
         return newUserQuiz;
     }
 
@@ -108,6 +125,7 @@ public class QuizService {
 
         if (numberOfPlayers == 1 && correct) {
             newUserQuiz.setPlayer1Score(newUserQuiz.getPlayer1Score() + scoreToAdd);
+
             quizSetupRepository.save(newUserQuiz);
         } else if (numberOfPlayers == 2 && correct) {
             if (currentPlayer.equals(newUserQuiz.getPlayer1Name())) {
@@ -115,6 +133,7 @@ public class QuizService {
             } else {
                 newUserQuiz.setPlayer2Score(newUserQuiz.getPlayer2Score() + scoreToAdd);
             }
+
             quizSetupRepository.save(newUserQuiz);
         } else if (numberOfPlayers == 3 && correct) {
             if (currentPlayer.equals(newUserQuiz.getPlayer1Name())) {
@@ -124,6 +143,7 @@ public class QuizService {
             } else {
                 newUserQuiz.setPlayer3Score(newUserQuiz.getPlayer3Score() + scoreToAdd);
             }
+
             quizSetupRepository.save(newUserQuiz);
         } else if (numberOfPlayers == 4 && correct) {
             if (currentPlayer.equals(newUserQuiz.getPlayer1Name())) {
@@ -135,20 +155,21 @@ public class QuizService {
             } else {
                 newUserQuiz.setPlayer4Score(newUserQuiz.getPlayer4Score() + scoreToAdd);
             }
+
             quizSetupRepository.save(newUserQuiz);
         }
     }
 
+
     private void playerQueue(UserQuiz newUserQuiz) {
         switch (newUserQuiz.getNumberOfPlayers()) {
-            case 1:
-                break;
             case 2:
                 if (newUserQuiz.getCurrentPlayer().equals(newUserQuiz.getPlayer1Name())) {
                     newUserQuiz.setCurrentPlayer(newUserQuiz.getPlayer2Name());
                 } else {
                     newUserQuiz.setCurrentPlayer(newUserQuiz.getPlayer1Name());
                 }
+
                 quizSetupRepository.save(newUserQuiz);
                 break;
             case 3:
@@ -159,6 +180,7 @@ public class QuizService {
                 } else {
                     newUserQuiz.setCurrentPlayer(newUserQuiz.getPlayer1Name());
                 }
+
                 quizSetupRepository.save(newUserQuiz);
                 break;
             case 4:
@@ -171,6 +193,7 @@ public class QuizService {
                 } else {
                     newUserQuiz.setCurrentPlayer(newUserQuiz.getPlayer1Name());
                 }
+
                 quizSetupRepository.save(newUserQuiz);
                 break;
             default:
@@ -178,14 +201,19 @@ public class QuizService {
         }
     }
 
+
     public List<Question> withdrawQuestion(Long newUserQuizId) {
         Optional<UserQuiz> quizOptional = quizSetupRepository.findById(newUserQuizId);
+
         if (quizOptional.isPresent()) {
             UserQuiz quiz = quizOptional.get();
+
             return quiz.getUserAnswers().stream().map(UserAnswer::getQuestion).collect(Collectors.toList());
         }
+
         return new ArrayList<>();
     }
+
 
     public int playerPlace(Long newUserQuizId, String currentPlayer) {
         UserQuiz newUserQuiz = quizSetupRepository.getOne(newUserQuizId);
@@ -222,6 +250,7 @@ public class QuizService {
             default:
                 break;
         }
+
         return 1;
     }
 
@@ -255,9 +284,12 @@ public class QuizService {
             default:
                 break;
         }
+
         results.sort(Comparator.comparing(ResultsDto::getPlace));
+
         return results;
     }
+
 
     private void addPlayerResultsToResultsDtoList(Long newUserQuizId, List<ResultsDto> results, ResultsDto playerResuts, String playerName, int playerScore) {
         playerResuts.setPlace(playerPlace(newUserQuizId, playerName));

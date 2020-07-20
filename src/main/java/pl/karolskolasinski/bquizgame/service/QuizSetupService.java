@@ -187,7 +187,7 @@ public class QuizSetupService {
         return bestScoreAll.orElse(0);
     }
 
-    public void clearUnplayedQuizzes() {
+    public void clearNotPlayedQuizzes() {
         System.out.println("clearUnplayedQuizzes");
         quizSetupRepository.clearUnplayedQuizzes();
     }

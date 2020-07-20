@@ -14,7 +14,9 @@ public class AccountPasswordResetRequest {
 
     private Long accountId;
 
+
     @NotEmpty
     @Size(min = 4, max = 72)
     private String resetPassword;
+
 }

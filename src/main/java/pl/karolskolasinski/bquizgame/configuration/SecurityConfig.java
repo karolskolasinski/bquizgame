@@ -14,8 +14,9 @@ import pl.karolskolasinski.bquizgame.service.AuthenticationService;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private PasswordEncoder passwordEncoder;
-    private AuthenticationService authenticationService;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationService authenticationService;
+
 
     @Autowired
     public SecurityConfig(PasswordEncoder passwordEncoder, AuthenticationService authenticationService) {
@@ -23,8 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.authenticationService = authenticationService;
     }
 
-    protected void configure(HttpSecurity http) throws Exception {
 
+    protected void configure(HttpSecurity http) throws Exception {
         http.csrf()
                 .disable()
                 .authorizeRequests()
@@ -41,29 +42,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/editor/**").hasAnyRole("ADMIN", "MODERATOR")
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .and()
-                    .formLogin()
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/", true)
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/", true)
 //                        .successForwardUrl("/")
-                        .permitAll()
+                .permitAll()
                 .and()
-                    .logout()
-                        .logoutUrl("/logout")
-                        .clearAuthentication(true)
-                        .invalidateHttpSession(true)
-                        .logoutSuccessUrl("/")
-                        .permitAll()
+                .logout()
+                .logoutUrl("/logout")
+                .clearAuthentication(true)
+                .invalidateHttpSession(true)
+                .logoutSuccessUrl("/")
+                .permitAll()
                 .and()
                 .headers()
                 .frameOptions()
                 .disable();
     }
 
+
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(authenticationService);
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
+
         auth.authenticationProvider(daoAuthenticationProvider);
     }
+
 }

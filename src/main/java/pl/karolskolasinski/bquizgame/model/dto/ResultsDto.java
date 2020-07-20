@@ -12,4 +12,5 @@ public class ResultsDto {
     private Integer place;
     private String name;
     private Integer score;
+
 }

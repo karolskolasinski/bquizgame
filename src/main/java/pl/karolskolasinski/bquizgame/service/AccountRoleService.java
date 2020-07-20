@@ -13,24 +13,30 @@ import java.util.Set;
 
 @Service
 public class AccountRoleService {
+
     @Value("${account.default.roles:USER}")
     private String[] defaultRoles;
 
     private final AccountRoleRepository accountRoleRepository;
+
 
     @Autowired
     public AccountRoleService(AccountRoleRepository accountRoleRepository) {
         this.accountRoleRepository = accountRoleRepository;
     }
 
+
     public Set<AccountRole> getDefaultRoles() {
         Set<AccountRole> accountRoles = new HashSet<>();
+
         for (String role : defaultRoles) {
             Optional<AccountRole> accountRoleOptional = accountRoleRepository.findByName(role);
             accountRoleOptional.ifPresent(accountRoles::add);
         }
+
         return accountRoles;
     }
+
 
     public List<AccountRole> getAll() {
         return accountRoleRepository.findAll();

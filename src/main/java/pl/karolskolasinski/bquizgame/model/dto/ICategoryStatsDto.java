@@ -9,4 +9,5 @@ public interface ICategoryStatsDto {
     Integer getDifficulty();
 
     Integer getCount();
+
 }

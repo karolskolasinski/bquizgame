@@ -32,6 +32,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
 
+
     @Autowired
     public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
         this.accountRepository = accountRepository;
@@ -40,6 +41,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
     }
+
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -51,6 +53,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addDefaultQuestions();
     }
 
+
     private void addDefaultUser(String username, String password, String email, String... roles) {
         if (!accountRepository.existsByUsername(username)) {
             Account account = new Account();
@@ -58,41 +61,48 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
             account.setPassword(passwordEncoder.encode(password));
             account.setEmail(email);
             account.setAccountRoles(findRoles(roles));
+
             accountRepository.save(account);
         }
     }
 
+
     private Set<AccountRole> findRoles(String[] roles) {
         Set<AccountRole> accountRoles = new HashSet<>();
+
         for (String role : roles) {
             accountRoleRepository.findByName(role).ifPresent(accountRoles::add);
         }
+
         return accountRoles;
     }
+
 
     private void addDefaultRole(String role) {
         if (!accountRoleRepository.existsByName(role)) {
             AccountRole newRole = new AccountRole();
             newRole.setName(role);
+
             accountRoleRepository.save(newRole);
         }
     }
+
 
     private void addDefaultQuestions() {
         try {
             InputStream is = DataInitializer.class.getResourceAsStream("/questions/questions_answers.html");
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
-            tryReadFromFileAndSaveToDatabase(reader);
+            readFileAndSaveToDatabase(reader);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void tryReadFromFileAndSaveToDatabase(BufferedReader reader) throws IOException {
+
+    private void readFileAndSaveToDatabase(BufferedReader reader) throws IOException {
         while (reader.ready()) {
-            /*Creating default questions*/
             Question question = new Question();
             question.setCategory(reader.readLine());
             question.setDifficulty(Integer.parseInt(reader.readLine()));
@@ -101,18 +111,21 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
             if (!questionRepository.existsByContent(question.getContent())) {
                 questionRepository.save(question);
-                /*Creating answers to each question*/
+
                 Answer answer1 = new Answer();
                 answer1.setCorrect(true);
                 bindAnswerWithQuestion(reader, question, answer1);
+
                 Answer answer2 = new Answer();
                 bindAnswerWithQuestion(reader, question, answer2);
+
                 Answer answer3 = new Answer();
                 bindAnswerWithQuestion(reader, question, answer3);
+
                 Answer answer4 = new Answer();
                 bindAnswerWithQuestion(reader, question, answer4);
 
-                /*Read separator*/
+                // read separator
                 reader.readLine();
             } else {
                 for (int i = 0; i <= 4; i++) {
@@ -122,13 +135,16 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         }
     }
 
+
     private void bindAnswerWithQuestion(BufferedReader reader, Question question, Answer answer) throws IOException {
         answer.setAnswerContent(reader.readLine());
         answer.setQuestion(question);
+
         try {
             answerRepository.save(answer);
         } catch (TransientPropertyValueException | InvalidDataAccessApiUsageException e) {
             System.err.println("object (Answer) references an unsaved transient instance (Question)");
         }
     }
+
 }

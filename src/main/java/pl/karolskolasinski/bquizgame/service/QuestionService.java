@@ -18,15 +18,18 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
 
+
     @Autowired
     public QuestionService(QuestionRepository questionRepository, AnswerRepository answerRepository) {
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
     }
 
+
     public Set<String> returnAllCategories() {
         return questionRepository.findAllCategories();
     }
+
 
     public void bindAnswersWithQuestion(Question question, HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
@@ -41,31 +44,38 @@ public class QuestionService {
         answers.add(answer2);
         answerRepository.save(answer1);
         answerRepository.save(answer2);
+
         if (!answer3.getAnswerContent().isEmpty()) {
             answers.add(answer3);
             answerRepository.save(answer3);
         }
+
         if (!answer4.getAnswerContent().isEmpty()) {
             answers.add(answer4);
             answerRepository.save(answer4);
         }
+
         question.setAnswers(answers);
+
         setQuestionToAnswer(question, answer1);
         setQuestionToAnswer(question, answer2);
         setQuestionToAnswer(question, answer3);
         setQuestionToAnswer(question, answer4);
     }
 
+
     private Answer returnAnswerWithContent(String content, boolean correct) {
         Answer answer = new Answer();
         setAnswerWithContent(content, answer);
         answer.setCorrect(correct);
+
         return answer;
     }
 
     public void setDifficultyAndSave(Question question, HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         setDifficulty(question, parameterMap);
+
         questionRepository.save(question);
     }
 
@@ -74,6 +84,7 @@ public class QuestionService {
     }
 
     public List<Question> getAllByCategoryAndDifficulty(String catgory, int difficulty) {
+        //todo switch
         if (difficulty == 1) {
             return questionRepository.findAllDifficulty1ByChosenCategory(catgory);
         } else if (difficulty == 2) {
@@ -85,31 +96,40 @@ public class QuestionService {
         }
     }
 
+
     public Question getOneById(Long questionId) {
         Optional<Question> questionOptional = questionRepository.findById(questionId);
+
         return questionOptional.orElseGet(Question::new);
     }
+
 
     public AnswersContentDto extractAnswersContent(Question questionById) {
         List<Answer> answerList = getSortedAnswersList(questionById);
         AnswersContentDto answersContentDto = new AnswersContentDto();
         answersContentDto.setAnswer1Content(getAnswer(answerList, 0).getAnswerContent());
         answersContentDto.setAnswer2Content(getAnswer(answerList, 1).getAnswerContent());
+
         if (answerList.size() == 3) {
             answersContentDto.setAnswer3Content(getAnswer(answerList, 2).getAnswerContent());
         }
+
         if (answerList.size() == 4) {
             answersContentDto.setAnswer3Content(getAnswer(answerList, 2).getAnswerContent());
             answersContentDto.setAnswer4Content(getAnswer(answerList, 3).getAnswerContent());
         }
+
         return answersContentDto;
     }
+
 
     private List<Answer> getSortedAnswersList(Question questionById) {
         List<Answer> answerList = new ArrayList<>(questionById.getAnswers());
         answerList.sort(Comparator.comparing(Answer::getId));
+
         return answerList;
     }
+
 
     public List<ICategoryStatsDto> countCategoriesByDifficulty() {
         return questionRepository.countCategoriesByDifficulty();
@@ -120,6 +140,7 @@ public class QuestionService {
         updateAnswers(question, parameterMap);
         updateQuestion(question, parameterMap);
     }
+
 
     private void updateAnswers(Question question, Map<String, String[]> parameterMap) {
         List<Answer> answerList = getSortedAnswersList(questionRepository.getOne(question.getId()));
@@ -132,8 +153,10 @@ public class QuestionService {
     private void updateQuestion(Question question, Map<String, String[]> parameterMap) {
         setDifficulty(question, parameterMap);
         question.setContent(parameterMap.get("content")[0]);
+
         questionRepository.save(question);
     }
+
 
     private void setDifficulty(Question question, Map<String, String[]> parameterMap) {
         for (int i = 0; i <= 4; i++) {
@@ -143,11 +166,13 @@ public class QuestionService {
         }
     }
 
+
     private void checkNullableAnswer(List<Answer> answerList, String answerContent, Question question, int i) {
         if (!answerContent.trim().isEmpty()) {
             if (answerList.size() >= i) {
                 Answer answer = getAnswer(answerList, i - 1);
                 setAnswerWithContent(answerContent, answer);
+
                 answerRepository.save(answer);
             } else {
                 Answer newAnswer = new Answer();
@@ -162,21 +187,27 @@ public class QuestionService {
         }
     }
 
+
     private void setQuestionToAnswer(Question question, Answer newAnswer) {
         newAnswer.setQuestion(question);
     }
+
 
     private void setAnswerWithContent(String answerContent, Answer answer) {
         answer.setAnswerContent(answerContent);
     }
 
+
     private Answer getAnswer(List<Answer> answerList, int i) {
         return answerList.get(i);
     }
 
+
     public void deleteQuestion(Long questionId) {
         Question one = questionRepository.getOne(questionId);
         one.getAnswers().forEach(answerRepository::delete);
+
         questionRepository.delete(one);
     }
+
 }

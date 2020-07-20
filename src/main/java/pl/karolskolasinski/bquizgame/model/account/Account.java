@@ -21,39 +21,48 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @NotEmpty
     @Size(min = 3)
     private String username;
+
 
     @NotEmpty
     @Size(min = 4)
     private String password;
 
+
     @NotEmpty
     @Size(min = 4)
     private String email;
+
 
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime registrationDateTime;
 
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @Cascade(value = org.hibernate.annotations.CascadeType.DETACH)
     private Set<AccountRole> accountRoles;
+
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private Set<UserQuiz> userQuizzes;
 
+
     public boolean isAdmin() {
         return accountRoles.stream()
                 .anyMatch(accountRole -> accountRole.getName().equals("ADMIN"));
     }
+
 
     public String getRolesString() {
         StringBuilder builder = new StringBuilder();
         accountRoles.forEach(role -> builder.append(role.getName()).append(", "));
         return builder.toString().substring(0, builder.length() - 2);
     }
+
 }

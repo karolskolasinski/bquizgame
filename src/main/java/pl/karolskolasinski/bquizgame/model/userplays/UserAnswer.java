@@ -17,12 +17,16 @@ public class UserAnswer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @ManyToOne
     private Question question;
+
 
     @ManyToOne
     private Answer answer;
 
+
     @ManyToOne
     private UserQuiz userQuiz;
+
 }

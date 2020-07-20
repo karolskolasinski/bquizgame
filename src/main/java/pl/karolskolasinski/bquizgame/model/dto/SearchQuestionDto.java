@@ -13,4 +13,5 @@ public class SearchQuestionDto {
 
     private Set<String> categories;
     private int difficulty;
+
 }

@@ -16,6 +16,7 @@ public class IndexController {
     private final QuizSetupService quizSetupService;
     private final DecimalFormat decimalFormat = new DecimalFormat("##.##");
 
+
     @Autowired
     public IndexController(QuizSetupService quizSetupService) {
         this.quizSetupService = quizSetupService;
@@ -50,9 +51,11 @@ public class IndexController {
         return "account/login-form";
     }
 
+
     // start new quiz
     @GetMapping("quizSetup/numberofplayers")
     public String play() {
         return "quizsetup/quizsetup-numberofplayers";
     }
+
 }
