@@ -7,7 +7,6 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
 import pl.karolskolasinski.bquizgame.model.account.Account;
 import pl.karolskolasinski.bquizgame.model.account.AccountRole;
 import pl.karolskolasinski.bquizgame.model.schema.Answer;
@@ -17,9 +16,11 @@ import pl.karolskolasinski.bquizgame.repository.AccountRoleRepository;
 import pl.karolskolasinski.bquizgame.repository.AnswerRepository;
 import pl.karolskolasinski.bquizgame.repository.QuestionRepository;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Component
@@ -30,7 +31,6 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private final PasswordEncoder passwordEncoder;
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
-    private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
     @Autowired
     public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
@@ -79,50 +79,46 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private void addDefaultQuestions() {
-        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            tryReadFromFileAndSaveToDatabase(file, reader);
+            InputStream is = DataInitializer.class.getResourceAsStream("/questions/questions_answers.html");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+            tryReadFromFileAndSaveToDatabase(reader);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void tryReadFromFileAndSaveToDatabase(File file, BufferedReader reader) throws IOException {
-        if (file.exists()) {
-            while (reader.ready()) {
+    private void tryReadFromFileAndSaveToDatabase(BufferedReader reader) throws IOException {
+        while (reader.ready()) {
+            /*Creating default questions*/
+            Question question = new Question();
+            question.setCategory(reader.readLine());
+            question.setDifficulty(Integer.parseInt(reader.readLine()));
+            question.setContent(reader.readLine());
+            question.setReference(reader.readLine());
 
-                /*Creating default questions*/
-                Question question = new Question();
-                question.setCategory(reader.readLine());
-                question.setDifficulty(Integer.parseInt(reader.readLine()));
-                question.setContent(reader.readLine());
-                question.setReference(reader.readLine());
+            if (!questionRepository.existsByContent(question.getContent())) {
+                questionRepository.save(question);
+                /*Creating answers to each question*/
+                Answer answer1 = new Answer();
+                answer1.setCorrect(true);
+                bindAnswerWithQuestion(reader, question, answer1);
+                Answer answer2 = new Answer();
+                bindAnswerWithQuestion(reader, question, answer2);
+                Answer answer3 = new Answer();
+                bindAnswerWithQuestion(reader, question, answer3);
+                Answer answer4 = new Answer();
+                bindAnswerWithQuestion(reader, question, answer4);
 
-                if (!questionRepository.existsByContent(question.getContent())) {
-                    questionRepository.save(question);
-                    /*Creating answers to each question*/
-                    Answer answer1 = new Answer();
-                    answer1.setCorrect(true);
-                    bindAnswerWithQuestion(reader, question, answer1);
-                    Answer answer2 = new Answer();
-                    bindAnswerWithQuestion(reader, question, answer2);
-                    Answer answer3 = new Answer();
-                    bindAnswerWithQuestion(reader, question, answer3);
-                    Answer answer4 = new Answer();
-                    bindAnswerWithQuestion(reader, question, answer4);
-
-                    /*Read separator*/
+                /*Read separator*/
+                reader.readLine();
+            } else {
+                for (int i = 0; i <= 4; i++) {
                     reader.readLine();
-                } else {
-                    for (int i = 0; i <= 4; i++) {
-                        reader.readLine();
-                    }
                 }
             }
-        } else {
-            System.err.println("file " + file.getName() + " does not exist.");
         }
     }
 
