@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="index/fragments :: meta" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
     <title>Edycja użytkowników</title>
-    <th:block th:replace="index/fragments :: link-styles" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
-<th:block th:replace="index/fragments :: navigator" th:remove="tag"/>
+<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
 
 <div class="container">
     <div class="row col-md-12">
@@ -43,8 +43,8 @@
         </div>
     </div>
 
-    <th:block th:replace="index/fragments :: footer" th:remove="tag"/>
-    <th:block th:replace="index/fragments :: scripts" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
 </div>
 
 </body>

@@ -3,13 +3,13 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../static/css/custom-switch.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
-    <th:block th:replace="index/fragments :: meta" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
     <title>Edytor pytań</title>
-    <th:block th:replace="index/fragments :: link-styles" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
     <link rel="stylesheet" th:href="@{/css/custom-switch.css}"/>
 </head>
 <body>
-<th:block th:replace="index/fragments :: navigator" th:remove="tag"/>
+<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
 
 <div class="container">
     <div class="row col-md-12">
@@ -138,8 +138,8 @@
         </div>
     </div>
 
-    <th:block th:replace="index/fragments :: footer" th:remove="tag"/>
-    <th:block th:replace="index/fragments :: scripts" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
     <script type="text/javascript" th:src="@{/js/copy-to-clipboard.js}"></script>
 </div>
 
