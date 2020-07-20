@@ -19,6 +19,7 @@ import pl.karolskolasinski.bquizgame.repository.QuestionRepository;
 
 import java.io.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Component
@@ -29,6 +30,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private final PasswordEncoder passwordEncoder;
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
+    private ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
     @Autowired
     public DataInitializer(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, PasswordEncoder passwordEncoder, QuestionRepository questionRepository, AnswerRepository answerRepository) {
@@ -46,11 +48,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addDefaultRole("MODERATOR");
         addDefaultUser("admin", "admin", "admin@admin.com", "ADMIN", "USER");
         addDefaultUser("user", "user", "user@user.com", "USER");
-        try {
-            addDefaultQuestions();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        addDefaultQuestions();
     }
 
     private void addDefaultUser(String username, String password, String email, String... roles) {
@@ -80,49 +78,51 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         }
     }
 
-    private void addDefaultQuestions() throws FileNotFoundException {
-        File file = ResourceUtils.getFile("classpath:questions/questions_answers.html");
-
+    private void addDefaultQuestions() {
+        File file = new File(Objects.requireNonNull(classLoader.getResource("questions/questions_answers.html")).getFile());
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            tryReadFromFileAndSaveToDatabase(reader);
+            tryReadFromFileAndSaveToDatabase(file, reader);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void tryReadFromFileAndSaveToDatabase(BufferedReader reader) throws IOException {
-        while (reader.ready()) {
+    private void tryReadFromFileAndSaveToDatabase(File file, BufferedReader reader) throws IOException {
+        if (file.exists()) {
+            while (reader.ready()) {
 
-            // creating default questions
-            Question question = new Question();
-            question.setCategory(reader.readLine());
-            question.setDifficulty(Integer.parseInt(reader.readLine()));
-            question.setContent(reader.readLine());
-            question.setReference(reader.readLine());
+                /*Creating default questions*/
+                Question question = new Question();
+                question.setCategory(reader.readLine());
+                question.setDifficulty(Integer.parseInt(reader.readLine()));
+                question.setContent(reader.readLine());
+                question.setReference(reader.readLine());
 
-            if (!questionRepository.existsByContent(question.getContent())) {
-                questionRepository.save(question);
+                if (!questionRepository.existsByContent(question.getContent())) {
+                    questionRepository.save(question);
+                    /*Creating answers to each question*/
+                    Answer answer1 = new Answer();
+                    answer1.setCorrect(true);
+                    bindAnswerWithQuestion(reader, question, answer1);
+                    Answer answer2 = new Answer();
+                    bindAnswerWithQuestion(reader, question, answer2);
+                    Answer answer3 = new Answer();
+                    bindAnswerWithQuestion(reader, question, answer3);
+                    Answer answer4 = new Answer();
+                    bindAnswerWithQuestion(reader, question, answer4);
 
-                // creating answers to each question
-                Answer answer1 = new Answer();
-                answer1.setCorrect(true);
-                bindAnswerWithQuestion(reader, question, answer1);
-                Answer answer2 = new Answer();
-                bindAnswerWithQuestion(reader, question, answer2);
-                Answer answer3 = new Answer();
-                bindAnswerWithQuestion(reader, question, answer3);
-                Answer answer4 = new Answer();
-                bindAnswerWithQuestion(reader, question, answer4);
-
-                // read separator
-                reader.readLine();
-            } else {
-                for (int i = 0; i <= 4; i++) {
+                    /*Read separator*/
                     reader.readLine();
+                } else {
+                    for (int i = 0; i <= 4; i++) {
+                        reader.readLine();
+                    }
                 }
             }
+        } else {
+            System.err.println("file " + file.getName() + " does not exist.");
         }
     }
 
@@ -135,5 +135,4 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
             System.err.println("object (Answer) references an unsaved transient instance (Question)");
         }
     }
-
 }
