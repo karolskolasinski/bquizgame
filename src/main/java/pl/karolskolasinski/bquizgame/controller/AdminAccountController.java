@@ -1,7 +1,6 @@
 package pl.karolskolasinski.bquizgame.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,6 @@ import pl.karolskolasinski.bquizgame.service.AccountRoleService;
 import pl.karolskolasinski.bquizgame.service.AccountService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/admin/")

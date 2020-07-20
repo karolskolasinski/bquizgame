@@ -7,7 +7,6 @@ import pl.karolskolasinski.bquizgame.model.schema.Quiz;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.Set;
 
 @Data

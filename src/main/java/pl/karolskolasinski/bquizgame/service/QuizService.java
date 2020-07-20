@@ -2,7 +2,6 @@ package pl.karolskolasinski.bquizgame.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.karolskolasinski.bquizgame.model.dto.ICategoryStatsDto;
 import pl.karolskolasinski.bquizgame.model.dto.ResultsDto;
 import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;

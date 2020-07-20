@@ -13,7 +13,6 @@ import pl.karolskolasinski.bquizgame.service.QuizSetupService;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Objects;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/account/")

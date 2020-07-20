@@ -6,12 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.karolskolasinski.bquizgame.model.dto.AnswersContentDto;
 import pl.karolskolasinski.bquizgame.model.dto.SearchQuestionDto;
-import pl.karolskolasinski.bquizgame.model.schema.Answer;
 import pl.karolskolasinski.bquizgame.model.schema.Question;
 import pl.karolskolasinski.bquizgame.service.QuestionService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
 
 @Controller
 @RequestMapping(path = "/editor/")
