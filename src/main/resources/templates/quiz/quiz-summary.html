@@ -2,12 +2,12 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
-    <th:block th:replace="/index/fragments :: meta" th:remove="tag"/>
+    <th:block th:replace="index/fragments :: meta" th:remove="tag"/>
     <title>BQuizGame</title>
-    <th:block th:replace="/index/fragments :: link-styles" th:remove="tag"/>
+    <th:block th:replace="index/fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
-<th:block th:replace="/index/fragments :: navigator" th:remove="tag"/>
+<th:block th:replace="index/fragments :: navigator" th:remove="tag"/>
 
 <div class="container text-center">
     <h1 class="display-4 mt-4 mb-3 border-top pt-4">Podsumowanie</h1>
@@ -61,8 +61,8 @@
         </div>
     </div>
 
-    <th:block th:replace="/index/fragments :: footer" th:remove="tag"/>
-    <th:block th:replace="/index/fragments :: scripts" th:remove="tag"/>
+    <th:block th:replace="index/fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="index/fragments :: scripts" th:remove="tag"/>
 </div>
 
 </body>
